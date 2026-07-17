@@ -12,14 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.0",
-    "astro": "^7.0.9",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "astro": "^7.0.9"
   },
   "devDependencies": {
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
     "autoprefixer": "^10.4.19",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
