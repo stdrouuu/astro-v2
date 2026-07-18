@@ -365,47 +365,84 @@ import MobileMenu from '../components/MobileMenu.astro';
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Neural Library Analytics */}
+          {/* Card 1: Library Archive System */}
           <div
-            class="project-card cursor-pointer md:col-span-2 bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-500"
-            data-title="Library Archive Analytics"
-            data-desc="A database system built for the UKRIDA digital archive to search and analyze over 50,000 academic records efficiently."
-            data-tech="PostgreSQL, Python, Docker, FastAPI"
-            data-features="Sub-second search latency;Automated metadata extraction from PDFs;Analytics dashboard for publication trends;Role-based access control for student thesis papers"
+            class="project-card cursor-pointer bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col"
+            data-title="Library Archive System"
+            data-desc="Academic archive search and indexing system designed for UKRIDA digital library to manage over 50,000 student research papers and publications."
+            data-tech="PostgreSQL, FastAPI, Python, Docker"
+            data-features="Sub-second full-text search indexing;Role-based student credential authorization;Automated PDF document processing queue;Database query optimization profiles"
             data-color="#788FEC"
           >
-            <div class="flex flex-col lg:flex-row h-full">
-              <div class="lg:w-1/2 p-8 md:p-12 flex flex-col justify-between">
-                <div>
-                  <div class="flex gap-3 mb-8">
-                    <i class="ri-database-2-line text-primary text-xl"></i>
-                    <span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest self-center">
-                      Backend Engineering
-                    </span>
-                  </div>
-                  <h3 class="text-3xl font-extrabold mb-6 tracking-tighter">
-                    Library Archive Analytics
-                  </h3>
-                  <p class="text-on-surface-variant leading-relaxed mb-8">
-                    A database system built for the UKRIDA digital archive to search
-                    and analyze over 50,000 academic records efficiently.
-                  </p>
-                </div>
-                <span
-                  class="inline-flex items-center gap-2 text-primary font-bold group w-fit cursor-pointer"
-                >
-                  View Case Study
-                  <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+            <div class="h-48 bg-[#788FEC] relative flex items-center justify-center p-8 overflow-hidden">
+              <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+                <i class="ri-database-2-line text-[12px] text-white"></i>
+                <span class="text-[10px] font-bold text-white uppercase tracking-widest">
+                  Backend
                 </span>
               </div>
-              <div class="lg:w-1/2 bg-surface-container-high flex items-center justify-center p-8 lg:p-12 min-h-[350px]">
-                <div class="relative w-full h-full max-w-[280px] aspect-square flex items-center justify-center">
-                  <img
-                    alt="Backend project"
-                    class="w-full h-full object-contain scale-90 group-hover:scale-100 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9dIJD8wiMFWn_1lGtn61IOnqNGiJD6ZZJjnUMtBzKkchXKcqWABW7LQgnb5RfofHgwOTIgDPUtb2FhaGxQqvQXHe9YCRdlUJbMxbnstOb8WSvOiHK7B-tExq900FAXoGFFkNwRCKYb4hcF3CWw7M1UZAVfHzyczrPtdZJWHixVrsKdB7eC5EF66Dpz4he_Xlsue7rXsoR2gFPZHM7R8V-LzvQY6bMKjHfo4ekgAs7iLgakIFMgpAc2M_mz-Tf_QVtID5mDkO3aVA"
-                  />
-                </div>
+              <h3 class="text-2xl font-black text-white text-center tracking-tight leading-none">
+                Library Archive
+                <br />
+                System
+              </h3>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h4 class="text-xl font-bold mb-2">Library Archive System</h4>
+              <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                Academic archive indexing system processing over 50,000 student publications.
+              </p>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded">
+                  POSTGRESQL
+                </span>
+                <span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded">
+                  FASTAPI
+                </span>
+                <span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded">
+                  PYTHON
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: PDF Metadata Extractor */}
+          <div
+            class="project-card cursor-pointer bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col"
+            data-title="PDF Metadata Extractor"
+            data-desc="Automated microservice built to process academic PDF uploads, parsing research metadata, keywords, and author credentials using NLP."
+            data-tech="Python, FastAPI, PyPDF2, Docker"
+            data-features="Automated metadata extraction on upload;Keyword parsing using natural language rules;REST API endpoints for batch import;Performance metrics logging system"
+            data-color="#06b6d4"
+          >
+            <div class="h-48 bg-[#06b6d4] relative flex items-center justify-center p-8 overflow-hidden">
+              <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+                <i class="ri-file-text-line text-[12px] text-white"></i>
+                <span class="text-[10px] font-bold text-white uppercase tracking-widest">
+                  Microservice
+                </span>
+              </div>
+              <h3 class="text-2xl font-black text-white text-center tracking-tight leading-none">
+                PDF Metadata
+                <br />
+                Extractor
+              </h3>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h4 class="text-xl font-bold mb-2">PDF Metadata Extractor</h4>
+              <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                Microservice built to extract academic metadata and details directly from PDF uploads.
+              </p>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded">
+                  PYTHON
+                </span>
+                <span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded">
+                  FASTAPI
+                </span>
+                <span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded">
+                  DOCKER
+                </span>
               </div>
             </div>
           </div>
@@ -1479,3 +1516,65 @@ import MobileMenu from '../components/MobileMenu.astro';
     </script>
   </body>
 </html>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import Lenis from 'lenis';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Initialize Lenis Smooth Scroll
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
+
+  // Fade up Hero elements on load
+  const tl = gsap.timeline();
+  tl.fromTo("nav", 
+    { y: -30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", clearProps: "all" },
+    0.2
+  )
+  .fromTo("h1", 
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", clearProps: "all" },
+    "-=0.6"
+  )
+  .fromTo("h1 + p", 
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", clearProps: "all" },
+    "-=0.6"
+  );
+
+  // Section Scroll Animations (Fade Up)
+  gsap.utils.toArray("section").forEach((section: any) => {
+    // Skip hero section since it's animated by the timeline
+    if (section.querySelector('h1')) return;
+    
+    gsap.fromTo(section,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        clearProps: "all",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%", 
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
+
+  // Stagger Project Cards
+  ScrollTrigger.batch(".project-card", {
+    start: "top 85%",
+    onEnter: batch => gsap.fromTo(batch, 
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: "power3.out", clearProps: "all" }
+    )
+  });
+</script>
