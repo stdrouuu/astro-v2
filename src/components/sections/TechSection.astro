@@ -1,6 +1,6 @@
 ---
 const techs = [
-  { name: 'Laravel',    sub: 'PHP Web Framework',    icon: 'laravel/laravel-original' },
+  { name: 'Laravel',    sub: 'PHP Web Framework',     icon: 'laravel/laravel-original' },
   { name: 'Python',     sub: 'Scripting & AI',        icon: 'python/python-original' },
   { name: 'TypeScript', sub: 'JavaScript but better', icon: 'typescript/typescript-original' },
   { name: 'Vue.js',     sub: 'Frontend Framework',    icon: 'vuejs/vuejs-original' },
@@ -11,20 +11,16 @@ const techs = [
 ];
 ---
 
-<section class="mb-40">
-  <div>
-    <h2 class="text-3xl md:text-4xl font-bold text-on-surface tracking-tighter mb-2">
-      Current technologies
-    </h2>
-    <p class="text-on-surface-variant text-sm max-w-2xl leading-relaxed mb-8">
-      I use these modern tools and technologies to build functional web applications and services.
-    </p>
-  </div>
+<section class="space-y-8 pt-4">
+  <h2 class="font-pixel text-2xl md:text-3xl flex items-center gap-2 border-y border-neutral-300/80 py-4 my-6">
+    <span class="text-neutral-400">##</span>
+    <span>current technologies</span>
+  </h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     {techs.map((tech) => (
-      <div class="flex items-center gap-4 p-4 bg-white border border-outline-variant/10 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/50 transition-all group duration-300">
-        <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+      <div class="flex items-center gap-4 p-4 bg-white dark:bg-neutral-900 border border-neutral-300/80 dark:border-neutral-800 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/50 transition-all group duration-300">
+        <div class="w-12 h-12 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
           <img
             src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.icon}.svg`}
             alt={tech.name}
@@ -32,8 +28,8 @@ const techs = [
           />
         </div>
         <div>
-          <h4 class="text-sm font-bold text-slate-800">{tech.name}</h4>
-          <p class="text-xs text-slate-400 mt-0.5">{tech.sub}</p>
+          <h4 class="text-sm font-bold text-neutral-900 dark:text-neutral-200">{tech.name}</h4>
+          <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-0.5">{tech.sub}</p>
         </div>
       </div>
     ))}

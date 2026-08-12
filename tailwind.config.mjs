@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,mdx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Geist', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
       colors: {
         "tertiary-fixed": "#d3ceef",
         "on-secondary-fixed-variant": "#4e5c71",
