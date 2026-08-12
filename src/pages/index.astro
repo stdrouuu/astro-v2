@@ -12,23 +12,25 @@ import '../styles/global.css';
   </head>
   <body class="font-sans antialiased selection:bg-neutral-200 selection:text-neutral-900 min-h-screen max-w-3xl mx-auto px-6 py-12 text-[16px] leading-relaxed">
     
-    <!-- Top Header with Geist Pixel title & nav -->
-    <header class="mb-12 space-y-6">
-      <div class="font-mono text-xs text-neutral-500 tracking-wide">~/helmi-satria/README.md</div>
-      
+    <!-- Top Header & Navbar -->
+    <header class="mb-12 space-y-8">
+      <nav class="flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-neutral-500 border-b border-neutral-300/80 pb-4">
+        <div>~/helmi-satria/README.md</div>
+        <div class="flex items-center gap-4">
+          <a href="#content" class="hover:text-black transition-colors">home</a>
+          <a href="#work" class="hover:text-black transition-colors">work</a>
+          <a href="#projects" class="hover:text-black transition-colors">projects</a>
+          <a href="https://helmisatria.com/blog/" target="_blank" class="hover:text-black transition-colors">blog</a>
+          <a href="#contact" class="hover:text-black transition-colors">contact</a>
+          <button aria-label="Toggle theme" class="hover:text-black transition-colors ml-1 text-sm">🌙</button>
+        </div>
+      </nav>
+
       <!-- # helmi satria pixel header -->
       <h1 class="font-pixel text-4xl md:text-5xl tracking-wide flex items-center gap-2">
         <span class="text-neutral-400">#</span>
         <span>helmi satria</span>
       </h1>
-
-      <nav class="flex flex-wrap gap-4 text-sm font-mono text-neutral-600 border-b border-neutral-300/70 pb-4">
-        <a href="#content" class="hover:text-black transition-colors">home</a>
-        <a href="#work" class="hover:text-black transition-colors">work</a>
-        <a href="#projects" class="hover:text-black transition-colors">projects</a>
-        <a href="https://helmisatria.com/blog/" target="_blank" class="hover:text-black transition-colors">blog</a>
-        <a href="#contact" class="hover:text-black transition-colors">contact</a>
-      </nav>
     </header>
 
     <main id="content" class="space-y-16">
