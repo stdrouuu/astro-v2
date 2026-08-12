@@ -3,102 +3,119 @@ import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth bg-[#0d0d0d] text-[#e0e0e0]">
+<html lang="en" class="scroll-smooth bg-[#f7f5f0] text-[#1c1c1a]">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Helmi Satria — Software Engineer</title>
     <meta name="description" content="Helmi Satria is a software engineer who builds tools and products that make repeated work easier and faster." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=VT323&display=swap" rel="stylesheet">
   </head>
-  <body class="font-sans antialiased selection:bg-neutral-800 selection:text-neutral-200 min-h-screen max-w-3xl mx-auto px-6 py-12 text-[15px] leading-relaxed">
+  <body class="font-sans antialiased selection:bg-neutral-200 selection:text-neutral-900 min-h-screen max-w-3xl mx-auto px-6 py-12 text-[16px] leading-relaxed">
     
-    <!-- Top Nav / File Path -->
-    <header class="mb-12 border-b border-neutral-800 pb-4">
-      <div class="font-mono text-xs text-neutral-400 mb-3 tracking-wide">~/helmi-satria/README.md</div>
-      <nav class="flex flex-wrap gap-4 text-sm font-mono text-neutral-400">
-        <a href="#content" class="hover:text-white transition-colors">home</a>
-        <a href="#work" class="hover:text-white transition-colors">work</a>
-        <a href="#projects" class="hover:text-white transition-colors">projects</a>
-        <a href="https://helmisatria.com/blog/" target="_blank" class="hover:text-white transition-colors">blog</a>
-        <a href="#contact" class="hover:text-white transition-colors">contact</a>
+    <!-- Top Header with Geist Pixel title & nav -->
+    <header class="mb-12 space-y-6">
+      <div class="font-mono text-xs text-neutral-500 tracking-wide">~/helmi-satria/README.md</div>
+      
+      <!-- # helmi satria pixel header -->
+      <h1 class="font-pixel text-4xl md:text-5xl tracking-wide flex items-center gap-2">
+        <span class="text-neutral-400">#</span>
+        <span>helmi satria</span>
+      </h1>
+
+      <nav class="flex flex-wrap gap-4 text-sm font-mono text-neutral-600 border-b border-neutral-300/70 pb-4">
+        <a href="#content" class="hover:text-black transition-colors">home</a>
+        <a href="#work" class="hover:text-black transition-colors">work</a>
+        <a href="#projects" class="hover:text-black transition-colors">projects</a>
+        <a href="https://helmisatria.com/blog/" target="_blank" class="hover:text-black transition-colors">blog</a>
+        <a href="#contact" class="hover:text-black transition-colors">contact</a>
       </nav>
     </header>
 
     <main id="content" class="space-y-16">
       
       <!-- Bio / Intro Section -->
-      <section class="space-y-4">
-        <h1 class="text-xl md:text-2xl font-medium text-white tracking-tight">
+      <section class="space-y-6">
+        <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 leading-snug tracking-tight">
           I turn recurring problems into shared foundations that help teams move faster.
-        </h1>
-        <p class="text-neutral-400">
+        </h2>
+        <p class="text-neutral-700 text-lg">
           I’m a software engineer with 8 years of experience. Frontend is my strongest discipline, but I work across product, architecture, and implementation to solve problems end to end.
         </p>
-        <p class="text-neutral-400">
-          Open to engineering roles, consulting, and teaching.
-        </p>
+        <div class="flex items-center gap-2 font-mono text-xs text-neutral-600 pt-2">
+          <span class="text-emerald-600 text-sm">●</span>
+          <span>Open to engineering roles, consulting, and teaching.</span>
+        </div>
       </section>
 
       <!-- Work / Foundations -->
-      <section id="work" class="space-y-8">
-        <div class="font-mono text-xs text-neutral-500 uppercase tracking-widest">
-          platform · identity · developer experience
-        </div>
+      <section id="work" class="space-y-8 pt-4">
+        <h2 class="font-pixel text-2xl md:text-3xl flex items-center gap-2">
+          <span class="text-neutral-400">##</span>
+          <span>work</span>
+        </h2>
 
-        <div class="space-y-4 border-l-2 border-neutral-800 pl-4 py-1">
-          <h2 class="text-lg font-medium text-white">Building what teams need in common</h2>
-          <p class="text-neutral-400">
-            Our platform team builds services and tools around needs shared by more than one team. That means working across product tribes to understand different constraints, find common ground, and create foundations people can adopt without starting from zero.
-          </p>
-          <p class="text-neutral-400">
-            Part of my role is helping the team work through service architecture decisions. I dig into the problem, weigh trade-offs across frontend and backend, and help shape the direction before implementation begins.
-          </p>
-          <p class="text-neutral-400">
-            My responsibilities include maintaining our identity provider (IdP), a shared identity service used across tribes, and the authentication SDK that helps services integrate with it. I also contribute to and help manage the E2E boilerplate, CMS boilerplate, and frontend tooling used by teams across the organization.
-          </p>
-        </div>
+        <div class="space-y-6">
+          <div class="font-mono text-xs text-neutral-500 uppercase tracking-widest">
+            platform · identity · developer experience
+          </div>
 
-        <div class="font-mono text-xs text-neutral-500 uppercase tracking-widest pt-4">
-          workflow automation · organizational knowledge
-        </div>
+          <div class="space-y-4 border-l-2 border-neutral-300 pl-4 py-1">
+            <h3 class="text-xl font-medium text-neutral-900">Building what teams need in common</h3>
+            <p class="text-neutral-700">
+              Our platform team builds services and tools around needs shared by more than one team. That means working across product tribes to understand different constraints, find common ground, and create foundations people can adopt without starting from zero.
+            </p>
+            <p class="text-neutral-700">
+              Part of my role is helping the team work through service architecture decisions. I dig into the problem, weigh trade-offs across frontend and backend, and help shape the direction before implementation begins.
+            </p>
+            <p class="text-neutral-700">
+              My responsibilities include maintaining our identity provider (IdP), a shared identity service used across tribes, and the authentication SDK that helps services integrate with it. I also contribute to and help manage the E2E boilerplate, CMS boilerplate, and frontend tooling used by teams across the organization.
+            </p>
+          </div>
 
-        <div class="space-y-4 border-l-2 border-neutral-800 pl-4 py-1">
-          <h2 class="text-lg font-medium text-white">Giving time back to the organization</h2>
-          <p class="text-neutral-400">
-            On my own initiative, I built an internal platform that replaced a repetitive monthly process across the organization—work that previously took every employee roughly 3-5 hours each month.
-          </p>
-          <p class="text-neutral-400">
-            I also build and maintain systems that make the organization easier to navigate. In Backstage, I help people understand services, products, ownership, and dependencies. I support compliance tools used by employee, PMO, and talent teams, and maintain Outline as our internal documentation platform.
-          </p>
+          <div class="font-mono text-xs text-neutral-500 uppercase tracking-widest pt-4">
+            workflow automation · organizational knowledge
+          </div>
+
+          <div class="space-y-4 border-l-2 border-neutral-300 pl-4 py-1">
+            <h3 class="text-xl font-medium text-neutral-900">Giving time back to the organization</h3>
+            <p class="text-neutral-700">
+              On my own initiative, I built an internal platform that replaced a repetitive monthly process across the organization—work that previously took every employee roughly 3-5 hours each month.
+            </p>
+            <p class="text-neutral-700">
+              I also build and maintain systems that make the organization easier to navigate. In Backstage, I help people understand services, products, ownership, and dependencies. I support compliance tools used by employee, PMO, and talent teams, and maintain Outline as our internal documentation platform.
+            </p>
+          </div>
         </div>
       </section>
 
       <!-- Personal Products -->
-      <section id="projects" class="space-y-8">
+      <section id="projects" class="space-y-8 pt-4">
+        <h2 class="font-pixel text-2xl md:text-3xl flex items-center gap-2">
+          <span class="text-neutral-400">##</span>
+          <span>projects</span>
+        </h2>
+
         <div class="font-mono text-xs text-neutral-500 uppercase tracking-widest">
           personal product · live
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-5 bg-neutral-900/60 rounded-lg border border-neutral-800 space-y-3">
+          <div class="p-5 bg-white/80 rounded-lg border border-neutral-300/80 shadow-sm space-y-3">
             <div class="flex items-center justify-between">
-              <h3 class="font-medium text-white text-base">Natauang</h3>
-              <a href="https://web.natauang.com" target="_blank" class="font-mono text-xs text-neutral-400 hover:text-white">web.natauang.com ↗</a>
+              <h3 class="font-medium text-neutral-900 text-lg">Natauang</h3>
+              <a href="https://web.natauang.com" target="_blank" class="font-mono text-xs text-neutral-600 hover:text-black">web.natauang.com ↗</a>
             </div>
-            <p class="text-sm text-neutral-400">
+            <p class="text-sm text-neutral-600">
               A simple expense tracker designed to make recording spending quick. It works in the browser, supports offline use, and keeps data in sync across devices.
             </p>
           </div>
 
-          <div class="p-5 bg-neutral-900/60 rounded-lg border border-neutral-800 space-y-3">
+          <div class="p-5 bg-white/80 rounded-lg border border-neutral-300/80 shadow-sm space-y-3">
             <div class="flex items-center justify-between">
-              <h3 class="font-medium text-white text-base">Natatoko</h3>
-              <a href="https://natatoko.com" target="_blank" class="font-mono text-xs text-neutral-400 hover:text-white">natatoko.com ↗</a>
+              <h3 class="font-medium text-neutral-900 text-lg">Natatoko</h3>
+              <a href="https://natatoko.com" target="_blank" class="font-mono text-xs text-neutral-600 hover:text-black">natatoko.com ↗</a>
             </div>
-            <p class="text-sm text-neutral-400">
+            <p class="text-sm text-neutral-600">
               A tool for creating a customizable online store without starting from zero. It covers storefront setup, products, orders, design changes, and business reporting.
             </p>
           </div>
@@ -106,7 +123,7 @@ import '../styles/global.css';
       </section>
 
       <!-- Experience Section -->
-      <section class="space-y-8">
+      <section class="space-y-8 pt-4">
         <div class="font-mono text-xs text-neutral-500 uppercase tracking-widest">
           experience
         </div>
@@ -114,22 +131,22 @@ import '../styles/global.css';
         <div class="space-y-6">
           <div class="space-y-2">
             <div class="flex items-center justify-between font-mono text-xs text-neutral-500">
-              <span>INA Digital Edu</span>
+              <span class="font-medium text-neutral-800">INA Digital Edu</span>
               <span>2022 — now</span>
             </div>
-            <h3 class="font-medium text-white">Frontend Software Engineer</h3>
-            <p class="text-neutral-400 text-sm">
-              I maintain shared identity and developer platforms, help shape service architecture, and collaborate across tribes on tools used beyond a single team. Performance rating: <span class="text-neutral-200">Exceeds Expectations</span>.
+            <h3 class="font-medium text-neutral-900">Frontend Software Engineer</h3>
+            <p class="text-neutral-700 text-sm">
+              I maintain shared identity and developer platforms, help shape service architecture, and collaborate across tribes on tools used beyond a single team. Performance rating: <span class="font-medium text-neutral-900">Exceeds Expectations</span>.
             </p>
           </div>
 
-          <div class="space-y-2 pt-4 border-t border-neutral-800/60">
+          <div class="space-y-2 pt-4 border-t border-neutral-300/60">
             <div class="flex items-center justify-between font-mono text-xs text-neutral-500">
-              <span>Bukalapak</span>
+              <span class="font-medium text-neutral-800">Bukalapak</span>
               <span>2019 — 2022</span>
             </div>
-            <h3 class="font-medium text-white">Frontend Developer</h3>
-            <p class="text-neutral-400 text-sm">
+            <h3 class="font-medium text-neutral-900">Frontend Developer</h3>
+            <p class="text-neutral-700 text-sm">
               I worked on virtual products, product performance, and reusable frontend foundations. 1× Exceptional · 5× Exceeded Expectations.
             </p>
           </div>
@@ -137,29 +154,35 @@ import '../styles/global.css';
       </section>
 
       <!-- How I Work -->
-      <section class="space-y-4">
-        <h2 class="font-mono text-xs text-neutral-500 uppercase tracking-widest">how I work</h2>
-        <p class="text-neutral-400">
+      <section class="space-y-4 pt-4">
+        <h2 class="font-pixel text-2xl md:text-3xl flex items-center gap-2">
+          <span class="text-neutral-400">##</span>
+          <span>how I work</span>
+        </h2>
+        <p class="text-neutral-700">
           Frontend is my strongest area, but I care more about solving the whole problem than staying inside a narrow job boundary. The answer might be an SDK, a service, a component, a script, or clearer documentation.
         </p>
       </section>
 
       <!-- Contact -->
-      <section id="contact" class="space-y-4 border-t border-neutral-800 pt-8">
-        <h2 class="font-mono text-xs text-neutral-500 uppercase tracking-widest">contact</h2>
-        <p class="text-neutral-400">Have a problem that keeps coming back? Tell me about it.</p>
+      <section id="contact" class="space-y-4 border-t border-neutral-300 pt-8">
+        <h2 class="font-pixel text-2xl md:text-3xl flex items-center gap-2">
+          <span class="text-neutral-400">##</span>
+          <span>contact</span>
+        </h2>
+        <p class="text-neutral-700">Have a problem that keeps coming back? Tell me about it.</p>
         <div class="flex gap-6 font-mono text-sm pt-2">
-          <a href="mailto:satriahelmi@gmail.com" class="text-neutral-300 hover:text-white underline underline-offset-4">email</a>
-          <a href="https://www.linkedin.com/in/helmisatria/" target="_blank" class="text-neutral-300 hover:text-white underline underline-offset-4">linkedin</a>
-          <a href="https://github.com/helmisatria" target="_blank" class="text-neutral-300 hover:text-white underline underline-offset-4">github</a>
+          <a href="mailto:satriahelmi@gmail.com" class="text-neutral-800 hover:text-black underline underline-offset-4">email</a>
+          <a href="https://www.linkedin.com/in/helmisatria/" target="_blank" class="text-neutral-800 hover:text-black underline underline-offset-4">linkedin</a>
+          <a href="https://github.com/helmisatria" target="_blank" class="text-neutral-800 hover:text-black underline underline-offset-4">github</a>
         </div>
       </section>
 
     </main>
 
-    <footer class="mt-20 pt-6 border-t border-neutral-900 flex justify-between items-center text-xs font-mono text-neutral-600">
+    <footer class="mt-20 pt-6 border-t border-neutral-300 flex justify-between items-center text-xs font-mono text-neutral-500">
       <span>Last updated July 2026</span>
-      <a href="#content" class="hover:text-neutral-400">Back to top ↑</a>
+      <a href="#content" class="hover:text-black">Back to top ↑</a>
     </footer>
 
   </body>
