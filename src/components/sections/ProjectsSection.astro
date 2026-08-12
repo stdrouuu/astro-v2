@@ -1,0 +1,275 @@
+---
+interface Project {
+  title: string;
+  desc: string;
+  tech: string;
+  features: string;
+  color: string;
+  icon: string;
+  badge: string;
+  badgeIcon: string;
+  tags: string[];
+  extra?: boolean;
+  upcoming?: boolean;
+}
+
+const projects: Project[] = [
+  {
+    title: 'Library Archive System',
+    desc: 'Academic archive search and indexing system designed for UKRIDA digital library to manage over 50,000 student research papers and publications.',
+    tech: 'PostgreSQL, FastAPI, Python, Docker',
+    features: 'Sub-second full-text search indexing;Role-based student credential authorization;Automated PDF document processing queue;Database query optimization profiles',
+    color: '#788FEC',
+    icon: 'ri-database-2-line',
+    badge: 'Backend',
+    badgeIcon: 'ri-database-2-line',
+    tags: ['POSTGRESQL', 'FASTAPI', 'PYTHON'],
+  },
+  {
+    title: 'PDF Metadata Extractor',
+    desc: 'Automated microservice built to process academic PDF uploads, parsing research metadata, keywords, and author credentials using NLP.',
+    tech: 'Python, FastAPI, PyPDF2, Docker',
+    features: 'Automated metadata extraction on upload;Keyword parsing using natural language rules;REST API endpoints for batch import;Performance metrics logging system',
+    color: '#06b6d4',
+    icon: 'ri-file-text-line',
+    badge: 'Microservice',
+    badgeIcon: 'ri-file-text-line',
+    tags: ['PYTHON', 'FASTAPI', 'DOCKER'],
+  },
+  {
+    title: 'MiSchool',
+    desc: 'Comprehensive school management platform featuring real-time attendance, curriculum management, and structured portals for students, teachers, and parents.',
+    tech: 'Laravel, Vue.js, MySQL, Tailwind CSS',
+    features: 'Real-time attendance check-in;Detailed gradebook manager for teachers;Homework submission and evaluation portal;Parent-teacher message board',
+    color: '#9333ea',
+    icon: 'ri-briefcase-line',
+    badge: 'Internship',
+    badgeIcon: 'ri-briefcase-line',
+    tags: ['LARAVEL', 'VUE.JS', 'MYSQL'],
+  },
+  {
+    title: 'SIPJAKI',
+    desc: 'Construction Services Information System built to provide local citizens and businesses transparency about ongoing regional government tenders and projects.',
+    tech: 'Laravel, JavaScript, MySQL, Bootstrap',
+    features: 'Interactive map of ongoing construction projects;Licensing and permit verification portal;Bidding document downloader;Transparency ledger for public funds',
+    color: '#0ea5e9',
+    icon: 'ri-government-line',
+    badge: 'Fulltime',
+    badgeIcon: 'ri-government-line',
+    tags: ['LARAVEL', 'JAVASCRIPT', 'MYSQL'],
+  },
+  {
+    title: 'Tracer Study System',
+    desc: 'Alumni tracking and career path analysis system, helping university administration gauge graduate employment rates and improve educational curriculum alignment.',
+    tech: 'Laravel, MySQL, AdminLTE, ChartsJS',
+    features: 'Alumni survey registration forms;Data visualization reports on employment fields;Salary distribution graphs;Direct feedback pipeline to career center',
+    color: '#14b8a6',
+    icon: 'ri-government-line',
+    badge: 'Fulltime',
+    badgeIcon: 'ri-government-line',
+    tags: ['LARAVEL', 'MYSQL'],
+  },
+  {
+    title: 'E-Rapor SDK 10 Penabur',
+    desc: 'Digital academic reports system designed specifically for SDK 10 Penabur elementary school to simplify grade management and report card distribution.',
+    tech: 'Laravel, Inertia.js, Vue.js, MySQL',
+    features: 'Grade conversion and average computation engine;Custom PDF report card generator;Behavior and attendance records;Secure parent portal for downloading reports',
+    color: '#f97316',
+    icon: 'ri-handshake-line',
+    badge: 'Freelance',
+    badgeIcon: 'ri-handshake-line',
+    tags: ['LARAVEL', 'INERTIA.JS', 'VUE.JS'],
+  },
+  {
+    title: 'LMS & Tryout ASN Indonesia',
+    desc: 'A full-featured learning management system and practice exam platform helping candidates prepare for Indonesian civil servant examinations.',
+    tech: 'Laravel, MySQL, Tailwind CSS, Alpine.js',
+    features: 'Timed, randomized practice question pools;Instantly graded simulation exams;Video lectures and downloadable study guides;Personal mock-score analytics and weak-area alerts',
+    color: '#ec4899',
+    icon: 'ri-handshake-line',
+    badge: 'Freelance',
+    badgeIcon: 'ri-handshake-line',
+    tags: ['LARAVEL', 'MYSQL'],
+    extra: true,
+  },
+  {
+    title: 'TOEFL Test ASN',
+    desc: 'Specialized TOEFL test practice and certification platform designed for government employees and prospective civil servant candidates.',
+    tech: 'Laravel, JavaScript, MySQL, AudioPlayer API',
+    features: 'Audio-synchronized listening comprehension section;Timed reading passages and questionnaires;Automatic score assessment algorithm;Verified PDF certificate generator',
+    color: '#4f46e5',
+    icon: 'ri-handshake-line',
+    badge: 'Freelance',
+    badgeIcon: 'ri-handshake-line',
+    tags: ['LARAVEL', 'JAVASCRIPT', 'MYSQL'],
+    extra: true,
+  },
+  {
+    title: 'Upcoming Project',
+    desc: 'Currently planning the next backend architecture and database systems.',
+    tech: '',
+    features: '',
+    color: '',
+    icon: '',
+    badge: '',
+    badgeIcon: '',
+    tags: ['RESEARCHING'],
+    extra: true,
+    upcoming: true,
+  },
+];
+---
+
+<section class="mb-40" id="projects">
+  <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+    <div>
+      <span class="text-primary font-bold tracking-widest text-xs uppercase">
+        Portfolio
+      </span>
+      <h2 class="text-4xl font-bold text-on-surface tracking-tighter mt-2">
+        Featured Projects
+      </h2>
+    </div>
+    <p class="text-on-surface-variant max-w-sm text-sm">
+      A collection of web and software projects I built while studying
+      Computer Science at UKRIDA.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {projects.map((project) => (
+      project.upcoming ? (
+        <div class="project-card project-extra hidden bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 shadow-sm opacity-60 flex flex-col pointer-events-none select-none">
+          <div class="h-48 bg-slate-200 relative flex items-center justify-center p-8 overflow-hidden">
+            <h3 class="text-2xl font-black text-slate-400 text-center tracking-tight">Upcoming Project</h3>
+          </div>
+          <div class="p-6 flex flex-col flex-1 bg-slate-50/50">
+            <h4 class="text-xl font-bold mb-2 text-slate-400">Upcoming Project</h4>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">{project.desc}</p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-slate-100 text-slate-400 text-[10px] font-bold rounded">RESEARCHING</span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div
+          class={`project-card cursor-pointer bg-surface-container-lowest rounded-xl overflow-hidden group border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col${project.extra ? ' project-extra hidden' : ''}`}
+          data-title={project.title}
+          data-desc={project.desc}
+          data-tech={project.tech}
+          data-features={project.features}
+          data-color={project.color}
+        >
+          <div class="h-48 relative flex items-center justify-center p-8 overflow-hidden" style={`background-color: ${project.color}`}>
+            <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+              <i class={`${project.badgeIcon} text-[12px] text-white`}></i>
+              <span class="text-[10px] font-bold text-white uppercase tracking-widest">{project.badge}</span>
+            </div>
+            <h3 class="text-2xl font-black text-white text-center tracking-tight leading-tight">{project.title}</h3>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h4 class="text-xl font-bold mb-2">{project.title}</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">{project.desc}</p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )
+    ))}
+  </div>
+
+  <div class="flex justify-center mt-12">
+    <a
+      href="/projects"
+      class="px-8 py-3 bg-surface-container-high text-on-surface-variant font-bold text-sm rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 flex items-center gap-2 group shadow-sm"
+    >
+      Show More Projects
+      <i class="ri-arrow-right-line text-sm transition-transform group-hover:translate-x-0.5"></i>
+    </a>
+  </div>
+</section>
+
+<script>
+  // Show More / Show Less Projects
+  const btnShowMore = document.getElementById('btn-show-more');
+  const extraProjects = document.querySelectorAll('.project-extra');
+  let showingMore = false;
+
+  btnShowMore?.addEventListener('click', () => {
+    showingMore = !showingMore;
+    extraProjects.forEach(card => {
+      if (showingMore) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    if (btnShowMore) {
+      const textNode = btnShowMore.childNodes[0];
+      if (textNode) {
+        textNode.textContent = showingMore ? 'Show Less Projects ' : 'Show More Projects ';
+      }
+      const icon = btnShowMore.querySelector('i');
+      if (icon) {
+        icon.className = showingMore
+          ? 'ri-arrow-up-s-line text-sm transition-transform group-hover:-translate-y-0.5'
+          : 'ri-arrow-down-s-line text-sm transition-transform group-hover:translate-y-0.5';
+      }
+    }
+  });
+
+  // Project Cards → Modal
+  const projectCards = document.querySelectorAll('.project-card');
+  const projectModal = document.getElementById('project-modal');
+  const modalHeader = document.getElementById('modal-header');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalFeatures = document.getElementById('modal-features');
+  const modalTech = document.getElementById('modal-tech');
+
+  projectCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) return;
+
+      const title = card.getAttribute('data-title');
+      const desc = card.getAttribute('data-desc');
+      const tech = card.getAttribute('data-tech');
+      const featuresStr = card.getAttribute('data-features');
+      const color = card.getAttribute('data-color') || '#788FEC';
+
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalDesc) modalDesc.textContent = desc;
+      if (modalHeader) (modalHeader as HTMLElement).style.backgroundColor = color;
+
+      if (modalFeatures) {
+        modalFeatures.innerHTML = '';
+        if (featuresStr) {
+          featuresStr.split(';').forEach(feat => {
+            const li = document.createElement('li');
+            li.textContent = feat.trim();
+            modalFeatures.appendChild(li);
+          });
+        }
+      }
+
+      if (modalTech) {
+        modalTech.innerHTML = '';
+        if (tech) {
+          tech.split(',').forEach(t => {
+            const span = document.createElement('span');
+            span.className = 'px-3 py-1 bg-slate-100 text-slate-800 text-xs font-bold rounded-full';
+            span.textContent = t.trim();
+            modalTech.appendChild(span);
+          });
+        }
+      }
+
+      projectModal?.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    });
+  });
+</script>
