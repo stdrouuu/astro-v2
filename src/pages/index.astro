@@ -16,7 +16,7 @@ import TechSection from '../components/sections/TechSection.astro';
     <div class="max-w-2xl mx-auto px-6 py-8">
     
     <!-- Top Header & Navbar -->
-    <header class="mb-8 space-y-28">
+    <header class="mb-16">
       <nav class="flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-neutral-500 border-b border-neutral-300/80 pb-4">
         <div>~/brandon-jeremiah/README.md</div>
         <div class="flex items-center gap-4">
@@ -45,32 +45,110 @@ import TechSection from '../components/sections/TechSection.astro';
           </button>
         </div>
       </nav>
-
-      <!-- # brandon jeremiah pixel header -->
-      <h1 class="italic font-pixel text-8xl md:text-6xl flex items-center gap-3">
-        <span class="text-neutral-400">#</span>
-        <span>brandon js</span>
-      </h1>
     </header>
 
     <main id="content" class="space-y-16">
       
       <!-- Bio / Intro Section -->
-      <section class="space-y-8">
+      <section class="space-y-6">
+        <!-- Profile Avatar & Badges -->
+        <div class="flex items-center gap-4">
+          <div class="relative w-16 h-16 rounded-2xl overflow-hidden shadow-sm border border-neutral-200/80 dark:border-neutral-700/60 group">
+            <img
+              src="/img/profile1.jpeg"
+              alt="Brandon Jeremiah"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <span
+              class="absolute bottom-1 right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-neutral-900 rounded-full"
+              title="Available for work"
+            ></span>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5 font-medium text-lg text-neutral-900 dark:text-neutral-100">
+              <span>Brandon Jeremiah Sutedja</span>
+              <svg class="w-4 h-4 text-[#6e93f0] fill-current inline-block" viewBox="0 0 24 24" aria-label="Verified">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.2 14.2l-3.5-3.5 1.4-1.4 2.1 2.1 5.9-5.9 1.4 1.4-7.3 7.3z"/>
+              </svg>
+            </div>
+            <p class="font-pixel text-sm text-neutral-500 flex items-center gap-1 mt-0.5">
+              <span>Software Engineer</span>
+            </p>
+          </div>
+        </div>
+
         <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 leading-snug tracking-tight">
-          I turn recurring problems into shared foundations that help teams move faster.
         </h2>
+
         <p class="text-neutral-700 text-[17px] leading-relaxed">
-          I’m a software engineer with 8 years of experience. Frontend is my strongest discipline, but I work across product, architecture, and implementation to solve problems end to end.
+           Hey, I&apos;m Brandon, a Software Engineer based in Jakarta, Indonesia.
+          Frontend is my strongest discipline, but I work across product, backend architecture, and implementation to solve problems end to end.
         </p>
-        <div class="flex items-center gap-2 font-mono text-xs text-neutral-600 pt-2">
-          <span class="text-[#47ad58] text-sm">●</span>
-          <span>Open to engineering roles, consulting, and teaching.</span>
+
+        <!-- Github Contributions -->
+        <GithubSection />
+
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+          <!-- Social Icons -->
+          <div class="flex items-center gap-4 text-neutral-500 dark:text-neutral-400">
+            <a
+              class="hover:text-black dark:hover:text-white transition-colors duration-200"
+              href="https://www.linkedin.com/in/brandon-jeremiah-sutedja/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a
+              class="hover:text-black dark:hover:text-white transition-colors duration-200"
+              href="https://github.com/stdrouuu"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+              </svg>
+            </a>
+            <a
+              class="hover:text-black dark:hover:text-white transition-colors duration-200"
+              href="https://instagram.com/brandon._js"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a
+              class="hover:text-black dark:hover:text-white transition-colors duration-200"
+              href="https://open.spotify.com/user/eeua467i5c6b9fivr3adqnz2k?si=fjSscfohTymAxnmTPK60BA&pi=hDzNWMoFSB6E7"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Spotify"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.45 17.336c-.22.361-.692.477-1.053.257-2.887-1.764-6.521-2.164-10.8-1.185-.411.094-.823-.163-.916-.574-.093-.41.163-.823.574-.915 4.673-1.069 8.683-.604 11.938 1.385.36.22.476.691.257 1.052zm1.458-3.242c-.276.448-.865.59-1.314.314-3.328-2.043-8.4-2.673-11.928-1.464-.52.178-1.085-.1-1.263-.619-.178-.52.1-1.085.62-1.263 4.102-1.405 9.7-1.157 13.568 1.218.448.276.59.865.317 1.314zm.14-3.41c-3.997-2.37-10.596-2.589-14.417-1.434-.633.191-1.313-.167-1.503-.799-.191-.632.167-1.313.799-1.503 4.41-1.328 11.678-1.088 16.3 1.655.568.337.755 1.063.418 1.632-.336.568-1.062.755-1.632.418z" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Press C to copy email shortcut hint -->
+          <div
+            id="copy-email-hint"
+            class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 bg-neutral-200/50 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors px-2.5 py-1 rounded-md cursor-pointer select-none border border-neutral-300/60 dark:border-neutral-700/50"
+            title="Click or press 'c' to copy email"
+          >
+            <span>Press</span>
+            <kbd class="px-1.5 py-0.5 text-[10px] font-semibold bg-white dark:bg-neutral-700 border border-neutral-300 dark:border-neutral-600 rounded shadow-xs text-neutral-800 dark:text-neutral-200">C</kbd>
+            <span id="copy-text-status">to copy email</span>
+          </div>
         </div>
       </section>
-
-      <!-- Github Contributions -->
-      <GithubSection />
 
       <!-- Current Technologies -->
       <TechSection />
@@ -233,6 +311,36 @@ import TechSection from '../components/sections/TechSection.astro';
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
       iconSun.classList.toggle('hidden', !isDark);
       iconMoon.classList.toggle('hidden', isDark);
+    });
+
+    // Copy email on 'C' shortcut or click
+    const copyHint = document.getElementById('copy-email-hint');
+    const copyStatus = document.getElementById('copy-text-status');
+    const emailToCopy = 'brandonjeremiahsutedja@gmail.com';
+
+    function triggerCopyEmail() {
+      navigator.clipboard.writeText(emailToCopy).then(() => {
+        if (copyStatus) {
+          copyStatus.textContent = 'copied!';
+          copyStatus.classList.add('text-emerald-600', 'dark:text-emerald-400', 'font-bold');
+          setTimeout(() => {
+            copyStatus.textContent = 'to copy email';
+            copyStatus.classList.remove('text-emerald-600', 'dark:text-emerald-400', 'font-bold');
+          }, 2000);
+        }
+      }).catch(() => {});
+    }
+
+    copyHint?.addEventListener('click', triggerCopyEmail);
+
+    window.addEventListener('keydown', (e) => {
+      // Avoid triggering when user is typing in an input or textarea
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return;
+      if (e.key === 'c' || e.key === 'C') {
+        if (!e.metaKey && !e.ctrlKey && !e.altKey) {
+          triggerCopyEmail();
+        }
+      }
     });
   </script>
   </body>

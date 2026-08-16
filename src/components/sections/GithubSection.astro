@@ -13,12 +13,7 @@ try {
 }
 ---
 
-<section class="space-y-8 pt-4">
-  <h2 class="font-pixel text-2xl md:text-3xl flex items-center gap-2 border-y border-neutral-300/80 py-4 my-6">
-    <span class="text-neutral-400">##</span>
-    <span>contributions</span>
-  </h2>
-
+<section class="space-y-4">
   <div class="bg-transparent space-y-4">
     <div class="overflow-x-auto overflow-y-hidden py-1 custom-scrollbar">
       <div class="min-w-[700px] w-full github-svg-wrapper">
@@ -31,7 +26,7 @@ try {
     </div>
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs font-mono text-neutral-500 gap-4">
       <p>
-        View full profile on
+        View full profile on{' '}
         <a href="https://github.com/stdrouuu" target="_blank" rel="noopener noreferrer" class="text-neutral-800 dark:text-neutral-200 underline underline-offset-4 hover:text-black dark:hover:text-white">
           GitHub ↗
         </a>
@@ -64,38 +59,38 @@ try {
     font-size: 9px !important;
   }
 
-  /* All rects default to empty cell color (light mode) */
+  /* Base rect styling */
   .github-svg-wrapper svg rect {
+    shape-rendering: geometricPrecision;
+    rx: 2px;
+  }
+
+  /* Empty cell color (light mode) */
+  .github-svg-wrapper svg rect[data-score="0"],
+  .github-svg-wrapper svg rect:not([data-score]) {
     fill: #EEEEEE !important;
   }
 
-  /* Restore colored contribution levels (light mode) */
-  .github-svg-wrapper svg rect[fill="#c3d4ff"],
-  .github-svg-wrapper svg rect[fill="#C3D4FF"] { fill: #c3d4ff !important; }
-  .github-svg-wrapper svg rect[fill="#9cb7ff"],
-  .github-svg-wrapper svg rect[fill="#9CB7FF"] { fill: #9cb7ff !important; }
-  .github-svg-wrapper svg rect[fill="#788fec"],
-  .github-svg-wrapper svg rect[fill="#788FEC"] { fill: #788fec !important; }
-  .github-svg-wrapper svg rect[fill="#4a63ce"],
-  .github-svg-wrapper svg rect[fill="#4A63CE"] { fill: #4a63ce !important; }
+  /* Contribution levels (light mode) */
+  .github-svg-wrapper svg rect[data-score="1"] { fill: #c3d4ff !important; }
+  .github-svg-wrapper svg rect[data-score="2"] { fill: #9cb7ff !important; }
+  .github-svg-wrapper svg rect[data-score="3"] { fill: #788fec !important; }
+  .github-svg-wrapper svg rect[data-score="4"] { fill: #4a63ce !important; }
 
   /* Dark mode overrides */
   .dark .github-svg-wrapper svg text {
     fill: #a3a39f !important;
   }
 
-  /* All rects default to empty cell color (dark mode) */
-  .dark .github-svg-wrapper svg rect {
+  /* Empty cell color (dark mode) */
+  .dark .github-svg-wrapper svg rect[data-score="0"],
+  .dark .github-svg-wrapper svg rect:not([data-score]) {
     fill: #222222 !important;
   }
 
-  /* Restore colored contribution levels (dark mode) */
-  .dark .github-svg-wrapper svg rect[fill="#c3d4ff"],
-  .dark .github-svg-wrapper svg rect[fill="#C3D4FF"] { fill: #223566 !important; }
-  .dark .github-svg-wrapper svg rect[fill="#9cb7ff"],
-  .dark .github-svg-wrapper svg rect[fill="#9CB7FF"] { fill: #395399 !important; }
-  .dark .github-svg-wrapper svg rect[fill="#788fec"],
-  .dark .github-svg-wrapper svg rect[fill="#788FEC"] { fill: #5b73cc !important; }
-  .dark .github-svg-wrapper svg rect[fill="#4a63ce"],
-  .dark .github-svg-wrapper svg rect[fill="#4A63CE"] { fill: #788fec !important; }
+  /* Contribution levels (dark mode) */
+  .dark .github-svg-wrapper svg rect[data-score="1"] { fill: #223566 !important; }
+  .dark .github-svg-wrapper svg rect[data-score="2"] { fill: #395399 !important; }
+  .dark .github-svg-wrapper svg rect[data-score="3"] { fill: #5b73cc !important; }
+  .dark .github-svg-wrapper svg rect[data-score="4"] { fill: #788fec !important; }
 </style>
