@@ -109,7 +109,23 @@ const techCategories = [
       },
     ],
   },
-  // 5. DevOps, Cloud & API
+  // 5. Package Managers & Runtimes
+  {
+    category: 'Package Managers',
+    items: [
+      {
+        name: 'npm',
+        sub: 'Node Package Manager',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg',
+      },
+      {
+        name: 'Bun',
+        sub: 'Fast All-in-One Runtime',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg',
+      },
+    ],
+  },
+  // 6. DevOps, Cloud & API
   {
     category: 'DevOps & Tools',
     items: [
@@ -136,8 +152,9 @@ const techCategories = [
       {
         name: 'Vercel',
         sub: 'Deployment Platform',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg',
+        icon: 'https://api.iconify.design/simple-icons:vercel.svg',
         darkInvert: true,
+        imgClass: 'object-contain rounded-none',
       },
       {
         name: 'Postman',
@@ -146,19 +163,24 @@ const techCategories = [
       },
     ],
   },
-  // 6. Developer Workflow & Tools
+  // 7. Developer Workflow & Tools
   {
     category: 'Workflow & Tools',
     items: [
       {
-        name: 'Zed',
-        sub: 'Code Editor (IDE)',
-        icon: '/img/zed.webp',
-      },
-      {
         name: 'Agy CLI',
         sub: 'AI Coding Assistant',
         icon: '/img/agy.webp',
+      },
+      {
+        name: 'Claude Code',
+        sub: 'Ai Coding Assistant',
+        icon: '/img/claude.webp',
+      },
+      {
+        name: 'Zed',
+        sub: 'Code Editor (IDE)',
+        icon: '/img/zed.webp',
       },
       {
         name: 'Orca',
@@ -172,7 +194,7 @@ const techCategories = [
       },
     ],
   },
-  // 7. Agent Skills
+  // 8. Agent Skills
   {
     category: 'Agent Skills',
     items: [
@@ -226,7 +248,7 @@ const techCategories = [
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  class={`w-full h-full ${tech.imgClass || 'object-contain'} rounded-md group-hover:scale-110 transition-transform duration-200 ${tech.darkInvert ? 'dark:invert dark:brightness-200' : ''}`}
+                  class={`w-full h-full ${tech.imgClass || 'object-contain rounded-md'} group-hover:scale-110 transition-transform duration-200 ${tech.darkInvert ? 'dark:invert dark:brightness-200' : ''}`}
                   loading="lazy"
                 />
               </div>
