@@ -54,6 +54,8 @@ const techCategories = [
         name: 'PWA',
         sub: 'Progressive Web App',
         icon: '/img/pwa.webp',
+        wrapperClass: 'w-[22px] h-[22px] sm:w-[22px] sm:h-[22px]',
+        imgClass: 'object-cover rounded-md',
       },
     ],
   },
@@ -67,20 +69,20 @@ const techCategories = [
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
       },
       {
-        name: 'Framer Motion',
-        sub: 'React Motion Library',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg',
-      },
-      {
-        name: 'GSAP',
-        sub: 'Animation Library',
-        icon: '/img/gsap.webp',
-      },
-      {
-        name: 'shadcn/ui',
+        name: 'Shadcn/ui',
         sub: 'UI Components',
         icon: '/img/shadcn.webp',
       },
+      {
+        name: 'Motion',
+        sub: 'React Motion Library (prev. Framer Motion)',
+        icon: '/img/motion.webp',
+      },
+      // {
+      //   name: 'GSAP',
+      //   sub: 'Animation Library',
+      //   icon: '/img/gsap.webp',
+      // },
     ],
   },
   // 4. Databases & ORM
@@ -109,22 +111,24 @@ const techCategories = [
       },
     ],
   },
+
   // 5. Package Managers & Runtimes
-  {
-    category: 'Package Managers',
-    items: [
-      {
-        name: 'npm',
-        sub: 'Node Package Manager',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg',
-      },
-      {
-        name: 'Bun',
-        sub: 'Fast All-in-One Runtime',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg',
-      },
-    ],
-  },
+  // {
+  //   category: 'Package Managers',
+  //   items: [
+  //     {
+  //       name: 'npm',
+  //       sub: 'Node Package Manager',
+  //       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg',
+  //     },
+  //     {
+  //       name: 'Bun',
+  //       sub: 'Fast All-in-One Runtime',
+  //       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg',
+  //     },
+  //   ],
+  // },
+
   // 6. DevOps, Cloud & API
   {
     category: 'DevOps & Tools',
@@ -140,18 +144,18 @@ const techCategories = [
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg',
       },
       {
-        name: 'Cloudflare',
-        sub: 'Tunneling & CDN',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg',
-      },
-      {
         name: 'Docker',
         sub: 'Containerization',
         icon: '/img/docker.webp',
       },
       {
+        name: 'Cloudflare',
+        sub: 'Tunneling & CDN',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg',
+      },
+      {
         name: 'Vercel',
-        sub: 'Deployment Platform',
+        sub: 'Deployment',
         icon: 'https://api.iconify.design/simple-icons:vercel.svg',
         darkInvert: true,
         imgClass: 'object-contain rounded-none',
@@ -178,6 +182,11 @@ const techCategories = [
         icon: '/img/claude.webp',
       },
       {
+        name: 'Zen',
+        sub: 'Browser',
+        icon: '/img/zen.webp',
+      },
+      {
         name: 'Zed',
         sub: 'Code Editor (IDE)',
         icon: '/img/zed.webp',
@@ -187,41 +196,36 @@ const techCategories = [
         sub: 'Agentic Dev Environment (ADE)',
         icon: '/img/orca.webp',
       },
-      {
-        name: 'Zen',
-        sub: 'Minimalist Browser',
-        icon: '/img/zen.webp',
-      },
     ],
   },
   // 8. Agent Skills
-  {
-    category: 'Agent Skills',
-    items: [
-      {
-        name: '/caveman',
-        sub: 'Token Efficiency (Agent Chat)',
-        icon: '/img/caveman.webp',
-      },
-      {
-        name: '/ponytail',
-        sub: 'Token Efficiency (Code Diff)',
-        icon: '/img/ponytail.webp',
-      },
-      {
-        name: '/grill-me',
-        sub: 'Brainstorming',
-        icon: '/img/grillme.webp',
-        imgClass: 'object-cover rounded-md',
-      },
-      {
-        name: '/taste-skill',
-        sub: 'Anti AI Slop Design',
-        icon: '/img/tasteskill.webp',
-        imgClass: 'object-cover rounded-md',
-      },
-    ],
-  },
+  // {
+  //   category: 'Agent Skills',
+  //   items: [
+  //     {
+  //       name: '/caveman',
+  //       sub: 'Token Efficiency (Agent Chat)',
+  //       icon: '/img/caveman.webp',
+  //     },
+  //     {
+  //       name: '/ponytail',
+  //       sub: 'Token Efficiency (Code Diff)',
+  //       icon: '/img/ponytail.webp',
+  //     },
+  //     {
+  //       name: '/grill-me',
+  //       sub: 'Brainstorming',
+  //       icon: '/img/grillme.webp',
+  //       imgClass: 'object-cover rounded-md',
+  //     },
+  //     {
+  //       name: '/taste-skill',
+  //       sub: 'Anti AI Slop Design',
+  //       icon: '/img/tasteskill.webp',
+  //       imgClass: 'object-cover rounded-md',
+  //     },
+  //   ],
+  // },
 ];
 ---
 

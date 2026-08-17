@@ -5,6 +5,8 @@ interface FeaturedProject {
   date: string;
   link?: string;
   icon?: string;
+  imgClass?: string;
+  iconClass?: string;
 }
 
 interface BentoProject {
@@ -12,59 +14,68 @@ interface BentoProject {
   category: string;
   link?: string;
   image?: string;
+  imgClass?: string;
 }
 
 const featuredList: FeaturedProject[] = [
   {
-    title: 'Damas',
+    title: 'BisaChord',
     desc: 'Lorem ipsum dolor sit amet, eiusmod irure proident in consequat. Voluptate excepteur',
     date: 'Present',
-    icon: '/img/orca.webp',
+    icon: '/img/bisachord.webp',
+    imgClass: 'scale-[3.0]',
   },
   {
-    title: 'Kavi',
+    title: 'Memein',
     desc: 'Lorem ipsum dolor sit amet, eiusmod irure proident in consequat. Voluptate excepteur',
     date: 'Present',
-    icon: '/img/zen.webp',
+    icon: '/img/memein.webp',
+    imgClass: 'scale-[2.0]',
   },
   {
-    title: 'Najm',
+    title: 'Stockinfo',
     desc: 'Lorem ipsum dolor sit amet, eiusmod irure proident in consequat. Voluptate excepteur',
     date: 'Jun 2026',
-    icon: '/img/agy.webp',
+    icon: '/img/stockinfo.webp',
+    imgClass: 'scale-[1.8]',
   },
   {
-    title: 'PostWing',
+    title: 'Trigg',
     desc: 'Lorem ipsum dolor sit amet, eiusmod irure proident in consequat. Voluptate excepteur',
     date: 'Mar 2026',
-    icon: '/img/docker.webp',
+    icon: '/img/trigg.webp',
+    imgClass: 'scale-[2.8]',
   },
 ];
 
 const bentoProjects: BentoProject[] = [
   {
-    title: 'Damas',
-    category: 'Agency Framer Template',
+    title: 'BisaChord',
+    category: 'Progressive Web App (PWA) to convert musical notation',
     link: '',
-    image: '/img/orca.webp',
+    image: '/img/bisachord.webp',
+    imgClass: 'scale-[1.2]',
   },
   {
-    title: 'Najm',
-    category: 'SaaS Framer Template',
+    title: 'Memein',
+    category: 'Meme Editor with Customization and Meme templates',
     link: '',
-    image: '/img/agy.webp',
+    image: '/img/memein.webp',
+    imgClass: 'scale-[1.5]',
   },
   {
-    title: 'Kavi',
-    category: 'AI Framer Template',
+    title: 'Stockinfo',
+    category: 'Buildings Material Store & Warehouse Inventory Management System',
     link: '',
-    image: '/img/zen.webp',
+    image: '/img/stockinfo.webp',
+    imgClass: 'scale-[1.2]',
   },
   {
-    title: 'PostWing',
-    category: 'Social Media Scheduler',
+    title: 'Trigg',
+    category: 'Full-Stack Game Store with Stripe Payment Gateway',
     link: '',
-    image: '/img/docker.webp',
+    image: '/img/trigg.webp',
+    imgClass: 'scale-[1.1]',
   },
 ];
 ---
@@ -94,7 +105,7 @@ const bentoProjects: BentoProject[] = [
                 <img
                   src={item.icon}
                   alt={item.title}
-                  class="w-full h-full object-cover rounded-md"
+                  class={`w-full h-full object-cover rounded-md ${item.imgClass || ''}`}
                   loading="lazy"
                 />
               ) : (
@@ -161,7 +172,7 @@ const bentoProjects: BentoProject[] = [
               <img
                 src={project.image}
                 alt={project.title}
-                class="w-full h-full object-cover object-center"
+                class={`w-full h-full object-cover object-center ${project.imgClass || ''}`}
                 loading="lazy"
               />
             ) : (
