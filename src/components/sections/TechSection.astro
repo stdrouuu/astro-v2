@@ -1,37 +1,225 @@
 ---
-const techs = [
-  { name: 'Laravel',    sub: 'PHP Web Framework',     icon: 'laravel/laravel-original' },
-  { name: 'Python',     sub: 'Scripting & AI',        icon: 'python/python-original' },
-  { name: 'TypeScript', sub: 'JavaScript but better', icon: 'typescript/typescript-original' },
-  { name: 'Vue.js',     sub: 'Frontend Framework',    icon: 'vuejs/vuejs-original' },
-  { name: 'PHP',        sub: 'Backend Language',      icon: 'php/php-original' },
-  { name: 'MySQL',      sub: 'Relational Database',   icon: 'mysql/mysql-original' },
-  { name: 'PostgreSQL', sub: 'Advanced Database',     icon: 'postgresql/postgresql-original' },
-  { name: 'Git',        sub: 'Version Control',       icon: 'git/git-original' },
+const techCategories = [
+  // 1. Languages
+  {
+    category: 'Main Languages',
+    items: [
+      {
+        name: 'TypeScript',
+        sub: 'JavaScript Typed',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+      },
+      {
+        name: 'PHP',
+        sub: 'Used in Laravel',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg',
+      },
+      {
+        name: 'Java',
+        sub: 'OOP Language',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+      },
+      {
+        name: 'Python',
+        sub: 'Scripting & AI',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+      },
+    ],
+  },
+  // 2. Frameworks & Web Apps
+  {
+    category: 'Frameworks & Web Apps',
+    items: [
+      {
+        name: 'Next.js',
+        sub: 'React Framework',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
+      },
+      {
+        name: 'Laravel',
+        sub: 'PHP Web Framework',
+        icon: '/img/laravel.webp',
+      },
+      {
+        name: 'React',
+        sub: 'UI Library',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+      },
+      {
+        name: 'Astro.js',
+        sub: 'Content-driven Web',
+        icon: '/img/astro.webp',
+      },
+      {
+        name: 'PWA',
+        sub: 'Progressive Web App',
+        icon: '/img/pwa.webp',
+      },
+    ],
+  },
+  // 3. Styling, UI,
+  {
+    category: 'Styling & UI',
+    items: [
+      {
+        name: 'Tailwind CSS',
+        sub: 'Utility-first CSS',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+      },
+      {
+        name: 'Framer Motion',
+        sub: 'React Motion Library',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg',
+      },
+      {
+        name: 'GSAP',
+        sub: 'Animation Library',
+        icon: '/img/gsap.webp',
+      },
+      {
+        name: 'shadcn/ui',
+        sub: 'UI Components',
+        icon: '/img/shadcn.webp',
+      },
+    ],
+  },
+  // 4. Databases & ORM
+  {
+    category: 'Databases & ORM',
+    items: [
+      {
+        name: 'MySQL',
+        sub: 'Relational Database',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
+      },
+      {
+        name: 'PostgreSQL',
+        sub: 'Advanced SQL Database',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+      },
+      {
+        name: 'Supabase',
+        sub: 'Backend & Postgres',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg',
+      },
+      {
+        name: 'Prisma',
+        sub: 'Next-gen Node ORM',
+        icon: '/img/prisma.webp',
+      },
+    ],
+  },
+  // 5. DevOps, Cloud & API
+  {
+    category: 'DevOps & Tools',
+    items: [
+      {
+        name: 'Git',
+        sub: 'Version Control',
+        icon: 'https://api.iconify.design/simple-icons:git.svg?color=%23f05032',
+      },
+      {
+        name: 'GitHub Actions',
+        sub: 'CI / CD Pipelines',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg',
+      },
+      {
+        name: 'Cloudflare',
+        sub: 'Tunneling & CDN',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg',
+      },
+      {
+        name: 'Docker',
+        sub: 'Containerization',
+        icon: '/img/docker.webp',
+      },
+      {
+        name: 'Vercel',
+        sub: 'Deployment Platform',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg',
+        darkInvert: true,
+      },
+      {
+        name: 'Postman',
+        sub: 'API Testing & Dev',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg',
+      },
+    ],
+  },
+  // 6. Developer Workflow & Tools
+  {
+    category: 'Workflow & Tools',
+    items: [
+      {
+        name: 'Zed',
+        sub: 'Code Editor (IDE)',
+        icon: '/img/zed.webp',
+      },
+      {
+        name: 'Agy CLI',
+        sub: 'AI Coding Assistant',
+        icon: '/img/agy.webp',
+      },
+      {
+        name: 'Orca',
+        sub: 'Agentic Dev Environment (ADE)',
+        icon: '/img/orca.webp',
+      },
+      {
+        name: 'Zen',
+        sub: 'Minimalist Browser',
+        icon: '/img/zen.webp',
+      },
+    ],
+  },
 ];
 ---
 
-<section class="space-y-6 sm:space-y-8 pt-2 sm:pt-4">
+<section class="space-y-4 sm:space-y-6 pt-2 sm:pt-4">
   <h2 class="font-pixel text-xl sm:text-2xl md:text-3xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
     <span class="text-neutral-400">##</span>
     <span>Current Stack</span>
   </h2>
 
-  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-4">
-    {techs.map((tech) => (
-      <div class="flex items-center gap-2.5 sm:gap-4 p-3 sm:p-4 bg-white dark:bg-neutral-900 border border-neutral-300/80 dark:border-neutral-800 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-md hover:border-primary/50 transition-all group duration-300">
-        <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-          <img
-            src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.icon}.svg`}
-            alt={tech.name}
-            class="w-4 h-4 sm:w-6 sm:h-6"
-          />
+  <div class="flex flex-col gap-4 sm:gap-5">
+    {techCategories.map((group) => (
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
+            {group.category}
+          </span>
+          <div class="flex-1 h-px bg-neutral-200/80 dark:bg-neutral-800/80"></div>
         </div>
-        <div class="min-w-0">
-          <h4 class="text-xs sm:text-sm font-bold text-neutral-900 dark:text-neutral-200 truncate">{tech.name}</h4>
-          <p class="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-500 mt-0.5 truncate">{tech.sub}</p>
+
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          {group.items.map((tech) => (
+            <div class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-neutral-200/50 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-300/60 dark:border-neutral-700/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-200 select-none group cursor-default">
+              <div class="w-4.5 h-4.5 sm:w-5 sm:h-5 flex-shrink-0 flex items-center justify-center">
+                <img
+                  src={tech.icon}
+                  alt={tech.name}
+                  class={`w-full h-full object-contain rounded-md group-hover:scale-110 transition-transform duration-200 ${tech.darkInvert ? 'dark:invert dark:brightness-200' : ''}`}
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex flex-col justify-center">
+                <span class="text-xs sm:text-[13px] font-medium text-neutral-800 dark:text-neutral-200 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors leading-tight">
+                  {tech.name}
+                </span>
+                <span class="text-[10px] sm:text-[11px] text-neutral-500 dark:text-neutral-400 leading-tight">
+                  {tech.sub}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     ))}
   </div>
 </section>
+
+
+
+
+
+
