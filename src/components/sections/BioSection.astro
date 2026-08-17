@@ -2,34 +2,34 @@
 import GithubSection from './GithubSection.astro';
 ---
 
-<section id="content" class="space-y-6">
+<section id="content" class="space-y-5 sm:space-y-6">
   <!-- Profile Avatar & Name -->
-  <div class="flex items-center gap-4">
-    <div class="relative w-16 h-16 rounded-2xl overflow-hidden shadow-sm border border-neutral-200/80 dark:border-neutral-700/60 group">
+  <div class="flex items-center gap-3.5 sm:gap-4">
+    <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden shadow-sm border border-neutral-200/80 dark:border-neutral-700/60 flex-shrink-0 group">
       <img
         src="/img/face.webp"
         alt="Brandon Jeremiah"
         class="w-full h-full object-cover scale-110 group-hover:scale-120 transition-transform duration-300 origin-center"
       />
       <span
-        class="absolute bottom-1 right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-neutral-900 rounded-full"
+        class="absolute bottom-1 right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-emerald-500 border-2 border-white dark:border-neutral-900 rounded-full"
         title="Available for work"
       ></span>
     </div>
-    <div>
-      <div class="flex items-center gap-1.5 font-medium text-lg text-neutral-900 dark:text-neutral-100">
-        <span>Brandon Jeremiah Sutedja</span>
-        <svg class="w-4 h-4 text-[#6e93f0] fill-current inline-block" viewBox="0 0 24 24" aria-label="Verified">
+    <div class="min-w-0">
+      <div class="flex items-center gap-1.5 font-medium text-[17px] sm:text-lg text-neutral-900 dark:text-neutral-100">
+        <span class="truncate">Brandon Jeremiah Sutedja</span>
+        <svg class="w-4 h-4 text-[#6e93f0] fill-current inline-block flex-shrink-0" viewBox="0 0 24 24" aria-label="Verified">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.2 14.2l-3.5-3.5 1.4-1.4 2.1 2.1 5.9-5.9 1.4 1.4-7.3 7.3z"/>
         </svg>
       </div>
-      <p class="font-pixel text-xs sm:text-sm text-neutral-500 flex items-center gap-1 mt-0.5">
+      <p class="font-pixel text-[13px] sm:text-sm text-neutral-500 flex items-center gap-1 mt-0.5 leading-snug">
         <span>Software Engineer | U.G Computer Science @UKRIDA</span>
       </p>
     </div>
   </div>
 
-  <p class="text-neutral-700 dark:text-neutral-300 text-[15px] sm:text-[17px] leading-relaxed">
+  <p class="text-neutral-700 dark:text-neutral-300 text-[16.5px] sm:text-[17.5px] leading-relaxed">
     Hey, I&apos;m Brandon, a Software Engineer based in Jakarta, Indonesia.
     Frontend is my strongest discipline, but I work across product, backend architecture, and implementation to solve problems end to end.
   </p>
@@ -47,9 +47,9 @@ import GithubSection from './GithubSection.astro';
   </div>
 
   <!-- Social Icons -->
-  <div class="flex items-center gap-4 text-neutral-500 dark:text-neutral-400">
+  <div class="flex items-center gap-5 sm:gap-4 text-neutral-500 dark:text-neutral-400 pt-1">
     <a
-      class="hover:text-black dark:hover:text-white transition-colors duration-200"
+      class="hover:text-black dark:hover:text-white transition-colors duration-200 p-1 -m-1"
       href="https://www.linkedin.com/in/brandon-jeremiah-sutedja/"
       target="_blank"
       rel="noopener noreferrer"
@@ -60,7 +60,7 @@ import GithubSection from './GithubSection.astro';
       </svg>
     </a>
     <a
-      class="hover:text-black dark:hover:text-white transition-colors duration-200"
+      class="hover:text-black dark:hover:text-white transition-colors duration-200 p-1 -m-1"
       href="https://github.com/stdrouuu"
       target="_blank"
       rel="noopener noreferrer"
@@ -71,7 +71,7 @@ import GithubSection from './GithubSection.astro';
       </svg>
     </a>
     <a
-      class="hover:text-black dark:hover:text-white transition-colors duration-200"
+      class="hover:text-black dark:hover:text-white transition-colors duration-200 p-1 -m-1"
       href="https://instagram.com/brandon._js"
       target="_blank"
       rel="noopener noreferrer"
@@ -82,7 +82,7 @@ import GithubSection from './GithubSection.astro';
       </svg>
     </a>
     <a
-      class="hover:text-black dark:hover:text-white transition-colors duration-200"
+      class="hover:text-black dark:hover:text-white transition-colors duration-200 p-1 -m-1"
       href="https://open.spotify.com/user/eeua467i5c6b9fivr3adqnz2k?si=fjSscfohTymAxnmTPK60BA&pi=hDzNWMoFSB6E7"
       target="_blank"
       rel="noopener noreferrer"
