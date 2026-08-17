@@ -1,20 +1,20 @@
-@import 'lenis/dist/lenis.css';
+@import "lenis/dist/lenis.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Geist Pixel';
-  src: url('/fonts/GeistPixel-Square.woff2') format('woff2');
+  font-family: "Geist Pixel";
+  src: url("/fonts/GeistPixel-Square.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Geist';
-  src: url('/fonts/Geist-Variable.woff2') format('woff2');
+  font-family: "Geist";
+  src: url("/fonts/Geist-Variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -22,36 +22,61 @@
 
 @layer utilities {
   .font-sans {
-    font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family:
+      "Geist",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
   }
   .font-pixel {
-    font-family: 'Geist Pixel', 'Geist Mono', monospace;
+    font-family: "Geist Pixel", "Geist Mono", monospace;
   }
   .font-mono {
-    font-family: 'Geist Mono', 'ui-monospace', 'SFMono-Regular', monospace;
+    font-family: "Geist Mono", "ui-monospace", "SFMono-Regular", monospace;
   }
 }
 
-html, body {
-  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+html,
+body {
+  font-family:
+    "Geist",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   background-color: #f7f5f0;
   color: #1c1c1a;
   letter-spacing: -0.02em;
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
-html.dark, html.dark body {
+html.dark,
+html.dark body {
   background-color: #181818;
   color: #f7f5f0;
 }
 
 /* Dark mode overrides for neutral color classes */
-.dark .text-neutral-900 { color: #f7f5f0 !important; }
-.dark .text-neutral-800 { color: #e5e5e3 !important; }
-.dark .text-neutral-700 { color: #d4d4d0 !important; }
-.dark .text-neutral-600 { color: #a3a39f !important; }
-.dark .text-neutral-500 { color: #73736e !important; }
-.dark .text-neutral-400 { color: #52524f !important; }
+.dark .text-neutral-900 {
+  color: #f7f5f0 !important;
+}
+.dark .text-neutral-800 {
+  color: #e5e5e3 !important;
+}
+.dark .text-neutral-700 {
+  color: #d4d4d0 !important;
+}
+.dark .text-neutral-600 {
+  color: #a3a39f !important;
+}
+.dark .text-neutral-500 {
+  color: #73736e !important;
+}
+.dark .text-neutral-400 {
+  color: #52524f !important;
+}
 
 .dark .border-neutral-300,
 .dark .border-neutral-300\/80,
@@ -64,13 +89,16 @@ html.dark, html.dark body {
   border-color: #2e2e2b !important;
 }
 
-.dark a.text-neutral-800:hover, 
+.dark a.text-neutral-800:hover,
 .dark a.text-neutral-600:hover {
   color: #ffffff !important;
 }
 
-code, kbd, samp, pre {
-  font-family: 'Geist Mono', 'ui-monospace', 'SFMono-Regular', monospace;
+code,
+kbd,
+samp,
+pre {
+  font-family: "Geist Mono", "ui-monospace", "SFMono-Regular", monospace;
 }
 
 /* Custom Scrollbar */
@@ -93,3 +121,46 @@ code, kbd, samp, pre {
 .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #4a4a47;
 }
+
+:root {
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --expo-in: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+::view-transition-group(root) {
+  animation-duration: 0.7s;
+  animation-timing-function: var(--expo-out);
+}
+
+::view-transition-new(root) {
+  animation-name: reveal-light-bottom-up;
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: none;
+  z-index: -1;
+}
+
+.dark::view-transition-new(root) {
+  animation-name: reveal-dark-bottom-up;
+}
+
+@keyframes reveal-dark-bottom-up {
+  from {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@keyframes reveal-light-bottom-up {
+  from {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
