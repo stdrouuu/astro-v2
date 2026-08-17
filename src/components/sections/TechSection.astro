@@ -63,7 +63,7 @@ const techCategories = [
     items: [
       {
         name: 'Tailwind CSS',
-        sub: 'Utility-first CSS',
+        sub: 'CSS Framework',
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
       },
       {
@@ -172,6 +172,34 @@ const techCategories = [
       },
     ],
   },
+  // 7. Agent Skills
+  {
+    category: 'Agent Skills',
+    items: [
+      {
+        name: '/caveman',
+        sub: 'Token Efficiency (Agent Chat)',
+        icon: '/img/caveman.webp',
+      },
+      {
+        name: '/ponytail',
+        sub: 'Token Efficiency (Code Diff)',
+        icon: '/img/ponytail.webp',
+      },
+      {
+        name: '/grill-me',
+        sub: 'Brainstorming',
+        icon: '/img/grillme.webp',
+        imgClass: 'object-cover rounded-md',
+      },
+      {
+        name: '/taste-skill',
+        sub: 'Anti AI Slop Design',
+        icon: '/img/tasteskill.webp',
+        imgClass: 'object-cover rounded-md',
+      },
+    ],
+  },
 ];
 ---
 
@@ -194,11 +222,11 @@ const techCategories = [
         <div class="flex flex-wrap items-center justify-start gap-1.5 sm:gap-2">
           {group.items.map((tech) => (
             <div class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-md bg-neutral-200/50 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-300/60 dark:border-neutral-700/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-200 select-none group cursor-default max-w-full">
-              <div class="w-5 h-5 sm:w-5 sm:h-5 flex-shrink-0 flex items-center justify-center">
+              <div class={`${tech.wrapperClass || 'w-5 h-5 sm:w-5 sm:h-5'} flex-shrink-0 flex items-center justify-center rounded-md`}>
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  class={`w-full h-full object-contain rounded-md group-hover:scale-110 transition-transform duration-200 ${tech.darkInvert ? 'dark:invert dark:brightness-200' : ''}`}
+                  class={`w-full h-full ${tech.imgClass || 'object-contain'} rounded-md group-hover:scale-110 transition-transform duration-200 ${tech.darkInvert ? 'dark:invert dark:brightness-200' : ''}`}
                   loading="lazy"
                 />
               </div>

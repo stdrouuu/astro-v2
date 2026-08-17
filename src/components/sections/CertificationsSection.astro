@@ -1,0 +1,112 @@
+---
+interface FeaturedCertification {
+  title: string;
+  issuer?: string;
+  date: string;
+  link?: string;
+  icon?: string;
+}
+
+const featuredCertifications: FeaturedCertification[] = [
+  {
+    title: 'AWS Certified Solutions Architect - Associate',
+    issuer: 'Amazon Web Services (AWS)',
+    date: 'Present',
+    icon: '/img/oracle.webp',
+  },
+  {
+    title: 'Certified Kubernetes Administrator (CKA)',
+    issuer: 'The Linux Foundation',
+    date: 'Present',
+    icon: '/img/zen.webp',
+  },
+  {
+    title: 'Meta Front-End Developer Professional',
+    issuer: 'Meta & Coursera',
+    date: 'Jun 2026',
+    icon: '/img/orca.webp',
+  },
+  {
+    title: 'Google Cloud Certified Professional Cloud Developer',
+    issuer: 'Google Cloud',
+    date: 'Mar 2026',
+    icon: '/img/agy.webp',
+  },
+];
+---
+
+<section id="certifications" class="space-y-6 pt-2 sm:pt-4">
+  <h2 class="font-pixel text-xl sm:text-2xl md:text-3xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
+    <span class="text-neutral-400">##</span>
+    <span>certifications</span>
+  </h2>
+
+  {/* Featured List Certifications */}
+  <div class="space-y-0.5">
+    {featuredCertifications.map((item) => {
+      const isLink = Boolean(item.link);
+      const Tag = isLink ? 'a' : 'div';
+      return (
+        <Tag
+          href={item.link || undefined}
+          target={item.link && item.link.startsWith('http') ? '_blank' : undefined}
+          rel={item.link && item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+          class="flex items-center justify-between gap-3 sm:gap-4 py-1.5 px-2 -mx-2 rounded-lg cursor-default"
+        >
+          <div class="flex items-center gap-3 min-w-0">
+            {/* Logo */}
+            <div class="w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-md overflow-hidden">
+              {item.icon ? (
+                <img
+                  src={item.icon}
+                  alt={item.title}
+                  class="w-full h-full object-cover rounded-md"
+                  loading="lazy"
+                />
+              ) : (
+                <span class="font-mono text-xs font-semibold text-neutral-600 dark:text-neutral-300 select-none">
+                  {item.title.substring(0, 2).toUpperCase()}
+                </span>
+              )}
+            </div>
+
+            {/* Title & Description / Issuer */}
+            <div class="min-w-0">
+              <div class="flex items-center gap-1.5">
+                <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[14.5px] sm:text-[15.5px] leading-snug truncate">
+                  {item.title}
+                </h3>
+                {isLink && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-3.5 h-3.5 text-neutral-400 flex-shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                )}
+              </div>
+              {item.issuer && (
+                <p class="text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 truncate leading-relaxed mt-0.5">
+                  {item.issuer}
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Date */}
+          <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400 flex-shrink-0 ml-2 sm:ml-4 text-right">
+            {item.date}
+          </span>
+        </Tag>
+      );
+    })}
+  </div>
+</section>
