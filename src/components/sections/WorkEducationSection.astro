@@ -1,4 +1,51 @@
 ---
+interface ExperienceItem {
+  period: string;
+  role: string;
+  organization: string;
+  logo: string;
+  url?: string;
+  description: string;
+}
+
+const workItems: ExperienceItem[] = [
+  {
+    period: '2026 — Present',
+    role: 'Fullstack Developer',
+    organization: 'GPdI Duta Bandara Permai',
+    logo: '/img/gpdi.webp',
+    description:
+      'Developed and maintained internal management systems, web applications, and congregation service platforms to streamline church administration and operations.',
+  },
+];
+
+const educationItems: ExperienceItem[] = [
+  {
+    period: '2024 — Present',
+    role: 'BSc Computer Science',
+    organization: 'UKRIDA',
+    logo: '/img/ukrida.webp',
+    url: 'https://ukrida.ac.id',
+    description:
+      'Undergraduate majoring in Computer Science with a focus on Software Engineering, Web Development, Algorithms, and Human-Centred Computing.',
+  },
+  {
+    period: '2021 — 2024',
+    role: 'Natural Sciences (MIPA)',
+    organization: 'SMAK 6 PENABUR Jakarta',
+    logo: '/img/penabur.webp',
+    description:
+      'Senior High School education with focus on science and mathematics, actively exploring computer programming and software development.',
+  },
+  {
+    period: '2018 — 2021',
+    role: 'Junior High School',
+    organization: 'SMPK 6 PENABUR Jakarta',
+    logo: '/img/penabur.webp',
+    description:
+      'Completed junior high school education with strong academic foundations in mathematics and science.',
+  },
+];
 ---
 
 <section id="work-education" class="space-y-4 sm:space-y-6 pt-2 sm:pt-4">
@@ -31,138 +78,125 @@
   </div>
 
   <!-- Tab Content 1: Work -->
-  <div id="work-tab-content" class="tab-panel divide-y divide-neutral-200/80 dark:divide-neutral-800">
-    
-    <!-- Item: GPdI Duta Bandara -->
-    <div class="flex items-center justify-between py-3 group">
-      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-          <img
-            src="/img/gpdi.webp"
-            alt="GPdI Duta Bandara Permai"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="min-w-0 flex flex-col justify-center">
-          <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[15px] leading-snug truncate">
-            GPdI Duta Bandara Permai 
-          </h3>
-          <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-tight">
-            Fullstack Developer
-          </p>
-        </div>
-      </div>
-      <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400 flex-shrink-0 ml-4">
-        Jun 2026 - Present
-      </span>
-    </div>
+  <div id="work-tab-content" class="tab-panel divide-y divide-neutral-200/70 dark:divide-neutral-800/80 pt-1">
+    {
+      workItems.map((item, index) => (
+        <details class="group py-3.5 sm:py-4" open={index === 0}>
+          <summary class="list-none flex items-center justify-between gap-3.5 sm:gap-4 cursor-pointer select-none">
+            <div class="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
+              <!-- Big Logo -->
+              <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <img
+                  src={item.logo}
+                  alt={item.organization}
+                  class="w-full h-full object-contain"
+                />
+              </div>
 
+              <!-- Year & Title -->
+              <div class="flex-1 min-w-0 flex flex-col justify-center gap-0.5 sm:gap-1">
+                <span class="font-mono text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-medium">
+                  {item.period}
+                </span>
+                <h3 class="text-neutral-900 dark:text-white font-medium text-base sm:text-[16px] leading-snug flex items-center flex-wrap gap-x-1.5">
+                  <span>{item.role}</span>
+                  <span class="text-neutral-500 dark:text-neutral-400 font-normal">at</span>
+                  <span class="text-neutral-900 dark:text-white font-medium">{item.organization}</span>
+                </h3>
+              </div>
+            </div>
+
+            <!-- Chevron Indicator -->
+            <div class="flex-shrink-0 text-neutral-500 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors ml-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 transition-transform duration-200 group-open:rotate-180"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </summary>
+
+          <!-- Accordion Body -->
+          <div class="pl-[54px] sm:pl-[64px] pt-2 text-neutral-600 dark:text-neutral-400 text-sm sm:text-[14.5px] leading-relaxed">
+            <p>{item.description}</p>
+          </div>
+        </details>
+      ))
+    }
   </div>
 
   <!-- Tab Content 2: Education -->
-  <div id="education-tab-content" class="tab-panel hidden divide-y divide-neutral-200/80 dark:divide-neutral-800">
-    
-    <!-- Item 1: UKRIDA -->
-    <div class="flex items-center justify-between py-3 group">
-      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-          <img
-            src="/img/ukrida.webp"
-            alt="UKRIDA"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="min-w-0 flex flex-col justify-center">
-          <a
-            href="https://ukrida.ac.id"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-medium text-neutral-900 dark:text-neutral-100 text-[15px] leading-snug hover:text-black dark:hover:text-white inline-flex items-center gap-1 group/link"
-          >
-            <span>UKRIDA</span>
-          </a>
-          <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-tight">
-            Undergraduate Computer Science Major
-          </p>
-        </div>
-      </div>
-      <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400 flex-shrink-0 ml-4">
-        2024 — Now
-      </span>
-    </div>
+  <div id="education-tab-content" class="tab-panel hidden divide-y divide-neutral-200/70 dark:divide-neutral-800/80 pt-1">
+    {
+      educationItems.map((item, index) => (
+        <details class="group py-3.5 sm:py-4" open={index === 0}>
+          <summary class="list-none flex items-center justify-between gap-3.5 sm:gap-4 cursor-pointer select-none">
+            <div class="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
+              <!-- Big Logo -->
+              <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <img
+                  src={item.logo}
+                  alt={item.organization}
+                  class="w-full h-full object-contain"
+                />
+              </div>
 
-    <!-- Item 2: SMAK 6 BPK PENABUR Jakarta -->
-    <div class="flex items-center justify-between py-3 group">
-      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-          <img
-            src="/img/penabur.webp"
-            alt="SMAK 6 BPK PENABUR Jakarta"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="min-w-0 flex flex-col justify-center">
-          <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[15px] leading-snug truncate">
-            SMAK 6 BPK PENABUR Jakarta
-          </h3>
-          <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-tight">
-            Senior High School
-          </p>
-        </div>
-      </div>
-      <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400 flex-shrink-0 ml-4">
-        2021 — 2024
-      </span>
-    </div>
+              <!-- Year & Title -->
+              <div class="flex-1 min-w-0 flex flex-col justify-center gap-0.5 sm:gap-1">
+                <span class="font-mono text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-medium">
+                  {item.period}
+                </span>
+                <h3 class="text-neutral-900 dark:text-white font-medium text-base sm:text-[16px] leading-snug flex items-center flex-wrap gap-x-1.5">
+                  <span>{item.role}</span>
+                  <span class="text-neutral-500 dark:text-neutral-400 font-normal">at</span>
+                  {item.url ? (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-neutral-900 dark:text-white font-medium hover:underline inline-flex items-center gap-1"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {item.organization}
+                    </a>
+                  ) : (
+                    <span class="text-neutral-900 dark:text-white font-medium">{item.organization}</span>
+                  )}
+                </h3>
+              </div>
+            </div>
 
-    <!-- Item 3: SMPK 6 BPK PENABUR Jakarta -->
-    <div class="flex items-center justify-between py-3 group">
-      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-          <img
-            src="/img/penabur.webp"
-            alt="SMPK 6 BPK PENABUR Jakarta"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="min-w-0 flex flex-col justify-center">
-          <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[15px] leading-snug truncate">
-            SMPK 6 BPK PENABUR Jakarta
-          </h3>
-          <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-tight">
-            Junior High School
-          </p>
-        </div>
-      </div>
-      <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400 flex-shrink-0 ml-4">
-        2018 — 2021
-      </span>
-    </div>
+            <!-- Chevron Indicator -->
+            <div class="flex-shrink-0 text-neutral-500 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors ml-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 transition-transform duration-200 group-open:rotate-180"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </summary>
 
-    <!-- Item 4: SDK 10 BPK PENABUR Jakarta -->
-    <div class="flex items-center justify-between py-3 group">
-      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-          <img
-            src="/img/penabur.webp"
-            alt="SDK 10 BPK PENABUR Jakarta"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="min-w-0 flex flex-col justify-center">
-          <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[15px] leading-snug truncate">
-            SDK 10 BPK PENABUR Jakarta
-          </h3>
-          <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-tight">
-            Elementary School
-          </p>
-        </div>
-      </div>
-      <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400 flex-shrink-0 ml-4">
-        2012 — 2018
-      </span>
-    </div>
-
+          <!-- Accordion Body -->
+          <div class="pl-[54px] sm:pl-[64px] pt-2 text-neutral-600 dark:text-neutral-400 text-sm sm:text-[14.5px] leading-relaxed">
+            <p>{item.description}</p>
+          </div>
+        </details>
+      ))
+    }
   </div>
 </section>
 
@@ -201,4 +235,3 @@
   setupWorkEducationTabs();
   document.addEventListener('astro:page-load', setupWorkEducationTabs);
 </script>
-
