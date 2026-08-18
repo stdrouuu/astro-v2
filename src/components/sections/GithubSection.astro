@@ -157,7 +157,7 @@ if (!charts['last']) {
             {data.svg ? (
               <Fragment set:html={data.svg} />
             ) : (
-              <p class="text-xs text-neutral-500 font-mono py-8 text-center">Loading contributions...</p>
+              <p class="text-[15px] text-neutral-500 font-mono py-8 text-center">Loading contributions...</p>
             )}
           </div>
         ))}
@@ -168,7 +168,7 @@ if (!charts['last']) {
   <!-- Floating GitHub Style Hover Tooltip (Fixed to avoid container overflow clipping) -->
   <div
     id="github-tooltip"
-    class="pointer-events-none fixed z-[9999] hidden -translate-x-1/2 -translate-y-full px-2.5 py-1 text-[11px] font-sans font-normal text-white bg-[#1b1f23] dark:bg-[#24292f] border border-neutral-700/80 rounded-md shadow-lg whitespace-nowrap"
+    class="pointer-events-none fixed z-[9999] hidden -translate-x-1/2 -translate-y-full px-2.5 py-1 text-[15px] font-sans font-normal text-white bg-[#1b1f23] dark:bg-[#24292f] border border-neutral-700/80 rounded-md shadow-lg whitespace-nowrap"
     style="top: 0; left: 0;"
   >
     <span id="github-tooltip-text"></span>
@@ -176,7 +176,7 @@ if (!charts['last']) {
   </div>
 
   <!-- Bottom Legend and Link -->
-  <div class="flex flex-row justify-between items-center text-[11px] sm:text-xs font-sans text-neutral-500 gap-2 pt-0.5 select-none">
+  <div class="flex flex-row justify-between items-center text-[15px] font-sans text-neutral-500 gap-2 pt-0.5 select-none">
     <p class="truncate text-neutral-500">
       <span class="hidden sm:inline">View full profile on </span>
       <a
@@ -188,7 +188,7 @@ if (!charts['last']) {
         GitHub ↗
       </a>
     </p>
-    <div class="flex items-center gap-1.5 text-[11px] sm:text-xs text-neutral-500 shrink-0">
+    <div class="flex items-center gap-1.5 text-[15px] text-neutral-500 shrink-0">
       <span>Less</span>
       <span class="w-2.5 h-2.5 rounded-sm bg-[#EEEEEE] dark:bg-[#222222]"></span>
       <span class="w-2.5 h-2.5 rounded-sm bg-[#c3d4ff] dark:bg-[#223566]"></span>
