@@ -2,14 +2,20 @@
 ---
 
 <header class="mb-10 sm:mb-16">
-  <nav class="flex items-center justify-between gap-3 sm:gap-4 font-mono text-xs text-neutral-500 border-b border-neutral-300/80 dark:border-neutral-800 pb-4">
-    <div class="truncate text-[11px] sm:text-xs">~/brandon-jeremiah/README.md</div>
-    <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-      <a href="#content" class="hover:text-black dark:hover:text-white transition-colors">home</a>
-      <a href="#work-education" class="hover:text-black dark:hover:text-white transition-colors">work</a>
-      <a href="#projects" class="hover:text-black dark:hover:text-white transition-colors">projects</a>
-      <a href="#contact" class="hover:text-black dark:hover:text-white transition-colors">contact</a>
-      <button id="theme-toggle" aria-label="Toggle theme" class="hover:text-black dark:hover:text-white transition-transform active:scale-90 ml-0.5 sm:ml-1 w-4 h-4 flex items-center justify-center relative">
+  <nav class="flex items-center justify-between gap-2 sm:gap-4 font-mono text-xs text-neutral-500 border-b border-neutral-300/80 dark:border-neutral-800 pb-4">
+    <a href="#content" class="truncate text-[11px] sm:text-xs font-mono hover:text-black dark:hover:text-white transition-colors shrink-0">
+      ~/brandon-jeremiah/README.md
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden sm:flex items-center gap-4 shrink-0 text-xs">
+      <a href="#content" class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">home</a>
+      <a href="#tech" class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">stack</a>
+      <a href="#work-education" class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">work</a>
+      <a href="#projects" class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">projects</a>
+      <a href="#certifications" class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">certs</a>
+      <a href="#contact" class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">contact</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="hover:text-black dark:hover:text-white transition-transform active:scale-90 ml-1 w-4 h-4 flex items-center justify-center relative shrink-0">
         <!-- Sun icon (shown in dark mode) -->
         <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="hidden w-4 h-4 transition-transform duration-500 ease-in-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="5"/>
@@ -28,22 +34,100 @@
         </svg>
       </button>
     </div>
+
+    <!-- Mobile Header Actions (Theme Toggle + Hamburger) -->
+    <div class="flex sm:hidden items-center gap-2 shrink-0">
+      <button id="theme-toggle-mobile" aria-label="Toggle theme" class="hover:text-black dark:hover:text-white transition-transform active:scale-90 p-1 w-6 h-6 flex items-center justify-center relative">
+        <!-- Sun icon mobile -->
+        <svg id="icon-sun-mobile" xmlns="http://www.w3.org/2000/svg" class="hidden w-3.5 h-3.5 transition-transform duration-500 ease-in-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon icon mobile -->
+        <svg id="icon-moon-mobile" xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform duration-500 ease-in-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <button
+        id="mobile-menu-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        class="hover:text-black dark:hover:text-white transition-colors p-1 flex items-center justify-center text-neutral-500"
+      >
+        <!-- Menu Icon -->
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <!-- Close (X) Icon -->
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="hidden w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden sm:hidden flex-col font-mono text-xs border-b border-neutral-300/80 dark:border-neutral-800 py-2.5 animate-in fade-in slide-in-from-top-1 duration-150">
+    <div class="grid grid-cols-2 gap-1.5 text-neutral-600 dark:text-neutral-400">
+      <a href="#content" class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
+        <span class="text-neutral-400 dark:text-neutral-600">#</span> home
+      </a>
+      <a href="#tech" class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
+        <span class="text-neutral-400 dark:text-neutral-600">#</span> stack
+      </a>
+      <a href="#work-education" class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
+        <span class="text-neutral-400 dark:text-neutral-600">#</span> work
+      </a>
+      <a href="#projects" class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
+        <span class="text-neutral-400 dark:text-neutral-600">#</span> projects
+      </a>
+      <a href="#certifications" class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
+        <span class="text-neutral-400 dark:text-neutral-600">#</span> certs
+      </a>
+      <a href="#contact" class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
+        <span class="text-neutral-400 dark:text-neutral-600">#</span> contact
+      </a>
+    </div>
+  </div>
 </header>
 
 <script>
   const html = document.documentElement;
   const toggleBtn = document.getElementById('theme-toggle');
+  const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
   const iconSun = document.getElementById('icon-sun');
   const iconMoon = document.getElementById('icon-moon');
+  const iconSunMobile = document.getElementById('icon-sun-mobile');
+  const iconMoonMobile = document.getElementById('icon-moon-mobile');
+
+  const menuBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
   const updateIcons = (isDark: boolean) => {
     if (isDark) {
       iconSun?.classList.remove('hidden');
       iconMoon?.classList.add('hidden');
+      iconSunMobile?.classList.remove('hidden');
+      iconMoonMobile?.classList.add('hidden');
     } else {
       iconSun?.classList.add('hidden');
       iconMoon?.classList.remove('hidden');
+      iconSunMobile?.classList.add('hidden');
+      iconMoonMobile?.classList.remove('hidden');
     }
   };
 
@@ -56,7 +140,7 @@
   }
   updateIcons(initialDark);
 
-  toggleBtn?.addEventListener('click', () => {
+  const toggleTheme = () => {
     const isDark = html.classList.contains('dark');
     const newTheme = isDark ? 'light' : 'dark';
 
@@ -76,5 +160,38 @@
     }
 
     document.startViewTransition(switchTheme);
+  };
+
+  toggleBtn?.addEventListener('click', toggleTheme);
+  toggleBtnMobile?.addEventListener('click', toggleTheme);
+
+  // Mobile Menu Logic
+  const toggleMenu = (forceOpen?: boolean) => {
+    const isCurrentlyOpen = !mobileMenu?.classList.contains('hidden');
+    const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !isCurrentlyOpen;
+
+    if (shouldOpen) {
+      mobileMenu?.classList.remove('hidden');
+      mobileMenu?.classList.add('flex');
+      iconMenu?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+      menuBtn?.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+      iconMenu?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  menuBtn?.addEventListener('click', () => toggleMenu());
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') toggleMenu(false);
   });
 </script>
