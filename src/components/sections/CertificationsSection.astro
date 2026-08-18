@@ -91,9 +91,9 @@ const featuredCertifications: FeaturedCertification[] = [
           </div>
 
           {/* Details */}
-          <div class="min-w-0 flex-1">
+          <div class="min-w-0 flex-1 space-y-0.5">
             <div class="flex items-center gap-1.5">
-              <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[14.5px] sm:text-[15.5px] leading-snug group-hover:text-black dark:group-hover:text-white transition-colors">
+              <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[14.5px] sm:text-[15.5px] leading-tight group-hover:text-black dark:group-hover:text-white transition-colors">
                 {item.title}
               </h3>
               <svg
@@ -112,11 +112,11 @@ const featuredCertifications: FeaturedCertification[] = [
               </svg>
             </div>
             {item.issuer && (
-              <p class="text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 leading-normal mt-0.5">
+              <p class="text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 leading-tight">
                 {item.issuer}
               </p>
             )}
-            <p class="text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 leading-normal">
+            <p class="text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 leading-tight">
               {formattedDate}
             </p>
           </div>

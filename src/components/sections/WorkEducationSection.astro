@@ -4,6 +4,7 @@ interface ExperienceItem {
   role: string;
   organization: string;
   logo: string;
+  logoClass?: string;
   url?: string;
   description: string;
 }
@@ -15,7 +16,16 @@ const workItems: ExperienceItem[] = [
     organization: 'GPdI Duta Bandara Permai',
     logo: '/img/gpdi.webp',
     description:
-      'Developed and maintained internal management systems, web applications, and congregation service platforms to streamline church administration and operations.',
+    'Developed and maintained internal management systems, web applications, and congregation service platforms to streamline church administration and operations.',
+  },
+  {
+    period: '2026 — Present',
+    role: 'Freelance Developer',
+    organization: 'Self-Employed',
+    logo: '/img/logo-hover.png',
+    logoClass: 'rounded-md overflow-hidden',
+    description:
+      'Building custom web applications, responsive modern user interfaces, and fullstack digital solutions for clients and independent projects.',
   },
 ];
 
@@ -43,7 +53,7 @@ const educationItems: ExperienceItem[] = [
     organization: 'SMPK 6 PENABUR Jakarta',
     logo: '/img/penabur.webp',
     description:
-      'Completed junior high school education with strong academic foundations in mathematics and science.',
+      'Completed junior high school education with strong academic foundations in science.',
   },
 ];
 ---
@@ -85,17 +95,17 @@ const educationItems: ExperienceItem[] = [
           <summary class="list-none flex items-center justify-between gap-3.5 sm:gap-4 cursor-pointer select-none">
             <div class="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
               <!-- Big Logo -->
-              <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div class={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform ${item.logoClass || ''}`}>
                 <img
                   src={item.logo}
                   alt={item.organization}
-                  class="w-full h-full object-contain"
+                  class={`w-full h-full object-contain ${item.logoClass || ''}`}
                 />
               </div>
 
               <!-- Year & Title -->
               <div class="flex-1 min-w-0 flex flex-col justify-center gap-0.5 sm:gap-1">
-                <span class="font-mono text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-medium">
+                <span class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-medium">
                   {item.period}
                 </span>
                 <h3 class="text-neutral-900 dark:text-white font-medium text-base sm:text-[16px] leading-snug flex items-center flex-wrap gap-x-1.5">
@@ -140,17 +150,17 @@ const educationItems: ExperienceItem[] = [
           <summary class="list-none flex items-center justify-between gap-3.5 sm:gap-4 cursor-pointer select-none">
             <div class="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
               <!-- Big Logo -->
-              <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div class={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform ${item.logoClass || ''}`}>
                 <img
                   src={item.logo}
                   alt={item.organization}
-                  class="w-full h-full object-contain"
+                  class={`w-full h-full object-contain ${item.logoClass || ''}`}
                 />
               </div>
 
               <!-- Year & Title -->
               <div class="flex-1 min-w-0 flex flex-col justify-center gap-0.5 sm:gap-1">
-                <span class="font-mono text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-medium">
+                <span class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-medium">
                   {item.period}
                 </span>
                 <h3 class="text-neutral-900 dark:text-white font-medium text-base sm:text-[16px] leading-snug flex items-center flex-wrap gap-x-1.5">
