@@ -50,6 +50,7 @@ body {
   background-color: #f7f5f0;
   color: #1c1c1a;
   letter-spacing: -0.02em;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 html.dark,
@@ -122,44 +123,10 @@ pre {
   background: #4a4a47;
 }
 
-:root {
-  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --expo-in: cubic-bezier(0.7, 0, 0.84, 0);
-}
-
-::view-transition-group(root) {
-  animation-duration: 0.7s;
-  animation-timing-function: var(--expo-out);
-}
-
-::view-transition-new(root) {
-  animation-name: reveal-light-bottom-up;
-}
-
+/* Smooth & snappy View Transition for theme toggle */
 ::view-transition-old(root),
-.dark::view-transition-old(root) {
-  animation: none;
-  z-index: -1;
+::view-transition-new(root) {
+  animation-duration: 0.15s;
+  animation-timing-function: ease-out;
 }
 
-.dark::view-transition-new(root) {
-  animation-name: reveal-dark-bottom-up;
-}
-
-@keyframes reveal-dark-bottom-up {
-  from {
-    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
-  }
-  to {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-}
-
-@keyframes reveal-light-bottom-up {
-  from {
-    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
-  }
-  to {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-}

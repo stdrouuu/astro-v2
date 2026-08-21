@@ -54,13 +54,13 @@ const featuredCertifications: FeaturedCertification[] = [
 ---
 
 <section id="certifications" class="space-y-6 pt-2 sm:pt-4">
-  <h2 class="font-pixel text-xl sm:text-2xl md:text-3xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
+  <h2 class="font-pixel text-3xl sm:text-3xl md:text-4xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
     <span class="text-neutral-400">##</span>
     <span>Certifications</span>
   </h2>
 
   {/* Certifications List */}
-  <div class="space-y-4 sm:space-y-5">
+  <div class="space-y-3 sm:space-y-3.5">
     {featuredCertifications.map((item) => {
       const isExternal = item.link && item.link.startsWith('http');
       const formattedDate = item.date.toLowerCase().startsWith('issued')
@@ -72,7 +72,7 @@ const featuredCertifications: FeaturedCertification[] = [
           href={item.link || '#'}
           target={isExternal ? '_blank' : undefined}
           rel={isExternal ? 'noopener noreferrer' : undefined}
-          class="flex items-start gap-3 sm:gap-3.5 py-1 px-1.5 -mx-1.5 rounded-lg group cursor-pointer transition-all hover:bg-neutral-100/70 dark:hover:bg-neutral-800/40"
+          class="flex items-start gap-3 sm:gap-3.5 py-1"
         >
           {/* Logo / Icon */}
           <div class="w-10 h-10 sm:w-11 sm:h-11 flex-shrink-0 flex items-center justify-center rounded-md overflow-hidden mt-0.5">
@@ -80,7 +80,7 @@ const featuredCertifications: FeaturedCertification[] = [
               <img
                 src={item.icon}
                 alt={item.title}
-                class="w-full h-full object-cover rounded-md group-hover:scale-105 transition-transform duration-200"
+                class="w-full h-full object-cover rounded-md"
                 loading="lazy"
               />
             ) : (
@@ -92,13 +92,19 @@ const featuredCertifications: FeaturedCertification[] = [
 
           {/* Details */}
           <div class="min-w-0 flex-1 space-y-0.5">
-            <div class="flex items-center gap-1.5">
-              <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[17px] sm:text-[17px] leading-snug group-hover:text-black dark:group-hover:text-white transition-colors">
-                {item.title}
-              </h3>
+            <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[17px] sm:text-[17px] leading-snug">
+              {item.title}
+            </h3>
+            {item.issuer && (
+              <p class="text-[15px] text-neutral-600 dark:text-[#73736E] leading-snug">
+                {item.issuer}
+              </p>
+            )}
+            <div class="flex items-center gap-1.5 text-[15px] text-neutral-600 dark:text-[#73736E] leading-snug">
+              <span>{formattedDate}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-4 h-4 text-neutral-400 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors flex-shrink-0"
+                class="w-3.5 h-3.5 text-neutral-500 dark:text-[#73736E] flex-shrink-0"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -111,14 +117,6 @@ const featuredCertifications: FeaturedCertification[] = [
                 <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
             </div>
-            {item.issuer && (
-              <p class="text-[15px] text-neutral-500 dark:text-neutral-400 leading-snug">
-                {item.issuer}
-              </p>
-            )}
-            <p class="text-[15px] text-neutral-500 dark:text-neutral-400 leading-snug">
-              {formattedDate}
-            </p>
           </div>
         </a>
       );

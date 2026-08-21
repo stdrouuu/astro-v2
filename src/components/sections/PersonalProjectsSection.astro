@@ -81,7 +81,7 @@ const bentoProjects: BentoProject[] = [
 ---
 
 <section id="projects" class="space-y-6 pt-2 sm:pt-4">
-  <h2 class="font-pixel text-xl sm:text-2xl md:text-3xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
+  <h2 class="font-pixel text-3xl sm:text-3xl md:text-4xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
     <span class="text-neutral-400">##</span>
     <span>Projects</span>
   </h2>
@@ -156,7 +156,7 @@ const bentoProjects: BentoProject[] = [
   </div>
 
   {/* 2. Bento Grid Cards (4 Projects) */}
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-1">
+  <div class="grid grid-cols-2 gap-3 sm:gap-6 pt-1">
     {bentoProjects.map((project) => {
       const Tag = project.link ? 'a' : 'div';
       return (
@@ -164,10 +164,10 @@ const bentoProjects: BentoProject[] = [
           href={project.link || undefined}
           target={project.link && project.link.startsWith('http') ? '_blank' : undefined}
           rel={project.link && project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="block space-y-2.5 focus:outline-none"
+          class="block space-y-2 sm:space-y-2.5 focus:outline-none"
         >
           {/* Card / Image Box */}
-          <div class="w-full aspect-[4/3] rounded-2xl bg-neutral-200/50 dark:bg-neutral-800/60 border border-neutral-300/80 dark:border-neutral-700/60 overflow-hidden relative flex items-center justify-center">
+          <div class="w-full aspect-[4/3] rounded-md sm:rounded-lg bg-neutral-200/50 dark:bg-neutral-800/60 border border-neutral-300/80 dark:border-neutral-700/60 overflow-hidden relative flex items-center justify-center">
             {project.image ? (
               <img
                 src={project.image}
@@ -197,10 +197,10 @@ const bentoProjects: BentoProject[] = [
 
           {/* Project Details */}
           <div>
-            <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[17px] sm:text-[17px] leading-snug">
+            <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[15px] sm:text-[17px] leading-snug">
               {project.title}
             </h3>
-            <p class="text-[15px] sm:text-[15.5px] text-neutral-500 dark:text-neutral-400 leading-snug mt-1">
+            <p class="text-[13px] sm:text-[15.5px] text-neutral-500 dark:text-neutral-400 leading-snug mt-0.5 sm:mt-1">
               {project.category}
             </p>
           </div>
