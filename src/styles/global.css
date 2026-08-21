@@ -47,21 +47,20 @@ body {
     "Segoe UI",
     Roboto,
     sans-serif;
-  background-color: #f7f5f0;
+  background-color: #F7F5F0;
   color: #1c1c1a;
   letter-spacing: -0.02em;
-  transition: background-color 0.08s ease, color 0.08s ease;
 }
 
 html.dark,
 html.dark body {
   background-color: #181818;
-  color: #f7f5f0;
+  color: #F7F5F0;
 }
 
 /* Dark mode overrides for neutral color classes */
 .dark .text-neutral-900 {
-  color: #f7f5f0 !important;
+  color: #F7F5F0 !important;
 }
 .dark .text-neutral-800 {
   color: #e5e5e3 !important;
@@ -121,12 +120,5 @@ pre {
 }
 .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #4a4a47;
-}
-
-/* Smooth & snappy View Transition for theme toggle */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.08s;
-  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 

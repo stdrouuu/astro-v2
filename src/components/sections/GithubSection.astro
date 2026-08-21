@@ -106,42 +106,6 @@ if (!charts['last']) {
 ---
 
 <section class="space-y-3">
-  <!-- Top Navigation & Total Counter (Commented out)
-  <div class="flex flex-row justify-between items-center text-[11px] sm:text-xs font-sans select-none tracking-normal">
-    <div class="flex items-center gap-1 whitespace-nowrap">
-      <span id="github-contrib-count" class="font-normal text-neutral-900 dark:text-neutral-100">
-        {charts['last'].total} contributions
-      </span>
-      <span id="github-contrib-period" class="hidden sm:inline text-neutral-500 dark:text-neutral-500 font-normal">
-        {charts['last'].periodText}
-      </span>
-    </div>
-
-    <div class="flex items-center gap-1.5 text-neutral-500 text-[11px] sm:text-xs whitespace-nowrap">
-      <button
-        type="button"
-        data-year="last"
-        class="github-year-btn shrink-0 text-neutral-900 dark:text-neutral-100 underline underline-offset-[4px] decoration-neutral-400 dark:decoration-neutral-400 font-normal transition-colors cursor-pointer"
-      >
-        <span class="sm:hidden">Last 12m</span>
-        <span class="hidden sm:inline">Last 12 months</span>
-      </button>
-      {availableYears.map((year) => (
-        <>
-          <span class="text-neutral-400 dark:text-neutral-600 shrink-0">/</span>
-          <button
-            type="button"
-            data-year={year}
-            class="github-year-btn shrink-0 text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors cursor-pointer"
-          >
-            {year}
-          </button>
-        </>
-      ))}
-    </div>
-  </div>
-  -->
-
   <!-- Contribution SVG Grids -->
   <div class="overflow-x-auto py-1 custom-scrollbar">
     <div class="min-w-[670px] w-full github-svg-wrapper relative">
@@ -157,7 +121,7 @@ if (!charts['last']) {
             {data.svg ? (
               <Fragment set:html={data.svg} />
             ) : (
-              <p class="text-[15px] text-neutral-500 font-mono py-8 text-center">Loading contributions...</p>
+              <p class="text-[15px] text-neutral-500 font-mono py-8 text-center">Loading contributions</p>
             )}
           </div>
         ))}
@@ -177,8 +141,8 @@ if (!charts['last']) {
 
   <!-- Bottom Legend and Link -->
   <div class="flex flex-row justify-between items-center text-[15px] font-sans text-neutral-500 gap-2 pt-0.5 select-none">
-    <p class="truncate text-neutral-500">
-      <span class="hidden sm:inline">View full profile on </span>
+    <p class="truncate text-neutral-500 dark:text-neutral-400">
+      <span class="hidden sm:inline">View my full contribution on </span>
       <a
         href="https://github.com/stdrouuu"
         target="_blank"

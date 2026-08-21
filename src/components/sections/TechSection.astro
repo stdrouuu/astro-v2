@@ -8,6 +8,7 @@ const techCategories = [
         name: 'TypeScript',
         sub: 'JavaScript Typed',
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+        imgClass: 'rounded-[7px] object-cover',
       },
       {
         name: 'PHP',
@@ -39,6 +40,7 @@ const techCategories = [
         name: 'Laravel',
         sub: 'PHP Web Framework',
         icon: '/img/laravel.webp',
+        imgClass: 'rounded-[7px] object-cover',
       },
       {
         name: 'React',
@@ -49,12 +51,13 @@ const techCategories = [
         name: 'Astro.js',
         sub: 'Content-driven Web',
         icon: '/img/astro.webp',
+        imgClass: 'rounded-[7px] object-cover',
       },
       {
         name: 'PWA',
         sub: 'Progressive Web App',
         icon: '/img/pwa.webp',
-        imgClass: 'object-cover rounded-md',
+        imgClass: 'rounded-[7px] object-cover',
       },
     ],
   },
@@ -76,11 +79,13 @@ const techCategories = [
         name: 'Shadcn/ui',
         sub: 'UI Components',
         icon: '/img/shadcn.webp',
+        imgClass: 'rounded-[7px] object-cover',
       },
       {
         name: 'Framer Motion',
         sub: 'React Motion Library',
         icon: '/img/motion.webp',
+        imgClass: 'rounded-[7px] object-cover',
       },
       // {
       //   name: 'GSAP',
@@ -112,6 +117,7 @@ const techCategories = [
         name: 'Prisma',
         sub: 'Next-gen Node ORM',
         icon: '/img/prisma.webp',
+        imgClass: 'rounded-[7px] object-cover',
       },
     ],
   },
@@ -151,19 +157,20 @@ const techCategories = [
         name: 'Docker',
         sub: 'Containerization',
         icon: '/img/docker.webp',
+        imgClass: 'rounded-[7px] object-cover',
       },
       {
         name: 'Cloudflare',
         sub: 'Tunneling & CDN',
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg',
       },
-      {
-        name: 'Vercel',
-        sub: 'Deployment',
-        icon: 'https://api.iconify.design/simple-icons:vercel.svg',
-        darkInvert: true,
-        imgClass: 'object-contain rounded-none',
-      },
+      // {
+      //   name: 'Vercel',
+      //   sub: 'Deployment',
+      //   icon: 'https://api.iconify.design/simple-icons:vercel.svg',
+      //   darkInvert: true,
+      //   imgClass: 'object-contain rounded-none',
+      // },
       {
         name: 'Postman',
         sub: 'API Testing & Dev',
@@ -184,11 +191,13 @@ const techCategories = [
         name: 'Claude Code',
         sub: 'Ai Coding Assistant',
         icon: '/img/claude.webp',
+        imgClass: 'rounded-[7px] object-cover',
       },
       {
         name: 'Zen',
         sub: 'Browser',
         icon: '/img/zen.webp',
+        imgClass: 'rounded-[7px] object-cover',
       },
       // {
       //   name: 'Zed',
@@ -199,6 +208,7 @@ const techCategories = [
         name: 'Orca',
         sub: 'Agentic Dev Environment (ADE)',
         icon: '/img/orca.webp',
+        imgClass: 'rounded-[7px] scale-125 object-contain',
       },
     ],
   },
@@ -251,12 +261,12 @@ const techCategories = [
 
         <div class="flex flex-wrap items-center justify-start gap-1.5 sm:gap-2">
           {group.items.map((tech) => (
-            <div class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-md bg-neutral-200/50 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-300/60 dark:border-neutral-700/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-200 select-none group cursor-default max-w-full">
-              <div class={`${tech.wrapperClass || 'w-6 h-6 sm:w-6 sm:h-6'} flex-shrink-0 flex items-center justify-center rounded-md`}>
+            <div class="inline-flex items-center gap-2.5 px-3 py-2 rounded-md bg-neutral-200/50 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-300/60 dark:border-neutral-700/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-200 select-none group cursor-default max-w-full">
+              <div class={`${tech.wrapperClass || 'w-8 h-8 sm:w-8 sm:h-8'} flex-shrink-0 flex items-center justify-center`}>
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  class={`w-full h-full ${tech.imgClass || 'object-contain rounded-md'} group-hover:scale-110 transition-transform duration-200 ${tech.darkInvert ? 'dark:invert dark:brightness-200' : ''}`}
+                  class={`w-full h-full ${tech.imgClass || 'object-contain'} group-hover:scale-110 transition-transform duration-200 ${tech.darkInvert ? 'dark:invert dark:brightness-200' : ''}`}
                   loading="lazy"
                 />
               </div>
@@ -264,7 +274,7 @@ const techCategories = [
                 <span class="text-[15px] font-medium text-neutral-800 dark:text-neutral-200 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors leading-tight truncate">
                   {tech.name}
                 </span>
-                <span class="text-[15px] text-neutral-500 dark:text-neutral-400 leading-tight truncate">
+                <span class="text-[14px] text-neutral-500 dark:text-neutral-400 leading-tight truncate">
                   {tech.sub}
                 </span>
               </div>

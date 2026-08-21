@@ -17,7 +17,7 @@
       <a href="#contact" class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Contact</a>
       <button id="theme-toggle" aria-label="Toggle theme" class="text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors active:scale-90 ml-1 w-4 h-4 flex items-center justify-center relative shrink-0">
         <!-- Sun icon (shown in dark mode) -->
-        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="hidden w-4 h-4 transition-transform duration-75 ease-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="hidden w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
           <line x1="12" y1="21" x2="12" y2="23"/>
@@ -29,7 +29,7 @@
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
         <!-- Moon icon (shown in light mode) -->
-        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-75 ease-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
@@ -39,7 +39,7 @@
     <div class="flex sm:hidden items-center gap-1 shrink-0">
       <button id="theme-toggle-mobile" aria-label="Toggle theme" class="text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors active:scale-90 w-8 h-8 flex items-center justify-center relative">
         <!-- Sun icon mobile -->
-        <svg id="icon-sun-mobile" xmlns="http://www.w3.org/2000/svg" class="hidden w-5 h-5 transition-transform duration-75 ease-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg id="icon-sun-mobile" xmlns="http://www.w3.org/2000/svg" class="hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
           <line x1="12" y1="21" x2="12" y2="23"/>
@@ -51,7 +51,7 @@
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
         <!-- Moon icon mobile -->
-        <svg id="icon-moon-mobile" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform duration-75 ease-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg id="icon-moon-mobile" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
@@ -133,7 +133,7 @@
 
   const updateThemeColor = (isDark: boolean) => {
     const metaTags = document.querySelectorAll('meta[name="theme-color"]');
-    const color = isDark ? '#181818' : '#f7f5f0';
+    const color = isDark ? '#181818' : '#F7F5F0';
     if (metaTags.length > 0) {
       metaTags.forEach((tag) => tag.setAttribute('content', color));
     } else {
@@ -157,25 +157,16 @@
   const toggleTheme = () => {
     const isDark = html.classList.contains('dark');
     const newTheme = isDark ? 'light' : 'dark';
+    const willBeDark = newTheme === 'dark';
 
-    const switchTheme = () => {
-      const willBeDark = newTheme === 'dark';
-      if (willBeDark) {
-        html.classList.add('dark');
-      } else {
-        html.classList.remove('dark');
-      }
-      localStorage.setItem('theme', newTheme);
-      updateIcons(willBeDark);
-      updateThemeColor(willBeDark);
-    };
-
-    if (!document.startViewTransition) {
-      switchTheme();
-      return;
+    if (willBeDark) {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
     }
-
-    document.startViewTransition(switchTheme);
+    localStorage.setItem('theme', newTheme);
+    updateIcons(willBeDark);
+    updateThemeColor(willBeDark);
   };
 
   toggleBtn?.addEventListener('click', toggleTheme);
