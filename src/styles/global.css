@@ -50,7 +50,7 @@ body {
   background-color: #f7f5f0;
   color: #1c1c1a;
   letter-spacing: -0.02em;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.08s ease, color 0.08s ease;
 }
 
 html.dark,
@@ -126,7 +126,7 @@ pre {
 /* Smooth & snappy View Transition for theme toggle */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.15s;
-  animation-timing-function: ease-out;
+  animation-duration: 0.08s;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
