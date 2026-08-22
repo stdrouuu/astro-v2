@@ -15,6 +15,7 @@ interface BentoProject {
   link?: string;
   image?: string;
   imgClass?: string;
+  stacks?: string[];
 }
 
 const featuredList: FeaturedProject[] = [
@@ -55,6 +56,7 @@ const bentoProjects: BentoProject[] = [
     link: '',
     image: '/img/bisachord.webp',
     imgClass: 'scale-[1.2]',
+    stacks: ['React', 'TypeScript', 'Tailwind CSS', 'PWA'],
   },
   {
     title: 'Memein',
@@ -62,6 +64,7 @@ const bentoProjects: BentoProject[] = [
     link: '',
     image: '/img/memein.webp',
     imgClass: 'scale-[1.5]',
+    stacks: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
   },
   {
     title: 'Stockinfo',
@@ -69,6 +72,7 @@ const bentoProjects: BentoProject[] = [
     link: '',
     image: '/img/stockinfo.webp',
     imgClass: 'scale-[1.2]',
+    stacks: ['Laravel', 'PHP', 'MySQL', 'Tailwind CSS'],
   },
   {
     title: 'Trigg',
@@ -76,18 +80,19 @@ const bentoProjects: BentoProject[] = [
     link: '',
     image: '/img/trigg.webp',
     imgClass: 'scale-[1.1]',
+    stacks: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma'],
   },
 ];
 ---
 
-<section id="projects" class="space-y-6 pt-2 sm:pt-4">
+<section id="projects" class="space-y-6 sm:space-y-8 pt-2 sm:pt-4">
   <h2 class="font-pixel text-3xl sm:text-3xl md:text-4xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
     <span class="text-neutral-400">##</span>
     <span>Projects</span>
   </h2>
 
   {/* 1. Featured List Projects */}
-  <div class="space-y-0.5">
+  <div class="space-y-1">
     {featuredList.map((item) => {
       const isLink = Boolean(item.link);
       const Tag = isLink ? 'a' : 'div';
@@ -96,11 +101,11 @@ const bentoProjects: BentoProject[] = [
           href={item.link || undefined}
           target={item.link && item.link.startsWith('http') ? '_blank' : undefined}
           rel={item.link && item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="flex items-center justify-between gap-3 sm:gap-4 py-1.5 px-2 -mx-2 rounded-lg cursor-default"
+          class="flex items-center justify-between gap-3 sm:gap-4 py-2 px-2.5 -mx-2.5 rounded-lg cursor-default"
         >
-          <div class="flex items-center gap-3 min-w-0">
+          <div class="flex items-center gap-3.5 min-w-0">
             {/* Logo */}
-            <div class="w-10 h-10 sm:w-11 sm:h-11 flex-shrink-0 flex items-center justify-center rounded-md overflow-hidden">
+            <div class="w-11 h-11 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-md overflow-hidden">
               {item.icon ? (
                 <img
                   src={item.icon}
@@ -109,7 +114,7 @@ const bentoProjects: BentoProject[] = [
                   loading="lazy"
                 />
               ) : (
-                <span class="font-mono text-[15px] font-semibold text-neutral-600 dark:text-neutral-300 select-none">
+                <span class="font-mono text-[16px] font-semibold text-neutral-600 dark:text-neutral-300 select-none">
                   {item.title.substring(0, 2).toUpperCase()}
                 </span>
               )}
@@ -118,7 +123,7 @@ const bentoProjects: BentoProject[] = [
             {/* Title & Description */}
             <div class="min-w-0">
               <div class="flex items-center gap-1.5">
-                <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[17px] sm:text-[17px] leading-snug truncate">
+                <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[17px] sm:text-[18px] leading-snug truncate">
                   {item.title}
                 </h3>
                 {isLink && (
@@ -139,7 +144,7 @@ const bentoProjects: BentoProject[] = [
                 )}
               </div>
               {item.desc && (
-                <p class="text-[15px] sm:text-[15.5px] text-neutral-500 dark:text-neutral-400 truncate leading-relaxed mt-0.5">
+                <p class="text-[15px] sm:text-[16px] text-[#A3A39F] truncate leading-relaxed mt-0.5">
                   {item.desc}
                 </p>
               )}
@@ -147,7 +152,7 @@ const bentoProjects: BentoProject[] = [
           </div>
 
           {/* Date */}
-          <span class="font-mono text-[15px] text-neutral-500 dark:text-neutral-400 flex-shrink-0 ml-2 sm:ml-4 text-right">
+          <span class="font-mono text-[15px] sm:text-[16px] text-neutral-500 dark:text-neutral-400 flex-shrink-0 ml-2 sm:ml-4 text-right">
             {item.date}
           </span>
         </Tag>
@@ -156,7 +161,7 @@ const bentoProjects: BentoProject[] = [
   </div>
 
   {/* 2. Bento Grid Cards (4 Projects) */}
-  <div class="grid grid-cols-2 gap-3 sm:gap-6 pt-1">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-7 pt-2">
     {bentoProjects.map((project) => {
       const Tag = project.link ? 'a' : 'div';
       return (
@@ -164,10 +169,10 @@ const bentoProjects: BentoProject[] = [
           href={project.link || undefined}
           target={project.link && project.link.startsWith('http') ? '_blank' : undefined}
           rel={project.link && project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="block space-y-2 sm:space-y-2.5 focus:outline-none"
+          class="block space-y-3 sm:space-y-3.5 focus:outline-none"
         >
-          {/* Card / Image Box */}
-          <div class="w-full aspect-[4/3] rounded-md sm:rounded-lg bg-neutral-200/50 dark:bg-neutral-800/60 border border-neutral-300/80 dark:border-neutral-700/60 overflow-hidden relative flex items-center justify-center">
+          {/* Card / Image Box - rectangular with subtle rounded corners */}
+          <div class="w-full aspect-[4/3] rounded-md bg-neutral-200/50 dark:bg-neutral-800/60 border border-neutral-300/80 dark:border-neutral-700/60 overflow-hidden relative flex items-center justify-center">
             {project.image ? (
               <img
                 src={project.image}
@@ -196,13 +201,26 @@ const bentoProjects: BentoProject[] = [
           </div>
 
           {/* Project Details */}
-          <div>
-            <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[15px] sm:text-[17px] leading-snug">
-              {project.title}
-            </h3>
-            <p class="text-[13px] sm:text-[15.5px] text-neutral-500 dark:text-neutral-400 leading-snug mt-0.5 sm:mt-1">
-              {project.category}
-            </p>
+          <div class="space-y-2.5">
+            <div>
+              <h3 class="font-medium text-neutral-900 dark:text-neutral-100 text-[17px] sm:text-[18px] md:text-[19px] leading-snug">
+                {project.title}
+              </h3>
+              <p class="text-[14.5px] sm:text-[16px] text-[#A3A39F] leading-snug mt-1">
+                {project.category}
+              </p>
+            </div>
+
+            {/* Tech Stack Pills (Text Only) */}
+            {project.stacks && project.stacks.length > 0 && (
+              <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
+                {project.stacks.map((stack) => (
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[12px] sm:text-[13px] font-sans font-medium bg-neutral-200/60 dark:bg-neutral-800/70 border border-neutral-300/70 dark:border-neutral-700/60 text-neutral-700 dark:text-neutral-300 select-none">
+                    {stack}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </Tag>
       );
