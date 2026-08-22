@@ -110,29 +110,19 @@ if (!charts['last']) {
   <div class="overflow-x-auto py-1 custom-scrollbar">
     <div class="min-w-[670px] w-full github-svg-wrapper relative">
       <div id="github-chart-container" class="w-full">
-        {Object.entries(charts).map(([key, data]) => (
-          <div
-            id={`chart-${key}`}
-            class={`github-year-chart ${key === 'last' ? '' : 'hidden'}`}
-            data-chart-year={key}
-            data-total={data.total}
-            data-period={data.periodText}
-          >
-            {data.svg ? (
-              <Fragment set:html={data.svg} />
-            ) : (
-              <p class="text-[15px] text-neutral-500 font-mono py-8 text-center">Loading contributions</p>
-            )}
-          </div>
-        ))}
+        {charts['last']?.svg ? (
+          <Fragment set:html={charts['last'].svg} />
+        ) : (
+          <p class="text-[13px] text-neutral-500 font-mono py-8 text-center">Loading contributions…</p>
+        )}
       </div>
     </div>
   </div>
 
-  <!-- Floating GitHub Style Hover Tooltip (Fixed to avoid container overflow clipping) -->
+  <!-- Floating GitHub Style Hover Tooltip -->
   <div
     id="github-tooltip"
-    class="pointer-events-none fixed z-[9999] hidden -translate-x-1/2 -translate-y-full px-2.5 py-1 text-[15px] font-sans font-normal text-white bg-[#1b1f23] dark:bg-[#24292f] border border-neutral-700/80 rounded-md shadow-lg whitespace-nowrap"
+    class="pointer-events-none fixed z-[9999] hidden -translate-x-1/2 -translate-y-full px-2 py-0.5 text-[12px] font-sans font-normal text-white bg-[#1b1f23] dark:bg-[#24292f] border border-neutral-700/80 rounded-md shadow-lg whitespace-nowrap"
     style="top: 0; left: 0;"
   >
     <span id="github-tooltip-text"></span>
@@ -140,15 +130,18 @@ if (!charts['last']) {
   </div>
 
   <!-- Bottom Legend and Link -->
-  <div class="flex flex-row justify-between items-center text-[15px] font-sans text-neutral-500 gap-2 pt-0.5 select-none">
-    <p class="truncate text-neutral-500 dark:text-neutral-400">
+  <div class="flex flex-row justify-between items-center text-[13px] sm:text-[14px] font-sans text-neutral-500 gap-2 pt-0.5 select-none">
+    <p class="truncate text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
       <span class="hidden sm:inline">View my full contribution on </span>
       <a
         href="https://github.com/stdrouuu"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-neutral-900 dark:text-neutral-100 underline underline-offset-[4px] decoration-neutral-400 dark:decoration-neutral-400 font-normal hover:text-black dark:hover:text-white transition-colors"
+        class="inline-flex items-center gap-1 text-neutral-900 dark:text-neutral-100 border-b border-neutral-400 dark:border-neutral-400 font-normal hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white transition-colors"
       >
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="shrink-0 -mt-px">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
         GitHub ↗
       </a>
     </p>
@@ -179,48 +172,10 @@ if (!charts['last']) {
   }
 
   function setupGithubInteractive() {
-    // Tabs switching
-    const buttons = document.querySelectorAll<HTMLButtonElement>('.github-year-btn');
-    const charts = document.querySelectorAll<HTMLElement>('.github-year-chart');
-    const countEl = document.getElementById('github-contrib-count');
-    const periodEl = document.getElementById('github-contrib-period');
     const tooltip = document.getElementById('github-tooltip');
     const tooltipText = document.getElementById('github-tooltip-text');
     const tooltipCaret = document.getElementById('github-tooltip-caret');
     const wrapper = document.querySelector<HTMLElement>('.github-svg-wrapper');
-
-    const activeClasses = ['text-neutral-900', 'dark:text-neutral-100', 'underline', 'underline-offset-[4px]', 'decoration-neutral-400', 'dark:decoration-neutral-400', 'font-normal'];
-    const inactiveClasses = ['text-neutral-500'];
-
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const year = btn.getAttribute('data-year');
-        if (!year) return;
-
-        if (tooltip) tooltip.classList.add('hidden');
-
-        // Update button styles
-        buttons.forEach((b) => {
-          b.classList.remove(...activeClasses);
-          b.classList.add(...inactiveClasses);
-        });
-        btn.classList.add(...activeClasses);
-        btn.classList.remove(...inactiveClasses);
-
-        // Switch visible chart
-        charts.forEach((chart) => {
-          if (chart.getAttribute('data-chart-year') === year) {
-            chart.classList.remove('hidden');
-            const total = chart.getAttribute('data-total');
-            const period = chart.getAttribute('data-period');
-            if (countEl && total) countEl.textContent = `${total} contributions`;
-            if (periodEl && period) periodEl.textContent = period;
-          } else {
-            chart.classList.add('hidden');
-          }
-        });
-      });
-    });
 
     // Tooltip handling
     if (wrapper && tooltip && tooltipText) {
