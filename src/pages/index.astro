@@ -18,6 +18,22 @@ import ContactSection from '../components/sections/ContactSection.astro';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brandon Jeremiah — Software Engineer</title>
     <meta name="description" content="Brandon Jeremiah is a software engineer who builds tools and products that make repeated work easier and faster." />
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn / Threads -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:title" content="Brandon Jeremiah — Software Engineer" />
+    <meta property="og:description" content="Brandon Jeremiah is a software engineer who builds tools and products that make repeated work easier and faster." />
+    <meta property="og:image" content={new URL('/img/personalsite.webp', Astro.url).href} />
+    <meta property="og:image:type" content="image/webp" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url.href} />
+    <meta name="twitter:title" content="Brandon Jeremiah — Software Engineer" />
+    <meta name="twitter:description" content="Brandon Jeremiah is a software engineer who builds tools and products that make repeated work easier and faster." />
+    <meta name="twitter:image" content={new URL('/img/personalsite.webp', Astro.url).href} />
+
     <meta name="theme-color" id="theme-color-meta" content="#181818" />
     <script is:inline>
       (function () {

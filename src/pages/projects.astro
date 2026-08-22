@@ -8,6 +8,23 @@ import '../styles/global.css';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects | Brandon Jeremiah Sutedja</title>
+    <meta name="description" content="Explore projects, tools, and apps built by Brandon Jeremiah." />
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn / Threads -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:title" content="Projects | Brandon Jeremiah Sutedja" />
+    <meta property="og:description" content="Explore projects, tools, and apps built by Brandon Jeremiah." />
+    <meta property="og:image" content={new URL('/img/personalsite.webp', Astro.url).href} />
+    <meta property="og:image:type" content="image/webp" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url.href} />
+    <meta name="twitter:title" content="Projects | Brandon Jeremiah Sutedja" />
+    <meta name="twitter:description" content="Explore projects, tools, and apps built by Brandon Jeremiah." />
+    <meta name="twitter:image" content={new URL('/img/personalsite.webp', Astro.url).href} />
+
     <meta name="theme-color" id="theme-color-meta" content="#181818" />
     <script is:inline>
       (function () {
