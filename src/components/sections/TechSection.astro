@@ -280,11 +280,11 @@ const techCategories = [
               </div>
 
               <!-- Overlay Watermark Icon (All screens) -->
-              <div class="absolute -right-4 -bottom-4 w-20 h-20 pointer-events-none opacity-[0.06] dark:opacity-[0.09] rotate-12 group-hover:opacity-[0.16] dark:group-hover:opacity-[0.20] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <div class="absolute -right-4 -bottom-4 w-20 h-20 pointer-events-none opacity-[0.06] dark:opacity-[0.09] rotate-12 group-hover:opacity-[0.22] dark:group-hover:opacity-[0.28] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <img
                   src={tech.icon}
                   alt=""
-                  class={`w-full h-full ${tech.imgClass || 'object-contain'} ${tech.darkInvert ? 'dark:invert' : ''}`}
+                  class={`w-full h-full ${tech.imgClass || 'object-contain'} grayscale group-hover:grayscale-0 transition-all duration-300 ${tech.darkInvert ? 'dark:invert' : ''}`}
                   loading="lazy"
                 />
               </div>
@@ -295,9 +295,3 @@ const techCategories = [
     ))}
   </div>
 </section>
-
-
-
-
-
-
