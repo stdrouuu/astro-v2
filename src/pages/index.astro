@@ -16,8 +16,15 @@ import ContactSection from '../components/sections/ContactSection.astro';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brandon Jeremiah — Software Engineer</title>
-    <meta name="description" content="Brandon Jeremiah is a software engineer who builds tools and products that make repeated work easier and faster." />
+    <title>Brandon Jeremiah — Software Engineer | brandonjeremiah.xyz</title>
+    <meta name="description" content="Brandon Jeremiah Sutedja is a Software Engineer based in Jakarta, Indonesia. He builds tools and products that make repeated work easier and faster." />
+    <meta name="keywords" content="Brandon Jeremiah, Brandon Jeremiah Sutedja, Software Engineer, Frontend Developer, Jakarta, Indonesia, UKRIDA, Computer Science" />
+    <meta name="author" content="Brandon Jeremiah Sutedja" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="https://www.brandonjeremiah.xyz/" />
+    <!-- Geo -->
+    <meta name="geo.region" content="ID-JK" />
+    <meta name="geo.placename" content="Jakarta, Indonesia" />
 
     <!-- Open Graph / Facebook / WhatsApp / LinkedIn / Threads -->
     <meta property="og:type" content="website" />
@@ -42,6 +49,61 @@ import ContactSection from '../components/sections/ContactSection.astro';
     <meta name="twitter:image:alt" content="Brandon Jeremiah — Software Engineer" />
 
     <meta name="theme-color" id="theme-color-meta" content="#181818" />
+
+    <!-- JSON-LD: Person Schema (sinyal utama untuk ranking nama orang) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Brandon Jeremiah Sutedja",
+        "alternateName": ["Brandon Jeremiah", "Brandon Sutedja"],
+        "url": "https://www.brandonjeremiah.xyz",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://www.brandonjeremiah.xyz/img/face.webp",
+          "width": 400,
+          "height": 400
+        },
+        "jobTitle": "Software Engineer",
+        "description": "Brandon Jeremiah Sutedja is a Software Engineer based in Jakarta, Indonesia, specializing in frontend development, backend architecture, and full-stack product development.",
+        "nationality": "Indonesian",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jakarta",
+          "addressCountry": "ID"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Universitas Kristen Krida Wacana",
+          "alternateName": "UKRIDA"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/brandon-jeremiah-sutedja/",
+          "https://instagram.com/brandon._js",
+          "https://github.com/stdrouuu"
+        ],
+        "knowsAbout": ["Software Engineering", "Frontend Development", "React", "TypeScript", "Node.js"],
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.brandonjeremiah.xyz/"
+        }
+      }
+    </script>
+
+    <!-- JSON-LD: WebSite Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Brandon Jeremiah",
+        "url": "https://www.brandonjeremiah.xyz",
+        "description": "Personal portfolio of Brandon Jeremiah Sutedja, Software Engineer based in Jakarta, Indonesia.",
+        "author": {
+          "@type": "Person",
+          "name": "Brandon Jeremiah Sutedja"
+        }
+      }
+    </script>
     <script is:inline>
       (function () {
         const saved = localStorage.getItem('theme');
