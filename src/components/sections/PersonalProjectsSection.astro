@@ -112,6 +112,7 @@ const bentoProjects: BentoProject[] = [
                   alt={item.title}
                   class={`w-full h-full object-cover rounded-md ${item.imgClass || ''}`}
                   loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <span class="font-mono text-[16px] font-semibold text-neutral-600 dark:text-neutral-300 select-none">
@@ -179,6 +180,7 @@ const bentoProjects: BentoProject[] = [
                 alt={project.title}
                 class={`w-full h-full object-cover object-center ${project.imgClass || ''}`}
                 loading="lazy"
+                decoding="async"
               />
             ) : (
               <div class="flex flex-col items-center justify-center gap-1.5 text-neutral-400 dark:text-neutral-500 select-none">
