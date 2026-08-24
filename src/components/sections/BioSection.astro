@@ -9,6 +9,10 @@ import GithubSection from './GithubSection.astro';
       <img
         src="/img/face.webp"
         alt="Brandon Jeremiah"
+        width="64"
+        height="64"
+        fetchpriority="high"
+        decoding="async"
         class="w-full h-full object-cover scale-110 group-hover:scale-120 transition-transform duration-300 origin-center"
       />
       <span
@@ -42,6 +46,8 @@ import GithubSection from './GithubSection.astro';
     <img
       src="/img/catbanner.gif"
       alt="Banner"
+      loading="lazy"
+      decoding="async"
       class="w-full h-full object-cover object-bottom"
     />
   </div>

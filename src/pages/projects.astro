@@ -608,7 +608,10 @@ import '../styles/global.css';
 <script>
   import Lenis from 'lenis';
 
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (!isTouch) {
+    new Lenis({
+      autoRaf: true,
+    });
+  }
 </script>
