@@ -1,117 +1,26 @@
 ---
-// Helper function to generate GitHub contribution SVG
-function generateSvg(contributions: Array<{ date: string; count: number; level: number }>) {
-  if (!contributions || !contributions.length) return '';
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  
-  const [y, m, d] = contributions[0].date.split('-').map(Number);
-  const startDate = new Date(Date.UTC(y, m - 1, d));
-  const startDayOfWeek = startDate.getUTCDay(); // 0: Sun, 1: Mon, ...
-  
-  let lastMonth = -1;
-  const monthLabels: Array<{ name: string; x: number; week: number }> = [];
-  const rects: string[] = [];
-  let maxWeek = 0;
-  
-  contributions.forEach((day, index) => {
-    const [, cm] = day.date.split('-').map(Number);
-    const cellIndex = startDayOfWeek + index;
-    const weekIndex = Math.floor(cellIndex / 7);
-    const dayOfWeek = cellIndex % 7;
-    if (weekIndex > maxWeek) maxWeek = weekIndex;
-    
-    // Month label
-    if (cm - 1 !== lastMonth) {
-      const lastLabelWeek = monthLabels.length ? monthLabels[monthLabels.length - 1].week : -99;
-      if (weekIndex - lastLabelWeek >= 2) {
-        monthLabels.push({ name: monthNames[cm - 1], x: 28 + weekIndex * 12, week: weekIndex });
-        lastMonth = cm - 1;
-      }
-    }
-    
-    const x = 28 + weekIndex * 12;
-    const y = 20 + dayOfWeek * 12;
-    
-    rects.push(
-      `<rect class="github-cell" data-score="${day.level}" data-date="${day.date}" data-count="${day.count}" x="${x}" y="${y}" width="10" height="10" rx="2"></rect>`
-    );
-  });
-  
-  const totalWidth = 28 + (maxWeek + 1) * 12 + 4;
-  
-  return `<svg viewBox="0 0 ${totalWidth} 110" width="${totalWidth}" height="110" xmlns="http://www.w3.org/2000/svg">
-  <text class="day-label" x="0" y="40">Mon</text>
-  <text class="day-label" x="0" y="64">Wed</text>
-  <text class="day-label" x="0" y="89">Fri</text>
-  ${monthLabels.map(ml => `<text class="month-label" x="${ml.x}" y="10">${ml.name}</text>`).join('\n  ')}
-  ${rects.join('\n  ')}
-</svg>`;
-}
+import { alignContributionsToDate, generateSvg, fetchUserContributions } from '../../utils/githubContributions';
 
-interface YearData {
-  total: number;
-  label: string;
-  periodText: string;
-  svg: string;
-}
-
-const charts: Record<string, YearData> = {};
-let availableYears: string[] = [];
+let initialSvg = '';
 
 try {
-  const [allRes, lastRes] = await Promise.all([
-    fetch('https://github-contributions-api.jogruber.de/v4/stdrouuu'),
-    fetch('https://github-contributions-api.jogruber.de/v4/stdrouuu?y=last')
-  ]);
-
-  if (allRes.ok && lastRes.ok) {
-    const allData = await allRes.json();
-    const lastData = await lastRes.json();
-
-    // Last 12 months
-    charts['last'] = {
-      total: lastData.total?.lastYear ?? 0,
-      label: 'Last 12 months',
-      periodText: 'in the last 12 months',
-      svg: generateSvg(lastData.contributions || [])
-    };
-
-    // Extract individual years in descending order
-    const years = Object.keys(allData.total || {}).sort((a, b) => Number(b) - Number(a));
-    availableYears = years;
-
-    years.forEach((yr) => {
-      const yearContributions = (allData.contributions || []).filter((c: { date: string }) => c.date.startsWith(yr));
-      charts[yr] = {
-        total: allData.total[yr] ?? 0,
-        label: yr,
-        periodText: `in ${yr}`,
-        svg: generateSvg(yearContributions)
-      };
-    });
+  const contributions = await fetchUserContributions('stdrouuu');
+  if (contributions.length) {
+    const aligned = alignContributionsToDate(contributions);
+    initialSvg = generateSvg(aligned);
   }
 } catch (e) {
-  console.error('Failed to fetch GitHub contributions:', e);
-}
-
-// Fallback if API fails
-if (!charts['last']) {
-  charts['last'] = {
-    total: 499,
-    label: 'Last 12 months',
-    periodText: 'in the last 12 months',
-    svg: ''
-  };
+  console.error('Failed to fetch GitHub contributions at build time:', e);
 }
 ---
 
 <section class="space-y-3">
   <!-- Contribution SVG Grids -->
-  <div class="overflow-x-auto py-1 custom-scrollbar">
-    <div class="min-w-[670px] w-full github-svg-wrapper relative">
+  <div class="py-1">
+    <div class="w-full github-svg-wrapper relative">
       <div id="github-chart-container" class="w-full">
-        {charts['last']?.svg ? (
-          <Fragment set:html={charts['last'].svg} />
+        {initialSvg ? (
+          <Fragment set:html={initialSvg} />
         ) : (
           <p class="text-[13px] text-neutral-500 font-mono py-8 text-center">Loading contributions…</p>
         )}
@@ -158,6 +67,8 @@ if (!charts['last']) {
 </section>
 
 <script>
+  import { alignContributionsToDate, generateSvg, fetchUserContributions, type ContributionDay } from '../../utils/githubContributions';
+
   function formatTooltipDate(dateStr: string) {
     const [, m, d] = dateStr.split('-').map(Number);
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -177,63 +88,124 @@ if (!charts['last']) {
     const tooltipCaret = document.getElementById('github-tooltip-caret');
     const wrapper = document.querySelector<HTMLElement>('.github-svg-wrapper');
 
+    if (!wrapper || !tooltip || !tooltipText) return;
+
+    // Prevent duplicate event listener attachments
+    if ((wrapper as any)._githubInteractiveInitialized) return;
+    (wrapper as any)._githubInteractiveInitialized = true;
+
     // Tooltip handling
-    if (wrapper && tooltip && tooltipText) {
-      wrapper.addEventListener('mouseover', (e) => {
-        const target = (e.target as HTMLElement)?.closest('rect');
-        if (!target) return;
+    wrapper.addEventListener('mouseover', (e) => {
+      const target = (e.target as HTMLElement)?.closest('rect');
+      if (!target) return;
 
-        const count = target.getAttribute('data-count');
-        const date = target.getAttribute('data-date');
-        if (!date || count === null) return;
+      const count = target.getAttribute('data-count');
+      const date = target.getAttribute('data-date');
+      if (!date || count === null) return;
 
-        const cNum = Number(count);
-        const countText = cNum === 0 ? 'No contributions' : cNum === 1 ? '1 contribution' : `${cNum} contributions`;
-        const formattedDate = formatTooltipDate(date);
+      const cNum = Number(count);
+      const countText = cNum === 0 ? 'No contributions' : cNum === 1 ? '1 contribution' : `${cNum} contributions`;
+      const formattedDate = formatTooltipDate(date);
 
-        tooltipText.textContent = `${countText} on ${formattedDate}.`;
+      tooltipText.textContent = `${countText} on ${formattedDate}.`;
 
-        // Measure tooltip width after setting text
-        tooltip.classList.remove('hidden');
-        const tooltipWidth = tooltip.offsetWidth;
-        const halfWidth = tooltipWidth / 2;
+      // Measure tooltip width after setting text
+      tooltip.classList.remove('hidden');
+      const tooltipWidth = tooltip.offsetWidth;
+      const halfWidth = tooltipWidth / 2;
 
-        const rectBounds = target.getBoundingClientRect();
-        const targetCenterX = rectBounds.left + rectBounds.width / 2;
-        const targetTop = rectBounds.top - 8;
+      const rectBounds = target.getBoundingClientRect();
+      const targetCenterX = rectBounds.left + rectBounds.width / 2;
+      const targetTop = rectBounds.top - 8;
 
-        // Clamp tooltip within viewport boundaries so it is never cropped
-        const screenPadding = 8;
-        const minCenterX = halfWidth + screenPadding;
-        const maxCenterX = window.innerWidth - halfWidth - screenPadding;
-        const clampedCenterX = Math.max(minCenterX, Math.min(maxCenterX, targetCenterX));
+      // Clamp tooltip within viewport boundaries so it is never cropped
+      const screenPadding = 8;
+      const minCenterX = halfWidth + screenPadding;
+      const maxCenterX = window.innerWidth - halfWidth - screenPadding;
+      const clampedCenterX = Math.max(minCenterX, Math.min(maxCenterX, targetCenterX));
 
-        tooltip.style.left = `${clampedCenterX}px`;
-        tooltip.style.top = `${targetTop}px`;
+      tooltip.style.left = `${clampedCenterX}px`;
+      tooltip.style.top = `${targetTop}px`;
 
-        // Align caret arrow with the target cell
-        if (tooltipCaret) {
-          const caretOffset = targetCenterX - clampedCenterX;
-          tooltipCaret.style.left = `calc(50% + ${caretOffset}px)`;
-        }
-      });
+      // Align caret arrow with the target cell
+      if (tooltipCaret) {
+        const caretOffset = targetCenterX - clampedCenterX;
+        tooltipCaret.style.left = `calc(50% + ${caretOffset}px)`;
+      }
+    });
 
-      wrapper.addEventListener('mouseout', (e) => {
-        const target = (e.target as HTMLElement)?.closest('rect');
-        if (target) {
-          tooltip.classList.add('hidden');
-        }
-      });
-
-      window.addEventListener('scroll', () => {
+    wrapper.addEventListener('mouseout', (e) => {
+      const target = (e.target as HTMLElement)?.closest('rect');
+      if (target) {
         tooltip.classList.add('hidden');
-      }, { passive: true });
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      tooltip.classList.add('hidden');
+    }, { passive: true });
+  }
+
+  async function loadGithubContributions() {
+    const container = document.getElementById('github-chart-container');
+    if (!container) return;
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const todayStr = `${year}-${month}-${day}`;
+
+    const cacheKey = `gh_contrib_v3_${todayStr}`;
+
+    // Inspect the rendered grid to see what date it currently ends on
+    const cells = container.querySelectorAll<SVGRectElement>('rect.github-cell');
+    const lastCell = cells[cells.length - 1];
+    const lastRenderedDate = lastCell?.getAttribute('data-date');
+
+    // 1. Check if we already have today's data cached in sessionStorage
+    const cachedData = sessionStorage.getItem(cacheKey);
+    if (cachedData) {
+      try {
+        const parsed = JSON.parse(cachedData) as ContributionDay[];
+        if (lastRenderedDate !== todayStr) {
+          const aligned = alignContributionsToDate(parsed, now);
+          const svg = generateSvg(aligned);
+          if (svg) container.innerHTML = svg;
+        }
+        return;
+      } catch {
+        sessionStorage.removeItem(cacheKey);
+      }
+    }
+
+    // 2. Fetch fresh contributions (including private contributions) from API
+    try {
+      const contributions = await fetchUserContributions('stdrouuu');
+      if (!contributions.length) return;
+
+      try {
+        sessionStorage.setItem(cacheKey, JSON.stringify(contributions));
+      } catch {}
+
+      const aligned = alignContributionsToDate(contributions, now);
+      const svg = generateSvg(aligned);
+      if (svg) {
+        container.innerHTML = svg;
+      }
+    } catch (err) {
+      console.warn('Failed to load GitHub contributions for system date:', err);
     }
   }
 
+  function init() {
+    setupGithubInteractive();
+    loadGithubContributions();
+  }
+
   // Run on page load and support view transitions
-  setupGithubInteractive();
-  document.addEventListener('astro:page-load', setupGithubInteractive);
+  init();
+  document.addEventListener('astro:page-load', init);
 </script>
 
 <style is:global>
