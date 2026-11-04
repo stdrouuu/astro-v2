@@ -7,16 +7,18 @@ interface ExperienceItem {
   logoClass?: string;
   url?: string;
   description: string;
+  stacks?: string[];
 }
 
 const workItems: ExperienceItem[] = [
   {
     period: '2026 — Present',
-    role: 'Fullstack Developer',
+    role: 'Full Stack Developer',
     organization: 'GPdI Duta Bandara Permai',
     logo: '/img/gpdi.webp',
     description:
-    'Developed and maintained internal management systems, web applications, and congregation service platforms to streamline church administration and operations.',
+      'Developed and maintained internal management systems, web applications, and congregation service platforms to streamline church administration and operations.',
+    stacks: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'Tailwind CSS'],
   },
   {
     period: '2026 — Present',
@@ -26,6 +28,7 @@ const workItems: ExperienceItem[] = [
     logoClass: 'rounded-md overflow-hidden',
     description:
       'Building custom web applications, responsive modern user interfaces, and fullstack digital solutions for clients and independent projects.',
+    stacks: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Node.js'],
   },
 ];
 
@@ -138,8 +141,15 @@ const educationItems: ExperienceItem[] = [
           </summary>
 
           <!-- Accordion Body -->
-          <div class="pl-[54px] sm:pl-[64px] pt-2 text-neutral-600 dark:text-neutral-400 text-[15px] leading-relaxed">
+          <div class="pl-[54px] sm:pl-[64px] pt-2 space-y-2.5 text-neutral-600 dark:text-neutral-400 text-[15px] leading-relaxed">
             <p>{item.description}</p>
+            {item.stacks && item.stacks.length > 0 && (
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 pt-0.5 text-[14px] text-neutral-500 dark:text-neutral-400 font-normal">
+                {item.stacks.map((stack) => (
+                  <span>{stack}</span>
+                ))}
+              </div>
+            )}
           </div>
         </details>
       ))
