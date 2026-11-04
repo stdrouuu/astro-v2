@@ -17,7 +17,7 @@ try {
 <section class="space-y-3">
   <!-- Contribution SVG Grids -->
   <div class="py-1">
-    <div class="w-full github-svg-wrapper relative">
+    <div class="w-full github-svg-wrapper relative overflow-x-auto overflow-y-hidden pb-2.5 sm:pb-0">
       <div id="github-chart-container" class="w-full">
         {initialSvg ? (
           <Fragment set:html={initialSvg} />
@@ -198,9 +198,19 @@ try {
     }
   }
 
+  function scrollChartToEnd() {
+    const wrapper = document.querySelector<HTMLElement>('.github-svg-wrapper');
+    if (wrapper) {
+      wrapper.scrollLeft = wrapper.scrollWidth;
+    }
+  }
+
   function init() {
     setupGithubInteractive();
-    loadGithubContributions();
+    loadGithubContributions().then(() => {
+      scrollChartToEnd();
+    });
+    scrollChartToEnd();
   }
 
   // Run on page load and support view transitions
@@ -210,10 +220,51 @@ try {
 
 <style is:global>
   /* Style the inlined SVG elements */
+  .github-svg-wrapper {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 #e2e8f0;
+  }
+  .github-svg-wrapper::-webkit-scrollbar {
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .github-svg-wrapper::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 9999px;
+  }
+  .github-svg-wrapper::-webkit-scrollbar-thumb {
+    background-color: #94a3b8;
+    border-radius: 9999px;
+  }
+  .dark .github-svg-wrapper {
+    scrollbar-color: #475569 #1e293b;
+  }
+  .dark .github-svg-wrapper::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+  .dark .github-svg-wrapper::-webkit-scrollbar-thumb {
+    background-color: #475569;
+  }
+  @media (min-width: 640px) {
+    .github-svg-wrapper {
+      scrollbar-width: none;
+    }
+    .github-svg-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+  }
   .github-svg-wrapper svg {
     width: 100% !important;
+    min-width: 660px !important;
     height: auto !important;
     background: transparent !important;
+  }
+  @media (min-width: 640px) {
+    .github-svg-wrapper svg {
+      min-width: 100% !important;
+    }
   }
   
   /* Month names and day labels in the SVG */
