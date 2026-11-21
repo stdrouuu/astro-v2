@@ -1,0 +1,58 @@
+---
+import SectionCat from '../SectionCat.astro';
+
+interface Recognition {
+  title: string;
+  organizer: string;
+  status?: 'In Progress';
+  description?: string;
+  icon: string;
+}
+
+const recognitions: Recognition[] = [
+  {
+    title: 'STACK GDGoC ITB Hackathon 2026',
+    status: 'In Progress',
+    organizer: 'Google Developer Group on Campus ITB',
+    description: 'Qualified to Semifinal from 3,000+ registered teams and 9,000+ registered members across Indonesia.',
+    icon: '/img/google-developers.webp',
+  },
+  {
+    title: 'Sea × OpenAI Regional Codex Hackathon Indonesia',
+    organizer: 'Sea × Shopee × OpenAI',
+    icon: '/img/sea-logo.webp',
+  },
+];
+---
+
+<section id="recognition" class="space-y-4 sm:space-y-6" aria-labelledby="recognition-title">
+  <div>
+    <h2 id="recognition-title" class="max-[420px]:pr-[4.5rem] max-[380px]:!text-[1.375rem] relative font-pixel text-3xl sm:text-3xl md:text-4xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
+      <span class="text-neutral-400">##</span>
+      <span>Competitions</span>
+      <SectionCat activity="winning" />
+    </h2>
+    <p class="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed">
+      Competitions and hackathons where I&apos;ve challenged myself and built with others.
+    </p>
+  </div>
+  <ul class="space-y-3 sm:space-y-3.5">
+    {recognitions.map(({ title, organizer, description, icon, status }) => (
+      <li class="flex items-start gap-3 sm:gap-3.5 py-1">
+        <img class="mt-0.5 h-11 w-11 flex-shrink-0 rounded-md bg-white object-contain p-1.5" src={icon} width="44" height="44" alt="" loading="lazy" decoding="async" />
+        <div class="min-w-0 space-y-0.5">
+          <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <h3 class="font-medium leading-snug text-neutral-900 dark:text-neutral-100">{title}</h3>
+            {status && (
+              <span class="whitespace-nowrap rounded-full bg-[#d6f5e4] px-2 py-0.5 text-xs font-medium text-[#08734d] dark:bg-[#1b4132] dark:text-[#89e6b7]">
+                {status}
+              </span>
+            )}
+          </div>
+          <p class="text-[15px] leading-snug text-neutral-600 dark:text-neutral-400">{organizer}</p>
+          {description && <p class="pt-1 text-[15px] leading-snug text-neutral-600 dark:text-neutral-400">{description}</p>}
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

@@ -1,146 +1,47 @@
 ---
-import '../styles/global.css';
-import NavbarSection from '../components/sections/NavbarSection.astro';
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
 import BioSection from '../components/sections/BioSection.astro';
-
 import TechSection from '../components/sections/TechSection.astro';
 import WorkEducationSection from '../components/sections/WorkEducationSection.astro';
-import SelectedWorkSection from '../components/sections/SelectedWorkSection.astro';
 import PersonalProjectsSection from '../components/sections/PersonalProjectsSection.astro';
 import CertificationsSection from '../components/sections/CertificationsSection.astro';
-import ContactSection from '../components/sections/ContactSection.astro';
+import RecognitionSection from '../components/sections/RecognitionSection.astro';
+
+const description = 'Brandon Jeremiah Sutedja is a software engineer in Jakarta building full-stack applications, client systems, and everyday web tools.';
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Brandon Jeremiah Sutedja',
+  alternateName: ['Brandon Jeremiah', 'Brandon Sutedja'],
+  url: 'https://www.brandonjeremiah.xyz/',
+  image: 'https://www.brandonjeremiah.xyz/img/face.webp',
+  jobTitle: 'Software Engineer',
+  address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' },
+  affiliation: { '@type': 'EducationalOrganization', name: 'Universitas Kristen Krida Wacana', alternateName: 'UKRIDA' },
+  sameAs: ['https://www.linkedin.com/in/brandon-jeremiah-sutedja/', 'https://github.com/stdrouuu', 'https://instagram.com/brandon._js'],
+};
 ---
 
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brandon Jeremiah Sutedja - Software Engineer</title>
-    <meta name="description" content="Brandon is a Software Engineer based in Jakarta, Indonesia. Building fast, practical web tools and products that simplify repeated workflows." />
-    <meta name="keywords" content="Brandon Jeremiah, Brandon Jeremiah Sutedja, Software Engineer, Frontend Developer, Jakarta, Indonesia, UKRIDA, Computer Science" />
-    <meta name="author" content="Brandon Jeremiah Sutedja" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <link rel="canonical" href="https://www.brandonjeremiah.xyz/" />
-    <!-- Preload Critical Fonts & LCP Image -->
-    <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin />
+<PortfolioLayout title="Brandon Jeremiah Sutedja | Software Engineer" description={description}>
+  <Fragment slot="head">
     <link rel="preload" as="image" href="/img/face.webp" type="image/webp" fetchpriority="high" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <!-- Geo -->
     <meta name="geo.region" content="ID-JK" />
     <meta name="geo.placename" content="Jakarta, Indonesia" />
-
-    <!-- Open Graph / Facebook / WhatsApp / LinkedIn / Threads -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.brandonjeremiah.xyz/" />
-    <meta property="og:site_name" content="Brandon Jeremiah" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Brandon Jeremiah Sutedja — Software Engineer" />
-    <meta property="og:description" content="Software Engineer based in Jakarta. Building fast web tools and products that simplify repeated workflows." />
-    <meta property="og:image" content="https://www.brandonjeremiah.xyz/img/personalsite.jpg" />
-    <meta property="og:image:secure_url" content="https://www.brandonjeremiah.xyz/img/personalsite.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Brandon Jeremiah Sutedja — Software Engineer" />
-
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.brandonjeremiah.xyz/" />
-    <meta name="twitter:title" content="Brandon Jeremiah Sutedja — Software Engineer" />
-    <meta name="twitter:description" content="Software Engineer based in Jakarta. Building fast web tools and products that simplify repeated workflows." />
-    <meta name="twitter:image" content="https://www.brandonjeremiah.xyz/img/personalsite.jpg" />
-    <meta name="twitter:image:alt" content="Brandon Jeremiah Sutedja — Software Engineer" />
-
-    <meta name="theme-color" id="theme-color-meta" content="#181818" />
-
-    <!-- JSON-LD: Person Schema (sinyal utama untuk ranking nama orang) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Brandon Jeremiah Sutedja",
-        "alternateName": ["Brandon Jeremiah", "Brandon Sutedja"],
-        "url": "https://www.brandonjeremiah.xyz",
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://www.brandonjeremiah.xyz/img/face.webp",
-          "width": 400,
-          "height": 400
-        },
-        "jobTitle": "Software Engineer",
-        "description": "Brandon Jeremiah Sutedja is a Software Engineer based in Jakarta, Indonesia, specializing in frontend development, backend architecture, and full-stack product development.",
-        "nationality": "Indonesian",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Jakarta",
-          "addressCountry": "ID"
-        },
-        "alumniOf": {
-          "@type": "EducationalOrganization",
-          "name": "Universitas Kristen Krida Wacana",
-          "alternateName": "UKRIDA"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/brandon-jeremiah-sutedja/",
-          "https://instagram.com/brandon._js",
-          "https://github.com/stdrouuu"
-        ],
-        "knowsAbout": ["Software Engineering", "Frontend Development", "React", "TypeScript", "Node.js"],
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://www.brandonjeremiah.xyz/"
-        }
-      }
-    </script>
-
-    <!-- JSON-LD: WebSite Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Brandon Jeremiah",
-        "url": "https://www.brandonjeremiah.xyz",
-        "description": "Personal portfolio of Brandon Jeremiah Sutedja, Software Engineer based in Jakarta, Indonesia.",
-        "author": {
-          "@type": "Person",
-          "name": "Brandon Jeremiah Sutedja"
-        }
-      }
-    </script>
-    <script is:inline src="/theme.js"></script>
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="ac1f397a-d0e7-4d6f-b242-e74a196357f2"></script>
-  </head>
-  <body class="font-sans antialiased selection:bg-neutral-200 selection:text-neutral-900 min-h-screen text-[17px] sm:text-[17px] leading-relaxed">
-    <div class="max-w-2xl mx-auto px-8 sm:px-12 md:px-16 py-6 sm:py-8">
-
-      <NavbarSection />
-
-      <main class="space-y-10 sm:space-y-16">
-        <BioSection />
-        <TechSection />
-        <WorkEducationSection />
-        <SelectedWorkSection />
-        <PersonalProjectsSection />
-        <CertificationsSection />
-        <ContactSection />
-      </main>
-
-    </div>
-  </body>
-</html>
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  </Fragment>
+  <BioSection />
+  <WorkEducationSection />
+  <RecognitionSection />
+  <PersonalProjectsSection />
+  <TechSection />
+  <CertificationsSection />
+</PortfolioLayout>
 
 <script>
   import Lenis from 'lenis';
 
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   if (!isTouch) {
-    new Lenis({
-      autoRaf: true,
-    });
+    new Lenis({ autoRaf: true });
   }
 </script>

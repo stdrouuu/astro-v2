@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @font-face {
   font-family: "Geist Pixel";
   src: url("/fonts/GeistPixel-Square.woff2") format("woff2");

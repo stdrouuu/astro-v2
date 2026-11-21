@@ -2,7 +2,7 @@
 import GithubSection from './GithubSection.astro';
 ---
 
-<section id="content" class="space-y-5 sm:space-y-6">
+<section id="about" class="space-y-5 sm:space-y-6" aria-labelledby="profile-name">
   <!-- Profile Avatar & Name -->
   <div class="flex items-center gap-3.5 sm:gap-4">
     <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden shadow-sm border border-neutral-200/80 dark:border-neutral-700/60 flex-shrink-0 group">
@@ -13,7 +13,7 @@ import GithubSection from './GithubSection.astro';
         height="64"
         fetchpriority="high"
         decoding="async"
-        class="w-full h-full object-cover scale-110 group-hover:scale-120 transition-transform duration-300 origin-center"
+        class="w-full h-full object-cover scale-110 motion-safe:group-hover:scale-120 motion-safe:transition-transform motion-safe:duration-200 origin-center"
       />
       <span
         class="absolute bottom-1 right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-emerald-500 border-2 border-white dark:border-neutral-900 rounded-full"
@@ -21,38 +21,36 @@ import GithubSection from './GithubSection.astro';
       ></span>
     </div>
     <div class="min-w-0">
-      <h1 class="flex items-center gap-1.5 font-medium text-[18px] sm:text-lg text-neutral-900 dark:text-neutral-100 m-0">
-        <span class="truncate">Brandon Jeremiah Sutedja</span>
-        <!-- <svg class="w-4 h-4 text-[#6e93f0] fill-current inline-block flex-shrink-0" viewBox="0 0 24 24" aria-label="Verified">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.2 14.2l-3.5-3.5 1.4-1.4 2.1 2.1 5.9-5.9 1.4 1.4-7.3 7.3z"/>
-        </svg> -->
+      <h1 id="profile-name" class="font-medium text-[18px] sm:text-lg text-neutral-900 dark:text-neutral-100 m-0">
+        Brandon Jeremiah Sutedja
       </h1>
-      <h2 class="font-pixel text-[15px] sm:text-sm text-neutral-500 flex items-center gap-1 mt-0.5 leading-snug m-0 font-normal">
-        <span>Software Engineer | U.G Computer Science @UKRIDA</span>
-      </h2>
+      <p class="font-pixel text-[15px] sm:text-sm text-neutral-500 mt-0.5 leading-snug">
+        AI & Software Engineer | Computer Science @UKRIDA
+      </p>
     </div>
   </div>
 
   <p class="text-neutral-700 dark:text-neutral-300 text-[16.5px] sm:text-[17.5px] leading-relaxed">
-    Hi, I&apos;m Brandon (19), a Software Engineer based in Jakarta, Indonesia.
-    Frontend is my strongest discipline, but I work across product, backend architecture, and implementation to solve problems end to end.
+    Hi, I&apos;m Brandon (20), an AI & Software Engineer based in Jakarta, Indonesia.
+    I build products end to end, from defining what to build to designing the backend and shipping the frontend. Frontend is my strongest discipline, and I also build agentic AI systems.
   </p>
 
   <!-- Github Contributions -->
   <GithubSection />
 
   <!-- Profile Banner -->
-  <div class="w-full h-28 sm:h-32 rounded-md overflow-hidden shadow-xs border border-neutral-200/80 dark:border-neutral-700/60 relative">
+  <picture class="block w-full h-28 sm:h-32 rounded-md overflow-hidden shadow-xs border border-neutral-200/80 dark:border-neutral-700/60 relative">
+    <source srcset="/img/catbanner-still.webp" media="(prefers-reduced-motion: reduce)" />
     <img
       src="/img/catbanner.gif"
-      alt="Banner"
+      alt=""
       width="672"
       height="128"
       loading="lazy"
       decoding="async"
       class="w-full h-full object-cover object-bottom"
     />
-  </div>
+  </picture>
 
   <!-- Social Icons -->
   <div class="flex items-center gap-5 sm:gap-4 text-neutral-500 dark:text-neutral-400 pt-1">

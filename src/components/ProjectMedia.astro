@@ -1,0 +1,23 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+const { cover, tone, mark } = project;
+---
+
+<div class="project-media" data-tone={tone}>
+  {cover ? (
+    <img src={cover.src} alt={cover.alt} class={`media-${project.slug}`} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  ) : (
+    <div class="missing-image-avatar" role="img" aria-label="Project image not added yet">
+      <span class="missing-image-sun" aria-hidden="true">☼</span>
+      <span class="missing-image-card" aria-hidden="true"><span class="missing-image-face">•ᴗ•</span><span class="missing-image-corner">?</span></span>
+      <span class="missing-image-sparkle" aria-hidden="true">✦</span>
+    </div>
+  )}
+</div>

@@ -1,0 +1,82 @@
+---
+interface Props {
+  activity: 'reading' | 'winning' | 'coding' | 'certified' | 'stacking' | 'calling';
+}
+
+const { activity } = Astro.props;
+---
+
+<span
+  class:list={[
+    // The WebP has transparent padding to the right of the visible tail.
+    'pointer-events-none absolute right-0 z-10 translate-x-[20%]',
+    activity === 'calling'
+      ? 'top-[-3rem] w-[6.5rem] sm:top-[-3.5rem] sm:w-[7.5rem]'
+      : 'top-1/2 w-[4.75rem] max-[420px]:w-[3.5rem] sm:w-[5.5rem]',
+    activity === 'certified' && '-translate-y-[57%]',
+    activity !== 'certified' && activity !== 'calling' && '-translate-y-[54%]',
+  ]}
+  aria-hidden="true"
+>
+  <img class="block w-full" src="/img/pixel-cat-peek.webp" width="1435" height="973" alt="" />
+  <svg
+    class:list={[
+      'absolute',
+      activity === 'certified' ? 'left-[5%] top-[39%] w-[29%]' : 'left-[12%] top-[43%] w-[22%]',
+    ]}
+    viewBox="0 0 16 16"
+    shape-rendering="crispEdges"
+    focusable="false"
+  >
+    {activity === 'calling' && (
+      <g>
+        <path fill="#171936" d="M3 2h10v1h2v2h1v4h-2v2h1v2h1v3H0v-3h1v-2h1V9H0V5h1V3h2z" />
+        <path fill="#f28e99" d="M3 3h10v1h2v4h-4V6H5v2H1V5h1V4h1z" />
+        <path fill="#c65770" d="M3 9h3V7h4v2h3v3h1v1h1v2H1v-2h1v-1h1z" />
+        <path fill="#ffdaa9" d="M5 10h2v1H5zm4 0h2v1H9zm-4 2h2v1H5zm4 0h2v1H9z" />
+      </g>
+    )}
+    {activity === 'reading' && (
+      <g>
+        <path fill="#171936" d="M0 3h6v1h4V3h6v13H9v-1H7v1H0z" />
+        <path fill="#64cba6" d="M1 5h5v1h2v8H6v-1H1zm14 0h-5v1H9v8h1v-1h5z" />
+        <path fill="#e3f7d9" d="M2 6h3v1h2v3H5V9H2zm12 0h-3v1h-1v3h1V9h3z" />
+      </g>
+    )}
+    {activity === 'winning' && (
+      <g>
+        <path fill="#171936" d="M3 1h10v2h3v6h-4v2h-2v2h3v3H3v-3h3v-2H4V9H0V3h3z" />
+        <path fill="#ffbf47" d="M4 2h8v5h-1v2H9v5h3v1H4v-1h3V9H5V7H4zM1 4h2v1H2v2h2v1H1zm12 0h2v4h-3V7h2V5h-1z" />
+        <path fill="#fff1a2" d="M5 3h2v1H6v3H5z" />
+      </g>
+    )}
+    {activity === 'coding' && (
+      <g>
+        <path fill="#171936" d="M1 3h14v10h1v3H0v-3h1z" />
+        <path fill="#575e91" d="M2 4h12v9H2zm-1 10h14v1H1z" />
+        <path fill="#a2f4c6" d="M4 6h1v1h1v1h1v1H6v1H5v1H4V9h1V8H4zm4 4h4v1H8z" />
+      </g>
+    )}
+    {activity === 'certified' && (
+      <g>
+        <path fill="#171936" d="M1 1h12v1h1v10h-1v1H1v-1H0V2h1z" />
+        <path fill="#7396d6" d="M1 2h12v10H1z" />
+        <path fill="#ebeff8" d="M2 3h10v8H2z" />
+        <path fill="#515c71" d="M4 5h6v1H4zm0 2h6v1H4zm0 2h4v1H4z" />
+        <path fill="#e56868" d="M10 11h2v3h-1v2h-1v-1H8v-1h1v-2h1zm3 0h2v2h1v2h-2v1h-1v-2h-1v-2h1z" />
+        <path fill="#ffd45a" d="M11 8h3v1h1v3h-1v1h-3v-1h-1V9h1z" />
+        <path fill="#e89b25" d="M11 9h3v3h-3z" />
+      </g>
+    )}
+    {activity === 'stacking' && (
+      <g>
+        <path fill="#171936" d="M1 0h14v1h1v14h-1v1H1v-1H0V1h1z" />
+        <path fill="#6b70bd" d="M1 1h14v5H1z" />
+        <path fill="#417d9f" d="M1 7h14v3H1z" />
+        <path fill="#329174" d="M1 11h14v4H1z" />
+        <path fill="#e5eaff" d="M5 2h1v1H5v1h1v1H5V4H4V3h1zm3 0h1v1H8v2H7V3h1zm2 0h1v1h1v1h-1v1h-1V4h1V3h-1z" />
+        <path fill="#b2f4dc" d="M2 8h2v1H2zm0 4h2v1H2zm9-4h3v1h-3zm0 4h3v1h-3z" />
+      </g>
+    )}
+  </svg>
+</span>
