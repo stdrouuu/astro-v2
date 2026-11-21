@@ -34,3 +34,12 @@ const person = {
   <TechSection />
   <CertificationsSection />
 </PortfolioLayout>
+
+<script>
+  import Lenis from 'lenis';
+
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (!isTouch) {
+    new Lenis({ autoRaf: true });
+  }
+</script>
