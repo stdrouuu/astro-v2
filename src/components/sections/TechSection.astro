@@ -1,101 +1,316 @@
 ---
-const devicon = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+const techCategories = [
+  // 1. Languages
+  {
+    category: 'Main Languages',
+    items: [
+      {
+        name: 'TypeScript',
+        sub: 'JavaScript Typed',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+        imgClass: 'rounded-[7px] object-cover',
+      },
+      {
+        name: 'PHP',
+        sub: 'Used in Laravel',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg',
+      },
+      {
+        name: 'Java',
+        sub: 'OOP Language',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+      },
+      {
+        name: 'Python',
+        sub: 'AI & Scripts',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+      },
+    ],
+  },
+  // 2. Frameworks & Web Apps
+  {
+    category: 'Frameworks & Web Apps',
+    items: [
+      {
+        name: 'Next.js',
+        sub: 'React Framework',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
+      },
+      {
+        name: 'Laravel',
+        sub: 'PHP Web Framework',
+        icon: '/img/laravel.webp',
+        imgClass: 'rounded-[7px] object-cover',
+      },
+      {
+        name: 'React',
+        sub: 'UI Library',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+      },
+      {
+        name: 'Astro.js',
+        sub: 'Content-driven Web',
+        icon: '/img/astro.webp',
+        imgClass: 'rounded-[7px] object-cover',
+      },
+      {
+        name: 'PWA',
+        sub: 'Progressive Web App',
+        icon: '/img/pwa.webp',
+        imgClass: 'rounded-[7px] object-cover',
+      },
+      {
+        name: 'FastAPI',
+        sub: 'Python Web Framework',
+        icon: '/img/fastapi.svg',
+      },
+    ],
+  },
+  // 3. Styling, UI,
+  {
+    category: 'Styling & UI',
+    items: [
+      {
+        name: 'Tailwind CSS',
+        sub: 'CSS Framework',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+      },
+      // {
+      //   name: 'Bootstrap',
+      //   sub: 'CSS Framework',
+      //   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg',
+      // },
+      {
+        name: 'Shadcn/ui',
+        sub: 'UI Components',
+        icon: '/img/shadcn.webp',
+        imgClass: 'rounded-[7px] object-cover',
+      },
+      {
+        name: 'Framer Motion',
+        sub: 'Motion Library',
+        icon: '/img/motion.webp',
+        imgClass: 'rounded-[7px] object-cover',
+      },
+      // {
+      //   name: 'GSAP',
+      //   sub: 'Animation Library',
+      //   icon: '/img/gsap.webp',
+      // },
+    ],
+  },
+  // 4. Databases & ORM
+  {
+    category: 'Databases & ORM',
+    items: [
+      {
+        name: 'MySQL',
+        sub: 'Relational Database',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
+      },
+      {
+        name: 'PostgreSQL',
+        sub: 'Advanced SQL',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+      },
+      {
+        name: 'Supabase',
+        sub: 'Backend & Postgres',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg',
+      },
+      {
+        name: 'Prisma',
+        sub: 'ORM',
+        icon: '/img/prisma.webp',
+        imgClass: 'rounded-[7px] object-cover',
+      },
+    ],
+  },
 
-const stackGroups = [
+  // 5. Package Managers & Runtimes
+  // {
+  //   category: 'Package Managers',
+  //   items: [
+  //     {
+  //       name: 'npm',
+  //       sub: 'Node Package Manager',
+  //       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg',
+  //     },
+  //     {
+  //       name: 'Bun',
+  //       sub: 'Fast All-in-One Runtime',
+  //       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg',
+  //     },
+  //   ],
+  // },
+
+  // 6. DevOps, Cloud & API
   {
-    name: 'AI & Machine Learning',
+    category: 'DevOps & Tools',
     items: [
-      { name: 'PyTorch', description: 'Deep Learning', icon: `${devicon}/pytorch/pytorch-original.svg` },
-      { name: 'TorchVision', description: 'Computer Vision', icon: `${devicon}/pytorch/pytorch-original.svg` },
-      { name: 'Python', description: 'AI & Scripts', icon: `${devicon}/python/python-original.svg` },
-      { name: 'TensorFlow', description: 'ML Framework', icon: `${devicon}/tensorflow/tensorflow-original.svg` },
+      {
+        name: 'Git',
+        sub: 'Version Control',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
+      },
+      {
+        name: 'GitHub Actions',
+        sub: 'CI / CD Pipelines',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg',
+      },
+      {
+        name: 'Docker',
+        sub: 'Containerization',
+        icon: '/img/docker.webp',
+        imgClass: 'rounded-[7px] object-cover',
+      },
+      {
+        name: 'Cloudflare',
+        sub: 'Tunneling & CDN',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg',
+      },
+      // {
+      //   name: 'Vercel',
+      //   sub: 'Deployment',
+      //   icon: 'https://api.iconify.design/simple-icons:vercel.svg',
+      //   darkInvert: true,
+      //   imgClass: 'object-contain rounded-none',
+      // },
+      {
+        name: 'Postman',
+        sub: 'API Testing & Dev',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg',
+      },
     ],
   },
+  // 7. Developer Workflow & Tools
   {
-    name: 'Backend',
+    category: 'Workflow & Tools',
     items: [
-      { name: 'FastAPI', description: 'Python Web Framework', icon: '/img/fastapi.svg' },
-      { name: 'Laravel', description: 'PHP Web Framework', icon: '/img/laravel.webp' },
-      { name: 'PostgreSQL', description: 'Advanced SQL', icon: `${devicon}/postgresql/postgresql-original.svg` },
-      { name: 'MySQL', description: 'Relational Database', icon: `${devicon}/mysql/mysql-original.svg` },
-      { name: 'Supabase', description: 'Backend & Postgres', icon: `${devicon}/supabase/supabase-original.svg` },
-      { name: 'Prisma', description: 'ORM', icon: '/img/prisma.webp' },
+      {
+        name: 'Orca',
+        sub: 'Agentic Workspace',
+        icon: '/img/orca.webp',
+        imgClass: 'rounded-[7px] scale-125 object-contain',
+      },
+      // {
+      //   name: 'Zen',
+      //   sub: 'Browser',
+      //   icon: '/img/zen.webp',
+      //   imgClass: 'rounded-[7px] object-cover',
+      // },
+      // {
+      //   name: 'Opencode',
+      //   sub: 'Browser',
+      //   icon: '/img/opencode.webp',
+      //   imgClass: 'rounded-[7px] object-cover',
+      // },
+      // {
+      //   name: '9Router',
+      //   sub: 'AI',
+      //   icon: '/img/zen.webp',
+      //   imgClass: 'rounded-[7px] object-cover',
+      // },
+      // {
+      //   name: 'Agy CLI',
+      //   sub: 'AI Coding Assistant',
+      //   icon: '/img/agy.webp',
+      // },
+      // {
+      //   name: 'Claude Code',
+      //   sub: 'Ai Coding Assistant',
+      //   icon: '/img/claude.webp',
+      //   imgClass: 'rounded-[7px] object-cover',
+      // },
+      // {
+      //   name: 'Zed',
+      //   sub: 'Code Editor (IDE)',
+      //   icon: '/img/zed.webp',
+      // },
     ],
   },
-  {
-    name: 'Web App',
-    items: [
-      { name: 'Next.js', description: 'React Framework', icon: `${devicon}/nextjs/nextjs-original.svg` },
-      { name: 'React', description: 'UI Library', icon: `${devicon}/react/react-original.svg` },
-      { name: 'Astro.js', description: 'Content-driven Web', icon: '/img/astro.webp' },
-      { name: 'Tailwind CSS', description: 'CSS Framework', icon: `${devicon}/tailwindcss/tailwindcss-original.svg` },
-      { name: 'Shadcn/ui', description: 'UI Components', icon: '/img/shadcn.webp' },
-      { name: 'Framer Motion', description: 'Motion Library', icon: '/img/motion.webp' },
-      { name: 'PWA', description: 'Progressive Web App', icon: '/img/pwa.webp' },
-    ],
-  },
-  {
-    name: 'Mobile Development',
-    items: [
-      { name: 'Kotlin', description: 'Android Development', icon: `${devicon}/kotlin/kotlin-original.svg` },
-      { name: 'Android SDK', description: 'Native Android APIs', icon: `${devicon}/android/android-original.svg` },
-      { name: 'Jetpack Compose', description: 'Android UI Toolkit', icon: `${devicon}/jetpackcompose/jetpackcompose-original.svg` },
-      { name: 'Gradle', description: 'Build Automation', icon: `${devicon}/gradle/gradle-original.svg`, darkInvert: true },
-    ],
-  },
-  {
-    name: 'Languages & Tools',
-    items: [
-      { name: 'TypeScript', description: 'JavaScript Typed', icon: `${devicon}/typescript/typescript-original.svg` },
-      { name: 'PHP', description: 'Used in Laravel', icon: `${devicon}/php/php-original.svg` },
-      { name: 'Java', description: 'OOP Language', icon: `${devicon}/java/java-original.svg` },
-      { name: 'Git', description: 'Version Control', icon: `${devicon}/git/git-original.svg` },
-      { name: 'GitHub Actions', description: 'CI / CD Pipelines', icon: `${devicon}/githubactions/githubactions-original.svg` },
-      { name: 'Docker', description: 'Containerization', icon: '/img/docker.webp' },
-      { name: 'Cloudflare Tunnels & CDN', description: 'Network Infrastructure', icon: `${devicon}/cloudflare/cloudflare-original.svg` },
-      { name: 'Postman', description: 'API Testing & Dev', icon: `${devicon}/postman/postman-original.svg` },
-      { name: 'Orca', description: 'Agentic Workspace', icon: '/img/orca.webp' },
-    ],
-  },
+  // 8. Agent Skills
+  // {
+  //   category: 'Agent Skills',
+  //   items: [
+  //     {
+  //       name: '/caveman',
+  //       sub: 'Token Efficiency (Agent Chat)',
+  //       icon: '/img/caveman.webp',
+  //     },
+  //     {
+  //       name: '/ponytail',
+  //       sub: 'Token Efficiency (Code Diff)',
+  //       icon: '/img/ponytail.webp',
+  //     },
+  //     {
+  //       name: '/grill-me',
+  //       sub: 'Brainstorming',
+  //       icon: '/img/grillme.webp',
+  //       imgClass: 'object-cover rounded-md',
+  //     },
+  //     {
+  //       name: '/taste-skill',
+  //       sub: 'Anti AI Slop Design',
+  //       icon: '/img/tasteskill.webp',
+  //       imgClass: 'object-cover rounded-md',
+  //     },
+  //   ],
+  // },
 ];
 ---
 
 <section id="tech" class="space-y-4 sm:space-y-6 pt-2 sm:pt-4">
-  <h2 class="font-pixel text-3xl md:text-4xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
+  <h2 class="font-pixel text-3xl sm:text-3xl md:text-4xl flex items-center gap-2 border-y border-neutral-300/80 dark:border-neutral-800 py-3 sm:py-4 my-4 sm:my-6">
     <span class="text-neutral-400">##</span>
     <span>Current Stack</span>
   </h2>
 
-  <div class="space-y-5">
-    {stackGroups.map(({ name, items }) => (
-      <section class="flex flex-col gap-2">
-        <h3 class="flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-300">
-          {name}
-          <span aria-hidden="true" class="h-px flex-1 bg-neutral-200/80 dark:bg-neutral-800"></span>
-        </h3>
-        <ul role="list" class="flex flex-wrap gap-2">
-          {items.map((item) => (
-            <li class="stack-pill inline-flex max-w-full items-center gap-1.5 rounded-md border border-neutral-300/80 bg-neutral-200/50 px-2.5 py-1 text-xs font-medium leading-4 text-neutral-800 dark:border-neutral-700 dark:text-neutral-200">
-              <img src={item.icon} alt="" width="22" height="22" loading="lazy" decoding="async" class:list={['h-[22px] w-[22px] shrink-0 rounded-sm object-contain', item.darkInvert && 'dark:brightness-0 dark:invert']} />
-              <span class="flex min-w-0 flex-col leading-none">
-                <span>{item.name}</span>
-                <span class="stack-description truncate text-[11px] font-normal leading-none" title={item.description}>{item.description}</span>
-              </span>
-            </li>
+  <div class="flex flex-col gap-4 sm:gap-5">
+    {techCategories.map((group) => (
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="text-sm sm:text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            {group.category}
+          </span>
+          <div class="flex-1 h-px bg-neutral-200/80 dark:bg-neutral-800/80"></div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          {group.items.map((tech) => (
+            <div class="relative overflow-hidden flex items-center gap-2.5 sm:gap-2 px-3.5 sm:px-2 py-2.5 rounded-md bg-neutral-200/50 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-300/60 dark:border-neutral-700/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-200 select-none group cursor-default w-full">
+              <div class={`${tech.wrapperClass || 'w-8 h-8'} flex-shrink-0 flex items-center justify-center relative z-10`}>
+                <img
+                  src={tech.icon}
+                  alt={tech.name}
+                  class={`w-full h-full ${tech.imgClass || 'object-contain'} group-hover:scale-110 transition-transform duration-200 ${tech.darkInvert ? 'dark:invert dark:brightness-200' : ''}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="flex flex-col justify-center min-w-0 relative z-10">
+                <span class="text-[15px] font-medium text-neutral-800 dark:text-neutral-200 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors leading-tight break-words">
+                  {tech.name}
+                </span>
+                <span class="text-[14px] sm:text-xs text-neutral-500 dark:text-neutral-400 leading-tight truncate" title={tech.sub}>
+                  {tech.sub}
+                </span>
+              </div>
+
+              <!-- Overlay Watermark Icon (All screens) -->
+              <div class="absolute -right-3 -bottom-3 w-20 h-20 pointer-events-none opacity-[0.02] dark:opacity-[0.04] rotate-12 group-hover:opacity-[0.08] dark:group-hover:opacity-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <img
+                  src={tech.icon}
+                  alt=""
+                  class={`w-full h-full ${tech.imgClass || 'object-contain'} grayscale contrast-125 dark:brightness-125 group-hover:grayscale-0 group-hover:contrast-100 dark:group-hover:brightness-100 transition-all duration-300 ${tech.darkInvert ? 'dark:invert' : ''}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
           ))}
-        </ul>
-      </section>
+        </div>
+      </div>
     ))}
   </div>
 </section>
-
-<style>
-  :global(.dark) .stack-pill {
-    background-color: #252525;
-  }
-
-  .stack-description {
-    margin-top: -2px;
-    color: #73736e;
-  }
-</style>
