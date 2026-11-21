@@ -4,7 +4,15 @@ interface Props {
 }
 const { page } = Astro.props;
 const home = page === 'home' ? '' : '/';
-const projects = page === 'home' ? '#projects' : '/projects';
+const links = [
+  { label: 'Home', href: `${home}#content` },
+  { label: 'Work', href: `${home}#work-education` },
+  { label: 'Competitions', href: `${home}#recognition` },
+  { label: 'Projects', href: `${home}#projects`, current: page === 'projects' },
+  { label: 'Stack', href: `${home}#tech` },
+  { label: 'Certs', href: `${home}#certifications` },
+  { label: 'Contact', href: '#contact' },
+];
 ---
 
 <header class="mb-10 sm:mb-16">
@@ -15,12 +23,9 @@ const projects = page === 'home' ? '#projects' : '/projects';
 
     <!-- Desktop Navigation -->
     <div class="hidden sm:flex items-center gap-4 shrink-0 text-xs font-pixel">
-      <a href={`${home}#content`} class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Home</a>
-      <a href={`${home}#tech`} class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Stack</a>
-      <a href={`${home}#work-education`} class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Work</a>
-      <a href={projects} aria-current={page === 'projects' ? 'page' : undefined} class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Projects</a>
-      <a href={`${home}#certifications`} class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Certs</a>
-      <a href="#contact" class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Contact</a>
+      {links.map(({ label, href, current }) => (
+        <a href={href} aria-current={current ? 'page' : undefined} class="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">{label}</a>
+      ))}
       <button type="button" id="theme-toggle" aria-label="Dark mode" aria-pressed="false" class="nav-control text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors ml-1 w-4 h-4 flex items-center justify-center relative shrink-0">
         <!-- Sun icon (shown in dark mode) -->
         <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="hidden w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -88,24 +93,11 @@ const projects = page === 'home' ? '#projects' : '/projects';
   <!-- Mobile Dropdown Menu -->
   <div id="mobile-menu" class="hidden sm:hidden flex-col font-pixel text-[15px] border-b border-neutral-300/80 dark:border-neutral-800 py-2.5">
     <div class="grid grid-cols-2 gap-1.5 text-neutral-600 dark:text-neutral-400">
-      <a href={`${home}#content`} class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
-        <span class="text-neutral-400 dark:text-neutral-600">##</span> Home
-      </a>
-      <a href={`${home}#tech`} class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
-        <span class="text-neutral-400 dark:text-neutral-600">##</span> Stack
-      </a>
-      <a href={`${home}#work-education`} class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
-        <span class="text-neutral-400 dark:text-neutral-600">##</span> Work
-      </a>
-      <a href={projects} aria-current={page === 'projects' ? 'page' : undefined} class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
-        <span class="text-neutral-400 dark:text-neutral-600">##</span> Projects
-      </a>
-      <a href={`${home}#certifications`} class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
-        <span class="text-neutral-400 dark:text-neutral-600">##</span> Certs
-      </a>
-      <a href="#contact" class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
-        <span class="text-neutral-400 dark:text-neutral-600">##</span> Contact
-      </a>
+      {links.map(({ label, href, current }) => (
+        <a href={href} aria-current={current ? 'page' : undefined} class="mobile-nav-link flex items-center gap-1.5 px-2.5 py-2 max-[380px]:px-1.5 max-[380px]:text-xs rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:text-black dark:hover:text-white transition-colors">
+          <span class="text-neutral-400 dark:text-neutral-600">##</span> {label}
+        </a>
+      ))}
     </div>
   </div>
 </header>

@@ -1,4 +1,6 @@
 ---
+import SectionCat from '../SectionCat.astro';
+
 interface FeaturedCertification {
   title: string;
   issuer?: string;
@@ -6,32 +8,6 @@ interface FeaturedCertification {
   link?: string;
   icon?: string;
 }
-
-interface Hackathon {
-  title: string;
-  issuer: string;
-  date: string;
-  description?: string;
-  icon: string;
-  link?: string;
-}
-
-const hackathons: Hackathon[] = [
-  {
-    title: 'Sea × OpenAI Regional Codex Hackathon',
-    issuer: 'Indonesia',
-    date: 'Oct 2026',
-    icon: '/img/sea-logo.webp',
-    link: 'https://www.linkedin.com/in/brandon-jeremiah-sutedja/',
-  },
-  {
-    title: 'STACK GDGoC ITB Hackathon 2026',
-    issuer: 'Google Developer Group on Campus',
-    date: 'Oct 2026',
-    description: 'Qualified to Semifinal from 3,000+ registered teams and 9,000+ registered members across Indonesia.',
-    icon: '/img/google-developers.webp',
-  },
-];
 
 const featuredCertifications: FeaturedCertification[] = [
   {
@@ -76,23 +52,10 @@ const featuredCertifications: FeaturedCertification[] = [
 ---
 
 <section id="certifications" class="space-y-6" aria-labelledby="credentials-title">
-  <div id="hackathons" class="space-y-4">
-    <ul class="space-y-3">
-      {hackathons.map(({ title, issuer, date, description, icon, link }) => (
-        <li class="flex items-center gap-3.5 rounded-md border border-neutral-300/80 bg-neutral-200/40 px-3.5 py-3 dark:border-neutral-700/60 dark:bg-neutral-800/50">
-          <img class="h-10 w-10 flex-shrink-0 rounded-md bg-white object-contain p-1" src={icon} width="40" height="40" alt="" loading="lazy" decoding="async" />
-          <div class="min-w-0 flex-1 space-y-0.5">
-            <p class="font-pixel text-sm text-[#214ECF] dark:text-[#89A4FF]">Recognition</p>
-            <h3 class="font-medium leading-snug text-neutral-900">{title}</h3>
-            <p class="text-sm text-neutral-600">{issuer} · {date}</p>
-            {description && <p class="pt-1 text-sm leading-snug text-neutral-600">{description}</p>}
-          </div>
-          {link && <a class="quiet-link shrink-0 self-center" href={link} target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>}
-        </li>
-      ))}
-    </ul>
-  </div>
-  <h2 id="credentials-title" class="readme-heading"><span aria-hidden="true">##</span> Certifications</h2>
+  <h2 id="credentials-title" class="max-[420px]:pr-[4.5rem] max-[380px]:!text-[1.375rem] readme-heading relative">
+    <span aria-hidden="true">##</span> Certifications
+    <SectionCat activity="certified" />
+  </h2>
   <ul class="space-y-3 sm:space-y-3.5">
     {featuredCertifications.map(({ title, issuer, date, icon, link }) => (
       <li class="flex items-start gap-3 sm:gap-3.5 py-1">
