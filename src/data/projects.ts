@@ -117,6 +117,7 @@ export const projects: Project[] = [
     category: 'Academic',
     period: 'May–Jun 2025',
     summary: 'A team prototype for planning farm activities and keeping digital harvest records.',
+    cover: { src: '/img/plantiq-erd.webp', alt: 'PlantIQ entity relationship diagram for farm, plant, sensor, and weather data' },
     context: 'PlantIQ was developed by a team of eight computer science students. The prototype explores how growers could plan recurring activities and track crop conditions and harvests in the same app.',
     highlights: [
       'Plan planting, irrigation, and harvest activities.',

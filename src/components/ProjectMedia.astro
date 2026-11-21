@@ -14,6 +14,10 @@ const { cover, tone, mark } = project;
   {cover ? (
     <img src={cover.src} alt={cover.alt} class={`media-${project.slug}`} loading={eager ? 'eager' : 'lazy'} decoding="async" />
   ) : (
-    <span class="project-mark" aria-hidden="true">{mark}</span>
+    <div class="missing-image-avatar" role="img" aria-label="Project image not added yet">
+      <span class="missing-image-sun" aria-hidden="true">☼</span>
+      <span class="missing-image-card" aria-hidden="true"><span class="missing-image-face">•ᴗ•</span><span class="missing-image-corner">?</span></span>
+      <span class="missing-image-sparkle" aria-hidden="true">✦</span>
+    </div>
   )}
 </div>
