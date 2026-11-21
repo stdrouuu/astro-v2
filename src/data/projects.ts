@@ -106,7 +106,7 @@ export const projects: Project[] = [
       'Use Jetpack Compose for the interface and Retrofit for API integration.',
     ],
     stack: ['Kotlin', 'Jetpack Compose', 'Retrofit', 'MySQL'],
-    cover: { src: '/img/labvora-preview.webp', alt: 'Labvora logo and wordmark' },
+    cover: { src: '/img/labvora-site.webp', alt: 'Screenshot of the Labvora website homepage' },
     mark: 'LV',
     tone: 'blue',
     code: 'https://github.com/stdrouuu/Labvora-Android',

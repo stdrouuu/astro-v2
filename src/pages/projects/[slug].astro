@@ -26,7 +26,6 @@ const { project } = Astro.props;
   <article class="case-shell project-detail">
     <a class="back-link" href="/projects"><span aria-hidden="true">←</span> All projects</a>
     <header class="page-heading">
-      <p class="meta">{project.category} project <span aria-hidden="true">·</span> {project.period}</p>
       <h1 class="page-title">{project.title}</h1>
       <p class="muted">{project.summary}</p>
       {(project.demo || project.code) && (

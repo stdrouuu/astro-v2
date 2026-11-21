@@ -11,7 +11,7 @@ interface Props {
   page?: 'home' | 'projects' | 'case-study';
 }
 
-const { title, description, image = '/img/personalsite.jpg', page = 'home' } = Astro.props;
+const { title, description, image = '/img/personalsite.webp', page = 'home' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const socialImage = new URL(image, canonical);
 const narrowShell = 'max-w-2xl mx-auto px-8 sm:px-12 md:px-16';
@@ -27,9 +27,9 @@ const narrowShell = 'max-w-2xl mx-auto px-8 sm:px-12 md:px-16';
     <meta name="author" content="Brandon Jeremiah Sutedja" />
     <meta name="theme-color" id="theme-color-meta" content="#181818" />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/webp" sizes="32x32" href="/favicon-32x32.webp" />
+    <link rel="icon" type="image/webp" sizes="192x192" href="/icon-192.webp" />
+    <link rel="apple-touch-icon" type="image/webp" sizes="180x180" href="/apple-touch-icon.webp" />
     <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:type" content="website" />

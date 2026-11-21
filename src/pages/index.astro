@@ -3,7 +3,6 @@ import PortfolioLayout from '../layouts/PortfolioLayout.astro';
 import BioSection from '../components/sections/BioSection.astro';
 import TechSection from '../components/sections/TechSection.astro';
 import WorkEducationSection from '../components/sections/WorkEducationSection.astro';
-import SelectedWorkSection from '../components/sections/SelectedWorkSection.astro';
 import PersonalProjectsSection from '../components/sections/PersonalProjectsSection.astro';
 import CertificationsSection from '../components/sections/CertificationsSection.astro';
 
@@ -30,15 +29,6 @@ const person = {
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
   </Fragment>
   <BioSection />
-  <section id="recognition" class="flex items-center justify-between flex-wrap gap-2 px-3.5 py-3 rounded-md border border-neutral-300/80 bg-neutral-200/40 dark:border-neutral-700/60 dark:bg-neutral-800/50" aria-labelledby="recognition-title">
-    <div>
-      <h2 id="recognition-title" class="font-pixel text-sm text-[#214ECF] dark:text-[#89A4FF]">Recognition</h2>
-      <p class="font-medium text-base">Sea × OpenAI Regional Codex Hackathon</p>
-      <p class="text-sm text-neutral-600">Indonesia · October 2026</p>
-    </div>
-    <a class="quiet-link" href="https://www.linkedin.com/in/brandon-jeremiah-sutedja/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-  </section>
-  <SelectedWorkSection />
   <PersonalProjectsSection />
   <WorkEducationSection />
   <TechSection />
