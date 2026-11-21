@@ -1,13 +1,13 @@
 (function () {
-  const saved = localStorage.getItem('theme');
-  const isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  if (isDark) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
+  let saved;
+  try {
+    saved = localStorage.getItem('theme');
+  } catch {
+    // Use the system theme when storage is unavailable.
   }
-  const meta = document.getElementById('theme-color-meta') || document.querySelector('meta[name="theme-color"]');
-  if (meta) {
-    meta.setAttribute('content', isDark ? '#181818' : '#f7f5f0');
-  }
+
+  const isDark = saved === 'dark' ||
+    (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.classList.toggle('dark', isDark);
+  document.getElementById('theme-color-meta')?.setAttribute('content', isDark ? '#181818' : '#F7F5F0');
 })();

@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import '../styles/projects.css';
+import NavbarSection from '../components/sections/NavbarSection.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  page?: 'home' | 'projects' | 'case-study';
+}
+
+const { title, description, image = '/img/personalsite.jpg', page = 'home' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const socialImage = new URL(image, canonical);
+const narrowShell = 'max-w-2xl mx-auto px-8 sm:px-12 md:px-16';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Brandon Jeremiah Sutedja" />
+    <meta name="theme-color" id="theme-color-meta" content="#181818" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Brandon Jeremiah" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <slot name="head" />
+    <script is:inline src="/theme.js"></script>
+    <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="ac1f397a-d0e7-4d6f-b242-e74a196357f2"></script>
+  </head>
+  <body id="top" class="font-sans antialiased min-h-screen text-[17px] leading-relaxed selection:bg-neutral-200 selection:text-neutral-900">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class:list={['py-6 sm:py-8', page !== 'case-study' && narrowShell]}>
+      <div class:list={[page === 'case-study' && 'case-shell']}>
+        <NavbarSection page={page} />
+      </div>
+      <main id="content" tabindex="-1" class:list={[page === 'home' && 'space-y-10 sm:space-y-16']}>
+        <slot />
+      </main>
+      <div class:list={['mt-12 sm:mt-16', page === 'case-study' && 'case-shell']}>
+        <ContactSection />
+      </div>
+    </div>
+  </body>
+</html>

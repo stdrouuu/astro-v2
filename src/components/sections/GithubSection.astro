@@ -14,7 +14,7 @@ try {
 }
 ---
 
-<section class="space-y-3">
+<section id="activity" aria-label="GitHub activity" class="space-y-3">
   <!-- Contribution SVG Grids -->
   <div class="py-1">
     <div class="w-full github-svg-wrapper relative overflow-x-auto overflow-y-hidden pb-2.5 sm:pb-0">
@@ -22,7 +22,7 @@ try {
         {initialSvg ? (
           <Fragment set:html={initialSvg} />
         ) : (
-          <p class="text-[13px] text-neutral-500 font-mono py-8 text-center">Loading contributions…</p>
+          <p class="text-sm text-neutral-600 py-5">The contribution chart is currently unavailable.</p>
         )}
       </div>
     </div>
@@ -54,7 +54,7 @@ try {
         GitHub ↗
       </a>
     </p>
-    <div class="flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs text-neutral-500 shrink-0">
+    <div class="github-legend flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs text-neutral-500 shrink-0">
       <span>Less</span>
       <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-sm bg-[#EEEEEE] dark:bg-[#222222]"></span>
       <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-sm bg-[#c3d4ff] dark:bg-[#223566]"></span>
@@ -164,9 +164,9 @@ try {
     const lastRenderedDate = lastCell?.getAttribute('data-date');
 
     // 1. Check if we already have today's data cached in sessionStorage
-    const cachedData = sessionStorage.getItem(cacheKey);
-    if (cachedData) {
-      try {
+    try {
+      const cachedData = sessionStorage.getItem(cacheKey);
+      if (cachedData) {
         const parsed = JSON.parse(cachedData) as ContributionDay[];
         if (lastRenderedDate !== todayStr) {
           const aligned = alignContributionsToDate(parsed, now);
@@ -174,9 +174,9 @@ try {
           if (svg) container.innerHTML = svg;
         }
         return;
-      } catch {
-        sessionStorage.removeItem(cacheKey);
       }
+    } catch {
+      // Fetch normally when the stored data cannot be read.
     }
 
     // 2. Fetch fresh contributions (including private contributions) from API
@@ -219,6 +219,10 @@ try {
 </script>
 
 <style is:global>
+  #activity:not(:has(#github-chart-container svg)) .github-legend {
+    display: none;
+  }
+
   /* Style the inlined SVG elements */
   .github-svg-wrapper {
     -webkit-overflow-scrolling: touch;

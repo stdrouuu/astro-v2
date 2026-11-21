@@ -1,0 +1,64 @@
+---
+import PortfolioLayout from '../../layouts/PortfolioLayout.astro';
+import ProjectMedia from '../../components/ProjectMedia.astro';
+import { projects, type Project } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<PortfolioLayout
+  page="case-study"
+  title={`${project.title} | Brandon Jeremiah Sutedja`}
+  description={project.summary}
+  image={project.cover?.src}
+>
+  <article class="case-shell project-detail">
+    <a class="back-link" href="/projects"><span aria-hidden="true">←</span> All projects</a>
+    <header class="page-heading">
+      <p class="meta">{project.category} project <span aria-hidden="true">·</span> {project.period}</p>
+      <h1 class="page-title">{project.title}</h1>
+      <p class="muted">{project.summary}</p>
+      {(project.demo || project.code) && (
+        <div class="actions">
+          {project.demo && <a href={project.demo} class="action action-primary" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>}
+          {project.code && <a href={project.code} class:list={['action', !project.demo && 'action-primary']} target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>}
+        </div>
+      )}
+    </header>
+    {project.cover && <ProjectMedia project={project} eager />}
+    <div class="detail-columns">
+      <section>
+        <h2 class="section-title">Overview</h2>
+        <p class="muted">{project.context}</p>
+        {project.contribution && (
+          <div class="project-contribution">
+            <h3>My contribution</h3>
+            <p class="muted">{project.contribution}</p>
+          </div>
+        )}
+      </section>
+      <section>
+        <h2 class="section-title">What it does</h2>
+        <ul class="detail-highlights">
+          {project.highlights.map((item) => <li>{item}</li>)}
+        </ul>
+        {project.stack.length > 0 && (
+          <ul class="tags" aria-label="Technologies">
+            {project.stack.map((tool) => <li>{tool}</li>)}
+        </ul>
+        )}
+      </section>
+    </div>
+  </article>
+</PortfolioLayout>

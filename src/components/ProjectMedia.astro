@@ -1,0 +1,19 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+const { cover, tone, mark } = project;
+---
+
+<div class="project-media" data-tone={tone}>
+  {cover ? (
+    <img src={cover.src} alt={cover.alt} class={`media-${project.slug}`} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  ) : (
+    <span class="project-mark" aria-hidden="true">{mark}</span>
+  )}
+</div>

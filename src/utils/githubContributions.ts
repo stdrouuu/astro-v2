@@ -11,7 +11,9 @@ export interface ContributionDay {
 export async function fetchUserContributions(username: string = 'stdrouuu'): Promise<ContributionDay[]> {
   // 1. Try gh-calendar.rschristian.dev (reflects live GitHub changes including private contributions immediately)
   try {
-    const res = await fetch(`https://gh-calendar.rschristian.dev/user/${username}`);
+    const res = await fetch(`https://gh-calendar.rschristian.dev/user/${username}`, {
+      signal: AbortSignal.timeout?.(3500),
+    });
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data?.contributions)) {
@@ -29,7 +31,9 @@ export async function fetchUserContributions(username: string = 'stdrouuu'): Pro
 
   // 2. Fallback to jogruber API
   try {
-    const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
+    const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`, {
+      signal: AbortSignal.timeout?.(3500),
+    });
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data?.contributions)) {

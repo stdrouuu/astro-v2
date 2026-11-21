@@ -1,0 +1,29 @@
+---
+import ProjectMedia from './ProjectMedia.astro';
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  heading?: 'h2' | 'h3';
+}
+
+const { project, heading: Heading = 'h3' } = Astro.props;
+---
+
+<article class="project-card relative space-y-2.5" data-project-category={project.category}>
+  <ProjectMedia project={project} />
+  <div class="space-y-1.5">
+    <p class="meta">{project.category} <span aria-hidden="true">·</span> {project.period}</p>
+    <Heading class="text-lg font-medium leading-snug text-neutral-900">
+      <a class="project-card-link flex items-baseline justify-between gap-2" href={`/projects/${project.slug}`}>
+        {project.title} <span class="card-arrow text-[#214ECF] dark:text-[#89A4FF]" aria-hidden="true">↗</span>
+      </a>
+    </Heading>
+    <p class="text-[15px] leading-snug text-neutral-700 dark:text-neutral-300">{project.summary}</p>
+    {project.stack.length > 0 && (
+      <ul class="tags" aria-label="Technologies">
+        {project.stack.map((tool) => <li>{tool}</li>)}
+      </ul>
+    )}
+  </div>
+</article>
