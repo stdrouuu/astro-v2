@@ -68,6 +68,8 @@
   background: var(--media-backdrop);
 }
 
+#projects .project-media { aspect-ratio: 16 / 10; }
+
 .project-media[data-tone="blue"] { --media-backdrop: #1e3b83; }
 .project-media[data-tone="rose"] { --media-backdrop: #fdecf0; }
 
@@ -110,7 +112,6 @@
 .project-card-heading .project-card-link { position: relative; z-index: 1; display: flex; flex: 1; min-width: 0; align-items: center; gap: 0.5rem; line-height: 1.25; }
 .project-title-label { flex: 0 0 auto; }
 .project-title-period { color: var(--project-muted); font: inherit; font-size: 0.7em; font-weight: 400; white-space: nowrap; }
-.project-card-heading .card-arrow { margin-left: auto; flex: 0 0 auto; }
 .project-card-footer { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 0.15rem; }
 .project-card-footer .tags { margin: 0; }
 .project-card-footer .project-source-link { display: inline-flex; width: auto; height: 1.5rem; gap: 0.35rem; align-items: center; white-space: nowrap; color: var(--project-muted); font-size: 0.75rem; line-height: 1; }
@@ -121,8 +122,9 @@
   padding-left: 0.625rem;
   border-left: 1px solid var(--project-edge);
   color: #a3a39f;
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.4;
+  text-align: left;
 }
 .project-card:has(.project-card-link:focus-visible) { outline: 2px solid var(--project-accent); outline-offset: 4px; }
 .project-card-link:focus-visible { outline: none; }
