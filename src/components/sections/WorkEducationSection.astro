@@ -1,4 +1,7 @@
 ---
+import ukridaLogo from '../../assets/ukrida.webp';
+import penaburLogo from '../../assets/penabur.webp';
+
 interface ExperienceItem {
   period: string;
   role: string;
@@ -37,7 +40,7 @@ const educationItems: ExperienceItem[] = [
     period: '2024 — Present',
     role: 'BSc Computer Science',
     organization: 'UKRIDA',
-    logo: '/img/ukrida.webp',
+    logo: ukridaLogo.src,
     url: 'https://ukrida.ac.id',
     description:
       'Undergraduate majoring in Computer Science with a focus on Software Engineering, Web Development, Algorithms, and Human-Centred Computing.',
@@ -46,17 +49,9 @@ const educationItems: ExperienceItem[] = [
     period: '2021 — 2024',
     role: 'Natural Sciences (MIPA)',
     organization: 'SMAK 6 PENABUR Jakarta',
-    logo: '/img/penabur.webp',
+    logo: penaburLogo.src,
     description:
       'Senior High School education with focus on science and mathematics, actively exploring computer programming and software development.',
-  },
-  {
-    period: '2018 — 2021',
-    role: 'Junior High School',
-    organization: 'SMPK 6 PENABUR Jakarta',
-    logo: '/img/penabur.webp',
-    description:
-      'Completed junior high school education with strong academic foundations in science.',
   },
 ];
 ---
