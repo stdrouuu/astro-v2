@@ -137,6 +137,3 @@ export const projects: Project[] = [
     tone: 'slate',
   },
 ];
-
-export const featuredProject = projects[0];
-export const selectedProjects = projects.filter(({ slug }) => ['bisachord', 'memein', 'trigg', 'labvora'].includes(slug));

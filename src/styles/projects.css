@@ -45,7 +45,6 @@
   letter-spacing: 0.01em;
 }
 
-.quiet-link,
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -301,7 +300,7 @@
 .detail-highlights li::marker { color: var(--project-accent); }
 
 @media (hover: hover) and (pointer: fine) {
-  .quiet-link:hover, .back-link:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+  .back-link:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   .filters button:hover { background: var(--project-tint); }
   .project-card:hover .project-card-link { color: var(--project-accent); }
 }
