@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import PortfolioLayout from '../../layouts/PortfolioLayout.astro';
 import ProjectMedia from '../../components/ProjectMedia.astro';
 import { projects, type Project } from '../../data/projects';
@@ -15,13 +16,18 @@ interface Props {
 }
 
 const { project } = Astro.props;
+const socialImage = project.cover && await getImage({
+  src: project.cover.src,
+  width: Math.min(1024, project.cover.src.width),
+  format: 'webp',
+});
 ---
 
 <PortfolioLayout
   page="case-study"
   title={`${project.title} | Brandon Jeremiah Sutedja`}
   description={project.summary}
-  image={project.cover?.src}
+  image={socialImage?.src}
 >
   <article class="case-shell project-detail">
     <a class="back-link" href="/#projects"><span aria-hidden="true">←</span> All projects</a>

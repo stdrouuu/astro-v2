@@ -41,7 +41,7 @@ const person = {
   import Lenis from 'lenis';
 
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (!isTouch) {
+  if (!isTouch && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     new Lenis({ autoRaf: true });
   }
 </script>

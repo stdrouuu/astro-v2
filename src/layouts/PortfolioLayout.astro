@@ -46,16 +46,16 @@ const narrowShell = 'max-w-2xl mx-auto px-8 sm:px-12 md:px-16';
     <script is:inline src="/theme.js"></script>
     <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="ac1f397a-d0e7-4d6f-b242-e74a196357f2"></script>
   </head>
-  <body id="top" class="font-sans antialiased min-h-screen text-[17px] leading-relaxed selection:bg-neutral-200 selection:text-neutral-900">
+  <body id="top" tabindex="-1" class="font-sans antialiased min-h-screen text-[17px] leading-relaxed selection:bg-neutral-200 selection:text-neutral-900">
     <a class="skip-link" href="#content">Skip to content</a>
     <div class:list={['py-6 sm:py-8', page !== 'case-study' && narrowShell]}>
       <div class:list={[page === 'case-study' && 'case-shell']}>
         <NavbarSection page={page} />
       </div>
-      <main id="content" tabindex="-1" class:list={[page === 'home' && 'space-y-10 sm:space-y-16']}>
+      <main id="content" tabindex="-1" class:list={[page === 'home' && 'grid grid-cols-1 gap-y-20']}>
         <slot />
       </main>
-      <div class:list={['mt-12 sm:mt-16', page === 'case-study' && 'case-shell']}>
+      <div class:list={[page === 'home' ? 'mt-20' : 'mt-12 sm:mt-16', page === 'case-study' && 'case-shell']}>
         <ContactSection />
       </div>
     </div>

@@ -15,8 +15,21 @@ import SectionCat from '../SectionCat.astro';
   </div>
 </section>
 
-<footer class="relative mt-20 pt-6 border-t border-neutral-300 dark:border-neutral-700 flex justify-between items-center text-[15px] font-mono text-neutral-500">
+<footer class="relative mt-20 pt-6 border-t border-neutral-300 dark:border-neutral-700 flex flex-wrap justify-between items-center gap-x-3 gap-y-2 text-[15px] font-mono text-neutral-500">
   <SectionCat activity="calling" />
   <span>Last updated Nov 2026</span>
-  <a href="#top" class="hover:text-black dark:hover:text-white">Back to top ↑</a>
+  <a href="#top" data-back-to-top class="hover:text-black dark:hover:text-white">Back to top ↑</a>
 </footer>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelector<HTMLAnchorElement>('[data-back-to-top]')?.addEventListener('click', (event) => {
+    if (reducedMotion.matches || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    if (location.hash !== '#top') history.pushState(null, '', '#top');
+    document.body.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

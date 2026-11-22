@@ -9,16 +9,16 @@ const { activity } = Astro.props;
 <span
   class:list={[
     // The WebP has transparent padding to the right of the visible tail.
-    'pointer-events-none absolute right-0 z-10 translate-x-[20%]',
+    'pointer-events-none absolute right-0 z-10',
     activity === 'calling'
-      ? 'top-[-3rem] w-[6.5rem] sm:top-[-3.5rem] sm:w-[7.5rem]'
-      : 'top-1/2 w-[4.75rem] max-[420px]:w-[3.5rem] sm:w-[5.5rem]',
+      ? 'top-[-3.5rem] w-[7.5rem] translate-x-[12%] sm:translate-x-[20%]'
+      : 'top-1/2 w-20 translate-x-[20%] sm:w-[5.5rem]',
     activity === 'certified' && '-translate-y-[57%]',
     activity !== 'certified' && activity !== 'calling' && '-translate-y-[54%]',
   ]}
   aria-hidden="true"
 >
-  <img class="block w-full" src="/img/pixel-cat-peek.webp" width="1435" height="973" alt="" />
+  <img class="block w-full" src="/img/pixel-cat-peek.webp" width="360" height="244" alt="" loading="lazy" decoding="async" />
   <svg
     class:list={[
       'absolute',

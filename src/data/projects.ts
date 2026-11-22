@@ -1,3 +1,11 @@
+import type { ImageMetadata } from 'astro';
+import stockinfoCover from '../assets/projects/stockinfo-preview.webp';
+import bisachordCover from '../assets/projects/bisachord.webp';
+import memeinCover from '../assets/projects/memein2.webp';
+import triggCover from '../assets/projects/trigg2.webp';
+import labvoraCover from '../assets/projects/labvora-site.webp';
+import plantiqCover from '../assets/projects/plantiq-erd.webp';
+
 export type ProjectCategory = 'Client' | 'Independent' | 'Academic';
 
 export interface Project {
@@ -10,7 +18,7 @@ export interface Project {
   contribution?: string;
   highlights: string[];
   stack: string[];
-  cover?: { src: string; alt: string };
+  cover?: { src: ImageMetadata; alt: string };
   mark: string;
   tone: 'blue' | 'rose' | 'slate';
   code?: string;
@@ -34,7 +42,7 @@ export const projects: Project[] = [
       'Separate day-to-day staff access from admin-only reporting and user management.',
     ],
     stack: ['Laravel', 'PHP', 'MySQL', 'Tailwind CSS'],
-    cover: { src: '/img/stockinfo-preview.webp', alt: 'StockInfo sign-in screen with separate Admin and Staff options' },
+    cover: { src: stockinfoCover, alt: 'StockInfo sign-in screen with separate Admin and Staff options' },
     mark: 'SI',
     tone: 'blue',
     code: 'https://github.com/stdrouuu/StockInfo',
@@ -52,7 +60,7 @@ export const projects: Project[] = [
       'Copy a monospaced chart for chat apps and keep work in local browser storage.',
     ],
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'PWA'],
-    cover: { src: '/img/bisachord.webp', alt: 'BisaChord app icon on a soft pink background' },
+    cover: { src: bisachordCover, alt: 'BisaChord app icon on a soft pink background' },
     mark: 'BC',
     tone: 'rose',
   },
@@ -69,7 +77,7 @@ export const projects: Project[] = [
       'Edit in both light and dark themes with GSAP feedback for interface transitions.',
     ],
     stack: ['Next.js', 'TypeScript', 'React Konva', 'GSAP'],
-    cover: { src: '/img/memein2.webp', alt: 'Light and dark previews of the Memein website' },
+    cover: { src: memeinCover, alt: 'Light and dark previews of the Memein website' },
     mark: 'MI',
     tone: 'rose',
     code: 'https://github.com/stdrouuu/memein-next',
@@ -88,7 +96,7 @@ export const projects: Project[] = [
       'Manage store operations from a dedicated admin dashboard.',
     ],
     stack: ['PHP', 'MySQL', 'JavaScript'],
-    cover: { src: '/img/trigg2.webp', alt: 'Trigg storefront homepage with a dark game catalog design' },
+    cover: { src: triggCover, alt: 'Trigg storefront homepage with a dark game catalog design' },
     mark: 'TR',
     tone: 'slate',
     code: 'https://github.com/stdrouuu/Trigg',
@@ -106,7 +114,7 @@ export const projects: Project[] = [
       'Use Jetpack Compose for the interface and Retrofit for API integration.',
     ],
     stack: ['Kotlin', 'Jetpack Compose', 'Retrofit', 'MySQL'],
-    cover: { src: '/img/labvora-site.webp', alt: 'Screenshot of the Labvora website homepage' },
+    cover: { src: labvoraCover, alt: 'Screenshot of the Labvora website homepage' },
     mark: 'LV',
     tone: 'blue',
     code: 'https://github.com/stdrouuu/Labvora-Android',
@@ -117,7 +125,7 @@ export const projects: Project[] = [
     category: 'Academic',
     period: 'May–Jun 2025',
     summary: 'A team prototype for planning farm activities and keeping digital harvest records.',
-    cover: { src: '/img/plantiq-erd.webp', alt: 'PlantIQ entity relationship diagram for farm, plant, sensor, and weather data' },
+    cover: { src: plantiqCover, alt: 'PlantIQ entity relationship diagram for farm, plant, sensor, and weather data' },
     context: 'PlantIQ was developed by a team of eight computer science students. The prototype explores how growers could plan recurring activities and track crop conditions and harvests in the same app.',
     highlights: [
       'Plan planting, irrigation, and harvest activities.',
