@@ -11,7 +11,6 @@ import GithubSection from './GithubSection.astro';
         alt="Brandon Jeremiah"
         width="64"
         height="64"
-        fetchpriority="high"
         decoding="async"
         class="w-full h-full object-cover scale-110 motion-safe:group-hover:scale-120 motion-safe:transition-transform motion-safe:duration-200 origin-center"
       />
@@ -41,7 +40,8 @@ import GithubSection from './GithubSection.astro';
   <!-- Profile Banner -->
   <picture class="block w-full h-28 sm:h-32 rounded-md overflow-hidden shadow-xs border border-neutral-200/80 dark:border-neutral-700/60 relative">
     <source srcset="/img/catbanner-still.webp" media="(prefers-reduced-motion: reduce)" />
-    <source srcset="/img/catbanner.webp" type="image/webp" />
+    <source srcset="/img/catbanner-mobile.webp" media="(width < 640px)" type="image/webp" />
+    <source srcset="/img/catbanner-desktop.webp" type="image/webp" />
     <img
       src="/img/catbanner.gif"
       alt=""

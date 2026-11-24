@@ -24,7 +24,14 @@ const person = {
 
 <PortfolioLayout title="Brandon Jeremiah Sutedja | Software Engineer" description={description}>
   <Fragment slot="head">
-    <link rel="preload" as="image" href="/img/face.webp" type="image/webp" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      href="/img/catbanner-desktop.webp"
+      type="image/webp"
+      media="(width >= 640px) and (prefers-reduced-motion: no-preference)"
+      fetchpriority="high"
+    />
     <meta name="geo.region" content="ID-JK" />
     <meta name="geo.placename" content="Jakarta, Indonesia" />
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
@@ -38,10 +45,10 @@ const person = {
 </PortfolioLayout>
 
 <script>
-  import Lenis from 'lenis';
-
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   if (!isTouch && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    new Lenis({ autoRaf: true });
+    void import('lenis').then(({ default: Lenis }) => {
+      new Lenis({ autoRaf: true });
+    });
   }
 </script>
