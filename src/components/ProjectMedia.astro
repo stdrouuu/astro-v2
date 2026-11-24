@@ -29,6 +29,7 @@ const sizes = eager
       widths={widths}
       sizes={sizes}
       format="webp"
+      quality={project.slug === 'labvora' ? 92 : undefined}
       priority={eager}
     />
   ) : (

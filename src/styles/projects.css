@@ -85,6 +85,7 @@
 .project-media .media-stockinfo { object-fit: contain; }
 .project-media .media-trigg { object-position: center 35%; }
 .project-media .media-labvora { object-fit: contain; background: #fff; }
+#projects .project-media .media-labvora { background: #3A9CA6; }
 .project-media:has(.media-windows-status-bar) { border: 0; }
 
 .project-card {

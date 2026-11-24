@@ -3,7 +3,8 @@ import stockinfoCover from '../assets/projects/stockinfo-preview.webp';
 import bisachordCover from '../assets/projects/bisachord.webp';
 import memeinCover from '../assets/projects/memein2.webp';
 import triggCover from '../assets/projects/trigg2.webp';
-import labvoraCover from '../assets/projects/labvora-site.webp';
+import labvoraCover from '../assets/projects/labvora-cta.webp';
+import labvoraDetail from '../assets/projects/labvora-site.webp';
 import plantiqCover from '../assets/projects/plantiq-erd.webp';
 import statusBarCover from '../assets/projects/windows-status-bar.webp';
 import statusBarDetail from '../assets/projects/windows-status-bar-wide.webp';
@@ -135,11 +136,13 @@ export const projects: Project[] = [
       'Access lab results through the same mobile interface.',
       'Use Jetpack Compose for the interface and Retrofit for API integration.',
     ],
-    stack: ['Kotlin', 'Jetpack Compose', 'Retrofit', 'MySQL'],
-    cover: { src: labvoraCover, alt: 'Screenshot of the Labvora website homepage' },
+    stack: ['Kotlin', 'Jetpack Compose', 'Retrofit', 'MySQL', 'Google Play Store'],
+    cover: { src: labvoraCover, alt: 'Labvora website download section showing the Android sign-in and registration screens' },
+    detailCover: { src: labvoraDetail, alt: 'Screenshot of the Labvora website homepage' },
     mark: 'LV',
     tone: 'blue',
     code: 'https://github.com/stdrouuu/Labvora-Android',
+    demo: 'https://labvora.ifukrida.net',
   },
   {
     slug: 'plantiq',
