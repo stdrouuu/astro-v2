@@ -20,3 +20,59 @@ import { projects } from '../../data/projects';
     {projects.map((project) => <ProjectCard project={project} />)}
   </div>
 </section>
+
+<script>
+  const touchOnly = window.matchMedia('(any-hover: none) and (pointer: coarse)');
+  const cards = [...document.querySelectorAll<HTMLElement>('#projects .project-card')];
+  let activeCard: HTMLElement | undefined;
+  let frame = 0;
+
+  function updateActiveCard() {
+    frame = 0;
+    let nextCard: HTMLElement | undefined;
+
+    if (touchOnly.matches) {
+      const viewportCenter = window.innerHeight / 2;
+      let closestDistance = viewportCenter * 0.65;
+
+      for (const [index, card] of cards.entries()) {
+        const { top, bottom, height } = card.getBoundingClientRect();
+        if (height === 0 || bottom <= 0 || top >= window.innerHeight) continue;
+
+        // Give side-by-side cards distinct trigger points in the same row.
+        const followsCardInRow = cards[index - 1]?.offsetTop === card.offsetTop;
+        const precedesCardInRow = cards[index + 1]?.offsetTop === card.offsetTop;
+        const anchor = followsCardInRow ? 0.7 : precedesCardInRow ? 0.3 : 0.5;
+        const distance = Math.abs(top + height * anchor - viewportCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          nextCard = card;
+        }
+      }
+    }
+
+    if (activeCard === nextCard) return;
+    activeCard?.removeAttribute('data-scroll-active');
+    nextCard?.setAttribute('data-scroll-active', '');
+    activeCard = nextCard;
+  }
+
+  function scheduleUpdate() {
+    if (frame === 0) frame = window.requestAnimationFrame(updateActiveCard);
+  }
+
+  function updateInputMode() {
+    if (touchOnly.matches) {
+      window.addEventListener('scroll', scheduleUpdate, { passive: true });
+      window.addEventListener('resize', scheduleUpdate);
+    } else {
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+    }
+    scheduleUpdate();
+  }
+
+  touchOnly.addEventListener('change', updateInputMode);
+  updateInputMode();
+</script>

@@ -205,8 +205,7 @@
   cursor: help;
 }
 .stack-icon-item img { width: 1rem; height: 1rem; object-fit: contain; filter: var(--stack-icon-color,) grayscale(var(--stack-icon-grayscale, 1)); opacity: 0.72; }
-.project-card:hover .stack-icon-item img,
-.project-card:focus-within .stack-icon-item img { --stack-icon-grayscale: 0; opacity: 1; }
+.project-card:is([data-scroll-active], :has(:focus-visible)) .stack-icon-item img { --stack-icon-grayscale: 0; opacity: 1; }
 .project-card .stack-icon-item img:is(.stack-icon-rust, .stack-icon-yaml) {
   opacity: 1;
 }
@@ -320,7 +319,10 @@
   .back-link:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   .filters button:hover { background: var(--project-tint); }
   .project-card:hover .project-card-link { color: var(--project-accent); }
+  .project-card:hover .stack-icon-item img { --stack-icon-grayscale: 0; opacity: 1; }
 }
+
+.project-card[data-scroll-active] .project-card-link { color: var(--project-accent); }
 
 @media (prefers-reduced-motion: no-preference) {
   .project-card .project-media img {
@@ -330,7 +332,7 @@
     transition: filter var(--project-hover-transition), opacity var(--project-hover-transition);
   }
   .project-card .project-card-link { transition: color var(--project-hover-transition); }
-  .project-card:focus-within .project-media img { scale: 1.035; }
+  .project-card:is([data-scroll-active], :has(:focus-visible)) .project-media img { scale: 1.035; }
   .action, .nav-control, .filters button { transition: transform 150ms var(--press-ease); }
   .action:active, .nav-control:active, .filters button:active { transform: scale(0.97); }
 }
