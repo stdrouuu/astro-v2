@@ -27,12 +27,11 @@ const workItems: ExperienceItem[] = [
   },
   {
     period: '2026 — Present',
-    role: 'Freelance Developer',
-    organization: 'Self-Employed',
-    logo: '/img/logo-hover.webp',
-    logoClass: 'rounded-md overflow-hidden',
+    role: 'Freelance Web Developer',
+    organization: 'Upwork',
+    logo: '/img/upwork.webp',
     description:
-      'Building custom web applications, responsive modern user interfaces, and fullstack digital solutions for clients and independent projects.',
+      'Building custom web applications, responsive modern user interfaces, and fullstack digital solutions for clients.',
     stacks: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Node.js'],
   },
 ];
@@ -96,7 +95,7 @@ const educationItems: ExperienceItem[] = [
           <summary class="list-none flex items-center justify-between gap-3.5 sm:gap-4 cursor-pointer select-none">
             <div class="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
               <!-- Big Logo -->
-              <div class={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform ${item.logoClass || ''}`}>
+              <div class={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center ${item.logoClass || ''}`}>
                 <img
                   src={item.logo}
                   alt={item.organization}
@@ -162,7 +161,7 @@ const educationItems: ExperienceItem[] = [
           <summary class="list-none flex items-center justify-between gap-3.5 sm:gap-4 cursor-pointer select-none">
             <div class="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
               <!-- Big Logo -->
-              <div class={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform ${item.logoClass || ''}`}>
+              <div class={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center ${item.logoClass || ''}`}>
                 <img
                   src={item.logo}
                   alt={item.organization}
