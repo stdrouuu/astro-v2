@@ -5,6 +5,8 @@ import memeinCover from '../assets/projects/memein2.webp';
 import triggCover from '../assets/projects/trigg2.webp';
 import labvoraCover from '../assets/projects/labvora-site.webp';
 import plantiqCover from '../assets/projects/plantiq-erd.webp';
+import statusBarCover from '../assets/projects/windows-status-bar.webp';
+import statusBarDetail from '../assets/projects/windows-status-bar-wide.webp';
 
 export type ProjectCategory = 'Client' | 'Independent' | 'Academic';
 
@@ -19,6 +21,7 @@ export interface Project {
   highlights: string[];
   stack: string[];
   cover?: { src: ImageMetadata; alt: string };
+  detailCover?: { src: ImageMetadata; alt: string };
   mark: string;
   tone: 'blue' | 'rose' | 'slate';
   code?: string;
@@ -84,6 +87,25 @@ export const projects: Project[] = [
     demo: 'https://memein.vercel.app/',
   },
   {
+    slug: 'windows-status-bar',
+    title: 'Windows Status Bar',
+    category: 'Independent',
+    period: '2026',
+    summary: 'A slim Windows status bar with a live clock, active window title, and quick system controls.',
+    context: 'I built this standalone Windows status bar in Rust for my daily workflow and configured its widgets in YAML.',
+    contribution: 'I designed the layout and configured the widgets in YAML. I kept the clock centered and grouped the window title and system controls on the right.',
+    highlights: [
+      'Read the time at a glance with a centered clock that updates every second.',
+      'See the focused window title, including the active browser tab when its title is shown by the browser.',
+      'Check volume and notifications and reach the power menu from the same bar.',
+    ],
+    stack: ['Rust', 'YAML'],
+    cover: { src: statusBarCover, alt: 'Herdr with BioInsite selected, a clock, and right-side status controls over the desktop wallpaper' },
+    detailCover: { src: statusBarDetail, alt: 'Full-width Windows status bar with a centered clock and controls aligned to the right' },
+    mark: 'WS',
+    tone: 'slate',
+  },
+  {
     slug: 'trigg',
     title: 'Trigg',
     category: 'Academic',
@@ -132,7 +154,7 @@ export const projects: Project[] = [
       'Keep harvest records available for later review.',
       'Explore a single view of weather, crop conditions, and soil health.',
     ],
-    stack: [],
+    stack: ['Oracle', 'MySQL'],
     mark: 'PI',
     tone: 'slate',
   },

@@ -8,7 +8,8 @@ interface Props {
 }
 
 const { project, eager = false } = Astro.props;
-const { cover, tone } = project;
+const { tone } = project;
+const cover = eager ? project.detailCover ?? project.cover : project.cover;
 const maxWidth = Math.min(cover?.src.width ?? 0, eager ? 1600 : 1024);
 const widths = [360, 640, 768, 1024, maxWidth].filter((width, index, candidates) =>
   width <= maxWidth && candidates.indexOf(width) === index

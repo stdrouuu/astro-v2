@@ -9,8 +9,11 @@ interface Props {
 
 const { project, heading: Heading = 'h3' } = Astro.props;
 const stackIcons: Record<string, string> = {
+  Rust: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg',
+  YAML: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yaml/yaml-original.svg',
   Laravel: '/img/laravel.webp',
   PHP: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg',
+  Oracle: '/img/oracle.webp',
   MySQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
   'Tailwind CSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
   React: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
@@ -42,7 +45,7 @@ const stackIcons: Record<string, string> = {
           <ul class="tags" aria-label="Technologies">
             {project.stack.map((tool) => (
               <li class="stack-icon-item" tabindex="0" aria-label={tool}>
-                <img src={stackIcons[tool]} alt="" loading="lazy" decoding="async" />
+                <img class:list={{ 'stack-icon-rust': tool === 'Rust', 'stack-icon-yaml': tool === 'YAML' }} src={stackIcons[tool]} alt="" loading="lazy" decoding="async" />
                 <span class="stack-icon-tooltip" role="tooltip">{tool}</span>
               </li>
             ))}
